@@ -1,2 +1,4 @@
-package api;public class BaseApi {
+package api;
+
+public class BaseAPI {
 }
