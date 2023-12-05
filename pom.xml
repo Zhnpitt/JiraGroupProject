@@ -13,7 +13,6 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
@@ -78,5 +77,4 @@
             <version>5.1.0</version>
         </dependency>
     </dependencies>
-
 </project>
