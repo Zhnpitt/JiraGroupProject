@@ -22,7 +22,7 @@ public class BaseSetUp {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
-    //22222211
+    //
     @AfterClass
     public void tearDown(){
         driver.close();
