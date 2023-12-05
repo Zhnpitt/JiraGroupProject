@@ -4,8 +4,8 @@ import utils.ApplicationProperties;
 
 public enum URL {
     Login("login.jsp"),
-    Home("secure/Dashboard.jspa"),
-    Administration("secure/PortfolioPermissions.jspa");
+    DashBoard("secure/Dashboard.jspa");
+
 
     private final String url;
     URL(String path) {

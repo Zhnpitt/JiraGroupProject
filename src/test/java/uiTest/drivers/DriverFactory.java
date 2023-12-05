@@ -3,6 +3,7 @@ package uiTest.drivers;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import utils.ApplicationProperties;
@@ -29,7 +30,9 @@ public class DriverFactory {
             }
             case "chrome": {
                 WebDriverManager.chromedriver().setup();
-                webDriver.set(new ChromeDriver());
+                ChromeOptions options = new ChromeOptions().addArguments("--remote-allow-origins=*");
+                WebDriver driver = new ChromeDriver(options);
+                webDriver.set(driver);
                 break;
             }
             case "edge": {
@@ -43,5 +46,10 @@ public class DriverFactory {
         }
         webDriver.get().manage().window().maximize();
     }
-
+    public static void teardown() {
+        if (webDriver.get() != null) {
+            webDriver.get().quit();
+            webDriver.remove();
+        }
+    }
 }
