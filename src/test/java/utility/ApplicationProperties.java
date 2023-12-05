@@ -1,2 +1,3 @@
-package utility;public class ApplicationProperties {
+package utility;
+public class ApplicationProperties {
 }

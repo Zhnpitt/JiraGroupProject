@@ -1,2 +1,4 @@
-package base;public class BaseSetUp {
+package base;
+
+public class BaseSetUp {
 }
