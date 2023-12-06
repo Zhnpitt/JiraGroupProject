@@ -9,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import utils.ApplicationProperties;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class DriverFactory {
     private static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
@@ -44,10 +43,11 @@ public class DriverFactory {
                 System.out.println("Browser type is not supported!");
             }
         }
-        webDriver.get().manage().timeouts().implicitlyWait( Duration.ofSeconds(10));
+        webDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         webDriver.get().manage().window().maximize();
     }
+
     public static void teardown() {
         if (webDriver.get() != null) {
             webDriver.get().quit();

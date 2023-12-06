@@ -3,7 +3,7 @@ package uiTest.pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPO extends BasePO{
+public class LoginPO extends BasePO {
 
     @FindBy(xpath = "//input[@id='login-form-username']")
     public WebElement inputUsername;
