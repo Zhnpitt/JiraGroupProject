@@ -44,6 +44,8 @@ public class DriverFactory {
                 System.out.println("Browser type is not supported!");
             }
         }
+        webDriver.get().manage().timeouts().implicitlyWait( Duration.ofSeconds(10));
+
         webDriver.get().manage().window().maximize();
     }
     public static void teardown() {
