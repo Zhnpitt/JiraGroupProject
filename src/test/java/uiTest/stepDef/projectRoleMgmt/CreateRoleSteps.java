@@ -8,13 +8,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import uiTest.drivers.DriverFactory;
-import uiTest.pageObjects.projectRoleMgmtPO.CreateRolePO;
+import uiTest.pageObjects.projectRoleMgmtPO.ProjectRolesPO;
 
 import java.util.List;
 
 public class CreateRoleSteps {
     private final WebDriver driver;
-    private final CreateRolePO createRolePO;
+    private final ProjectRolesPO projectRolesPO;
 
 
     String roleName = "team lead";
@@ -22,7 +22,7 @@ public class CreateRoleSteps {
 
     public CreateRoleSteps(){
         driver = DriverFactory.getDriver();
-        createRolePO = new CreateRolePO();
+        projectRolesPO = new ProjectRolesPO();
 
     }
 
@@ -33,13 +33,13 @@ public class CreateRoleSteps {
 
     @When("I enter the valid Role Name and Description")
     public void I_enter_the_valid_Role_Name_and_Description(){
-        createRolePO.enterRoleName(roleName);
-        createRolePO.setInputRoleDescription(roleDesc);
+        projectRolesPO.enterRoleName(roleName);
+        projectRolesPO.setInputRoleDescription(roleDesc);
     }
 
     @And("click the Add Project Role button")
     public void click_the_Add_Project_Role_button(){
-        createRolePO.clickAddRoleBtn();
+        projectRolesPO.clickAddRoleBtn();
     }
 
     @Then("I should get a new role in Project Role Browser")

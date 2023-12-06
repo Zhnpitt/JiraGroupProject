@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import uiTest.pageObjects.BasePO;
 
-public class CreateRolePO extends BasePO {
+public class ProjectRolesPO extends BasePO {
     @FindBy(xpath = "//input[@name='name']")
     private WebElement inputRoleName;
 
