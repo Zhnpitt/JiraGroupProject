@@ -1,39 +1,37 @@
-{
-  "users": [
-    {
-      "email": "johndoe@gmail.com",
-      "fullName": "John Doe",
-      "username": "John Doe",
-      "password": "password123",
-      "role": "user"
-    },
-    {
-      "email": "adamsmith@gmail.com",
-      "fullName": "Adam Smith",
-      "username": "Adam Smith",
-      "password": "password123",
-      "role": "user"
-    },
-    {
-      "email": "bobdylan@gmail.com",
-      "fullName": "Bob Dylan",
-      "username": "Bob Dylan",
-      "password": "password123",
-      "role": "user"
-    },
-    {
-      "email": "cindylee@gmail.com",
-      "fullName": "Cindy Lee",
-      "username": "Cindy Lee",
-      "password": "password123",
-      "role": "user"
-    },
-    {
-      "email": "dianawest@gmail.com",
-      "fullName": "Diana West",
-      "username": "Diana West",
-      "password": "password123",
-      "role": "user"
-    }
-  ]
-}
+[
+  {
+    "email": "johndoe@gmail.com",
+    "fullName": "John Doe",
+    "username": "John Doe",
+    "password": "password123",
+    "role": "Team lead"
+  },
+  {
+    "email": "adamsmith@gmail.com",
+    "fullName": "Adam Smith",
+    "username": "Adam Smith",
+    "password": "password123",
+    "role": "Developer"
+  },
+  {
+    "email": "bobdylan@gmail.com",
+    "fullName": "Bob Dylan",
+    "username": "Bob Dylan",
+    "password": "password123",
+    "role": "Developer"
+  },
+  {
+    "email": "cindylee@gmail.com",
+    "fullName": "Cindy Lee",
+    "username": "Cindy Lee",
+    "password": "password123",
+    "role": "Developer"
+  },
+  {
+    "email": "dianawest@gmail.com",
+    "fullName": "Diana West",
+    "username": "Diana West",
+    "password": "password123",
+    "role": "QA"
+  }
+]
