@@ -22,54 +22,11 @@ import static org.testng.Assert.*;
 
 public class UserMgmtStepDef {
 
-    private final LoginPO loginPO = new LoginPO();
+
     private final DashBoardPO dashboardPO = new DashBoardPO();
     private final UserMgmtPO userMgmtPO = new UserMgmtPO();
     private final CreateUserPO createUserPO = new CreateUserPO();
 
-    @Given("I visit the login page")
-    public void iVisitTheLoginPage() {
-        DriverFactory.getDriver().manage().deleteAllCookies();
-        DriverFactory.getDriver().navigate().to(URL.Login.toString());
-        assertEquals(DriverFactory.getDriver().getCurrentUrl(), URL.Login.toString());
-
-    }
-
-    @When("I enter the admin username and password")
-    public void iEnterTheAdminUsernameAndPassword(DataTable usercredentials) {
-        List<Map<String, String>> data = usercredentials.asMaps(String.class, String.class);
-        loginPO.enterUsername(data.get(0).get("username"));
-        loginPO.enterPassword(data.get(0).get("password"));
-    }
-
-    @When("I enter the {string} and {string}")
-    public void iEnterTheUsernameAndPassword(String username, String password) {
-        loginPO.enterUsername(username);
-        loginPO.enterPassword(password);
-    }
-
-
-    @And("I click the login button")
-    public void iClickTheLoginButton() {
-        loginPO.clickLoginButton();
-    }
-
-    @Then("I should view the dashboard")
-    public void iShouldViewTheDashBoardPage() {
-        assertEquals(DriverFactory.getDriver().getCurrentUrl(),
-              URL.DashBoard.toString());
-    }
-
-    @Then("I should see admin menu")
-    public void iShouldSeeAdminMenu() {
-        assertTrue(dashboardPO.checkIfAdminUser());
-    }
-
-    @When("I navigate to the user management page")
-    public void iNavigateToTheUserManagementPage() {
-        dashboardPO.clickAdminMenu();
-        dashboardPO.clickUserMgmtLink();
-    }
 
     @Then("I should see user management page")
     public void iShouldSeeUserManagementPage() {
