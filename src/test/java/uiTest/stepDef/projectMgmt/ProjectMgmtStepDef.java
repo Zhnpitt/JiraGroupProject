@@ -62,18 +62,20 @@ public class ProjectMgmtStepDef {
     public void IClickTheProjectsButton(){
         dashboardPO.clickProjectsButton();
     }
-    @And("I setup the project")
+    @And("I setup the project with {string} and {string}")
     public void iSetupTheProject(String projectName, String projectKey ) throws InterruptedException {
         projectPO.clickCreateProjectButton();
         Thread.sleep(200);
         projectPO.clickNextButton();
         Thread.sleep(200);
         projectPO.clickSelectButton();
-        Thread.sleep(200);
+        Thread.sleep(400);
         projectPO.createAProject(projectName, projectKey);
     }
     //@Then("Then I create a project")
 
+
+    //Scenario:I apply an existing permission scheme
     @When("I click the admin menu button again")
     public void iClickTheAdminMenuButtonAgain(){
         dashboardPO.clickAdminMenu();

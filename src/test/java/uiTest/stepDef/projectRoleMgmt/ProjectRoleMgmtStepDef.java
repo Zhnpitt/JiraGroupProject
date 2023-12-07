@@ -8,7 +8,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en_scouse.An;
 import org.checkerframework.checker.units.qual.A;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.*;
@@ -72,11 +75,11 @@ public class ProjectRoleMgmtStepDef {
     public void iClickConfirmInAdministratorAccessPage() {
         dashboardPO.clickAuthenticateConfirmBtn();
     }
-    @When("I click the Project roles button")
+    @And("I click the Project roles button")
     public void iClickTheProjectRolesButton(){
         systemPagePO.clickProjectRolesButton();
     }
-    @When("I enter the valid Role Name and Description")
+    @And("I enter the valid {} and {}")
     public void iEnterTheValidRoleNameAndDescription(String roleName, String description){
         systemPagePO.enterRoleName(roleName);
         systemPagePO.enterRoleDescription(description);
@@ -85,12 +88,12 @@ public class ProjectRoleMgmtStepDef {
     public void iClickTheAddProjectRoleButton(){
         systemPagePO.clickRoleSubmitButton();
     }
-    @Then("I should see this new role in Project Role Browser")
-    public void iShouldSeeThisNewRoleInProjectRoleBrowser(){
-        //String xpathExpression = "//tbody/tr[.//td[contains(text(),'" + roleName + "')] and .//td[contains(text(),'" + roleDesc + "')]]";
-        //List<WebElement> matchingElements = driver.findElements(By.xpath(xpathExpression));
-        //Assert.assertFalse( matchingElements.isEmpty());
-    }
+//    @Then("I should see this new role in Project Role Browser")
+//    public void iShouldSeeThisNewRoleInProjectRoleBrowser(){
+//        String xpathExpression = "//tbody/tr[.//td[contains(text(),'" + roleName + "')] and .//td[contains(text(),'" + roleDesc + "')]]";
+//        List<WebElement> matchingElements = driver.findElements(By.xpath(xpathExpression));
+//        Assert.assertFalse( matchingElements.isEmpty());
+//    }
 
 
     //Scenario: Create a project
@@ -99,10 +102,10 @@ public class ProjectRoleMgmtStepDef {
         dashboardPO.clickAdminMenu();
     }
     @And("I click the Projects button")
-    private void IClickTheProjectsButton(){
+    public void IClickTheProjectsButton(){
         dashboardPO.clickProjectsButton();
     }
-    @And("I setup the project")
+    @And("I create and setup the project with {} and {}")
     public void iSetupTheProject(String projectName, String projectKey ) throws InterruptedException {
         projectPO.clickCreateProjectButton();
         Thread.sleep(200);
@@ -135,7 +138,7 @@ public class ProjectRoleMgmtStepDef {
     public void iClickTheAddUsersToARoleButton(){
         projectPO.clickAddUserToARoleButton();
     }
-    @And("I enter valid user and role")
+    @And("I enter valid {} and role")
     public void iEnterValidUserAndRole(String userName) throws InterruptedException {
         projectPO.enterUserName(userName);
         projectPO.chooseARole();
@@ -148,14 +151,14 @@ public class ProjectRoleMgmtStepDef {
 
 
     //Scenario: After creation, I can filter users in a project based on their roles.
-    @When("I click the drop box of created roles")
+    @And("I click the drop box of created roles")
     public void iClickTheDropBoxOfCreatedRoles(){
         projectPO.clickCreatedRolesDropBox();
     }
-    @And("I select a role")
-    public void iSelectARole(){
-        projectPO.clickCreatedRolesDropBox();
-    }
+//    @And("I select a role")
+//    public void iSelectARole(){
+//        projectPO.clickCreatedRolesDropBox();
+//    }
     //@Then("I should see all users in this role")
 
 

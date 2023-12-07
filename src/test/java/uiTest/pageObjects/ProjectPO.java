@@ -1,15 +1,15 @@
 package uiTest.pageObjects;
 
-import io.cucumber.java.eo.Se;
-import org.apache.http.conn.scheme.Scheme;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 public class ProjectPO extends BasePO{
-    @FindBy(xpath = "//a[@id='browse-projects-create-project']")
+
+    @FindBy(xpath = "//a[normalize-space()='Create project']")
     public WebElement createProjectButton;
+    //a[normalize-space()='Create project']
+    //a[@id='browse-projects-create-project']
 
     @FindBy(xpath = "//button[normalize-space()='Next']")
     public WebElement nextButton;
@@ -50,11 +50,12 @@ public class ProjectPO extends BasePO{
     @FindBy(xpath = "//button[@class='css-1l4j2co']")
     public WebElement addButton;
 
-    @FindBy(xpath = "//button[@class='_1tSDNSFo-vOBkDKqayIyHy css-18u3ks8']")
-    public WebElement createdRolesDropBox;
+    @FindBy(xpath = "(//div[@class='sc-feJyhm dfkaKe']/span)[2]")
+    public WebElement rolesDropBox;
 
     @FindBy(xpath = "//div[@id='uid1']//div[@role='menu']/div/span")
     public WebElement roleInDropBox;
+
 
     @FindBy(xpath = "//a[@id='view_project_permissions']")
     public WebElement permissionsButton;
@@ -108,6 +109,7 @@ public class ProjectPO extends BasePO{
         Thread.sleep(200);
         submitAProjectButton.click();
     }
+
     public void chooseAProject(){
         projectLink.click();
     }
@@ -132,7 +134,9 @@ public class ProjectPO extends BasePO{
         addButton.click();
     }
     public void clickCreatedRolesDropBox(){
-        createdRolesDropBox.click();
+        rolesDropBox.click();
+        roleInDropBox.click();
+        rolesDropBox.click();
     }
     public void setRoleFilter(){
         roleInDropBox.click();

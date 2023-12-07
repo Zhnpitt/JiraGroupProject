@@ -7,12 +7,12 @@ Feature: Project management
     And I click the login button
     Then I should view the dashboard
 
-  Scenario: create a Scrum project and apply an existing permission scheme
+  Scenario:I create a Scrum project
     When I click the admin menu button
     And I click the Project button
-    And I setup the project
+    And I setup the project with "projectName1" and "PKey1"
 
-
+  Scenario:I apply an existing permission scheme on a project
     When I click the admin menu button again
     And I click the Project button again
     And I select a project

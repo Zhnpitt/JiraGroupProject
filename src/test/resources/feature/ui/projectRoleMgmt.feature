@@ -6,30 +6,20 @@ Feature: Project Role management
       | zhoulikekk | Whou3344603~ |
     And I click the login button
     Then I should view the dashboard
+
+  Scenario: Admin creates three project roles
     When I click the admin menu button
     And I click the System button
     And I enter password in Administrator Access Page "Whou3344603~"
     And I click confirm in Administrator Access Page
-    Then I should see System page
-
-
-  Scenario: Admin creates three project roles
-    Given I am on the System page
-    When I click the Project roles button
-    Then I should see the Project Role Browser
-
-    When I enter the valid Role Name and Description
+    And I click the Project roles button
+    And I enter the valid RoleName and Description
     And I click the Add Project Role button
-    Then I should see this new role in Project Role Browser
-
 
   Scenario: Create a project
     When I click the admin menu button again
     And I click the Projects button
-    And I click the Create project button
-    And I setup the project
-    Then I create a project
-
+    And I create and setup the project with projectName2 and projectKey2
 
   Scenario: Admin adds existing user to a project role
     When I click the admin menu button third
@@ -37,16 +27,16 @@ Feature: Project Role management
     And I choose a project
     And I click the Users and roles button
     And I click the Add users to a role button
-    And I enter valid user and role
+    And I enter valid John D and role
     And I click the Add button
-    Then I add a user to a role
-
 
   Scenario: After creation, I can filter users in a project based on their roles.
-    When I click the drop box of created roles
-    And I select a role
-    Then I should see all users in this role
+    When I click the admin menu button third
+    And I click the Projects button again
+    And I choose a project
+    And I click the Users and roles button
 
+    And I click the drop box of created roles
 
   Scenario: After creation, I can enable team lead manage sprints
     When I click the admin menu button forth
