@@ -22,7 +22,13 @@ Feature: User Creation
     Then I should see the created user <username> in user browser table
 
     Examples:
-      | email                 | username     | fullname     | password      | groups            |
-      | "johndoe@gmail.com"   | "John Doe"   | "John Doe"   | "password123" | "Group 1;Group 2" |
-      | "adamsmith@gmail.com" | "Adam Smith" | "Adam Smith" | "password123" | "Group 1;Group 2" |
+      | email                 | username     | fullname     | password      | groups                      |
+      | "johndoe@gmail.com"   | "John Doe"   | "John Doe"   | "password123" | "Jira-group-1;Jira-group-2" |
+      | "adamsmith@gmail.com" | "Adam Smith" | "Adam Smith" | "password123" | "Jira-group-1"              |
+      | "dianawest@gmail.com" | "Diana West" | "Diana West" | "password123" | "Jira-group-3"              |
+
+
+
+
+
 
