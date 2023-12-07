@@ -1,12 +1,11 @@
 package uiTest.pageObjects;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 //http://localhost:8080/secure/admin/workflows/ListWorkflows.jspa
-public class ListWorkflowsOP {
-
-
+public class ListWorkflowsOP  extends BasePO {
 
     @FindBy(xpath = "//a[@id = \"add-workflow\"]")
     public WebElement addWorkflowBtn;
@@ -18,10 +17,6 @@ public class ListWorkflowsOP {
 
     @FindBy(xpath = "//button[@id = \"add-workflow-submit\"]")
     public WebElement workflowFormAddBtn;
-
-
-
-
 
     public void clickAddWorkflowBtn(){addWorkflowBtn.click();}
 

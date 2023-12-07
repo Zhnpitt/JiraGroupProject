@@ -12,7 +12,8 @@ public class DashBoardPO extends BasePO {
 
     @FindBy(xpath = "//a[@id = 'admin_users_menu']")
     public WebElement userMgmtBtn;
-
+    @FindBy(xpath = "//a[@id = 'admin_issues_menu']")
+    public WebElement adminIssuesBtn;
 
     public boolean checkIfAdminUser() {
         boolean isAdminUser = true;
@@ -36,5 +37,8 @@ public class DashBoardPO extends BasePO {
         userMgmtBtn.click();
     }
 
+    public void clickAdminIssuesBtn() {
+        adminIssuesBtn.click();
+    }
 
 }

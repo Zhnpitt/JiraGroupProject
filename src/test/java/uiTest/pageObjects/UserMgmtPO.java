@@ -54,6 +54,7 @@ public class UserMgmtPO extends BasePO {
     public WebElement groupFilter;
     @FindBy(xpath = "//div[@class = 'group-suggestion-item']/span")
     public WebElement filterMatchingGroup;
+
     public void enterAuthenticatePassword(String password) {
         authenticatePassword.sendKeys(password);
     }
