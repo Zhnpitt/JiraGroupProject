@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.LoginPO;
+import utils.AdminProperties;
 
 import java.util.List;
 import java.util.Map;
@@ -24,10 +25,15 @@ public class LoginStepDef {
     }
 
     @When("I enter the admin username and password")
-    public void iEnterTheAdminUsernameAndPassword(DataTable usercredentials) {
-        List<Map<String, String>> data = usercredentials.asMaps(String.class, String.class);
+    public void iEnterTheAdminUsernameAndPassword() {
+        /*List<Map<String, String>> data = usercredentials.asMaps(String.class, String.class);
         loginPO.enterUsername(data.get(0).get("username"));
         loginPO.enterPassword(data.get(0).get("password"));
+        */
+        loginPO.enterUsername(AdminProperties.getAdminUsername());
+        loginPO.enterPassword(AdminProperties.getAdminPassword());
+
+
     }
 
     @When("I enter the {string} and {string}")
