@@ -11,10 +11,18 @@ import java.util.List;
 
 public class DashBoardPO extends BasePO {
 
+    @FindBy(xpath = "//li[@id='system-admin-menu']")
     public WebElement adminMenu;
 
     @FindBy(xpath = "//a[@id = 'admin_users_menu']")
     public WebElement userMgmtBtn;
+    ////li[@id='system-admin-menu']
+
+    @FindBy(xpath = "//a[@id='admin_system_menu']")
+    public WebElement systemButton;
+
+    @FindBy(xpath = "//a[@id='admin_project_menu']")
+    public WebElement projectsButton;
 
     @FindBy(xpath = "//input[@id='login-form-authenticatePassword']")
     public WebElement authenticatePassword;
@@ -42,6 +50,16 @@ public class DashBoardPO extends BasePO {
 
     @FindBy(xpath = "//table[@id=\"user_browser_table\"]/tbody")
     public WebElement userBrowserTableBody;
+
+
+
+
+
+
+
+
+
+
 
 
     @FindBy(xpath = "//form[@id=\"user-edit\"]/div[1]/fieldset/div/label")
@@ -92,6 +110,10 @@ public class DashBoardPO extends BasePO {
         if (checkIfAdminUser()){
             adminMenu.click();
         }
+    }
+
+    public void clickSystemButton(){
+        systemButton.click();
     }
 
     public void clickUserMgmtLink(){
@@ -151,6 +173,18 @@ public class DashBoardPO extends BasePO {
         WebElement row = findInactiveUserInUserBrowserTable(username);
         row.findElement(By.xpath(".//a[text()[normalize-space() = \"Edit\"]]")).click();
     }
+    public void clickProjectsButton(){
+        projectsButton.click();
+    }
+
+
+
+
+
+
+
+
+
 
 
     public void deactivateUser(String username){
