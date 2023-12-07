@@ -1,6 +1,6 @@
 package uiTest.runner.projectMgmt;
 
-import uiTest.runner.UiTestRunner;
+import uiTest.runner.uiTestRunner;
 
-public class ProjectMgmtUiTestRunner extends UiTestRunner {
+public class ProjectMgmtUiTestRunner extends uiTestRunner {
 }

@@ -1,6 +1,6 @@
 package uiTest.runner.userMgmt;
 
-import uiTest.runner.UiTestRunner;
+import uiTest.runner.uiTestRunner;
 
-public class UserMgmtUiTestRunner extends UiTestRunner {
+public class UserMgmtUiTestRunner extends uiTestRunner {
 }

@@ -1,6 +1,6 @@
 package uiTest.runner.groupMgmt;
 
-import uiTest.runner.UiTestRunner;
+import uiTest.runner.uiTestRunner;
 
-public class GroupMgmtUiTestRunner extends UiTestRunner {
+public class GroupMgmtUiTestRunner extends uiTestRunner {
 }

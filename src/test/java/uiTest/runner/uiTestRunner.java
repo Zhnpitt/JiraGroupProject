@@ -10,7 +10,7 @@ import uiTest.drivers.DriverFactory;
       features = "classpath:features",
       glue = "classpath:stepDef"
 )
-public class UiTestRunner extends AbstractTestNGCucumberTests {
+public class uiTestRunner extends AbstractTestNGCucumberTests {
 
     @AfterTest
     public void quitBrowser() {
