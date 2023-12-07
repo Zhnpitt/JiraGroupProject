@@ -58,8 +58,8 @@ public class ProjectMgmtStepDef {
     public void iClickTheAdminMenuButton(){
         dashboardPO.clickAdminMenu();
     }
-    @And("I click the Projects button")
-    private void IClickTheProjectsButton(){
+    @And("I click the Project button")
+    public void IClickTheProjectsButton(){
         dashboardPO.clickProjectsButton();
     }
     @And("I setup the project")
