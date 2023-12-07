@@ -44,7 +44,7 @@ public class UserMgmtPO extends BasePO {
     @FindBy(xpath = "//textarea[@id=\"groupsToJoin-textarea\"]")
     public WebElement groupsToJoin;
 
-    @FindBy(xpath = "//div[@class=\"aui-list-scroll\"]/ul[1]/li")
+    @FindBy(xpath = "//div[@class=\"aui-list-scroll\"]/ul[1]/li/a")
     public WebElement matchingGroup;
 
     @FindBy(xpath = "//input[@id=\"user-edit-groups-join\"]")
@@ -52,7 +52,8 @@ public class UserMgmtPO extends BasePO {
 
     @FindBy(xpath = "//input[@id=\"user-filter-group-field\"]")
     public WebElement groupFilter;
-
+    @FindBy(xpath = "//div[@class = 'group-suggestion-item']/span")
+    public WebElement filterMatchingGroup;
     public void enterAuthenticatePassword(String password) {
         authenticatePassword.sendKeys(password);
     }
@@ -186,7 +187,7 @@ public class UserMgmtPO extends BasePO {
     public void applyGroupFilter(String groups) {
         groupFilter.clear();
         groupFilter.sendKeys(groupNamesProvider(groups)[0]);
-        matchingGroup.click();
+        filterMatchingGroup.click();
 
     }
 
