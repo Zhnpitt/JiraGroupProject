@@ -1,0 +1,13 @@
+{
+  "groups": [
+    {
+      "name": "Jira-group1"
+    },
+    {
+      "name": "Jira-group2"
+    },
+    {
+      "name": "Jira-group3"
+    }
+  ]
+}
