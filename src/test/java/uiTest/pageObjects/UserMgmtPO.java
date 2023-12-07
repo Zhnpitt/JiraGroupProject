@@ -129,7 +129,6 @@ public class UserMgmtPO extends BasePO {
         clickUserEditUpdateBtn();
     }
 
-
     public void uncheckUserEditActiveCheckedBox() {
         if (userEditActiveCheckedBoxStatus.isSelected()) {
             userEditActiveCheckedBox.click();
@@ -154,7 +153,6 @@ public class UserMgmtPO extends BasePO {
     public void clickFilterBtn() {
         filterBtn.click();
     }
-
 
     public void clickFilterRestBtn() {
         filterResetBtn.click();

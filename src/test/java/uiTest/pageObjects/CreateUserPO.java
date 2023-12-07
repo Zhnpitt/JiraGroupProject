@@ -10,10 +10,8 @@ public class CreateUserPO extends BasePO {
     @FindBy(xpath = "//input[@id=\"user-create-username\"]")
     public WebElement userCreateUsername;
 
-
     @FindBy(xpath = "//input[@id=\"user-create-fullname\"]")
     public WebElement userCreateFullname;
-
 
     @FindBy(xpath = "//input[@id=\"password\"]")
     public WebElement userCreatePassword;
@@ -32,7 +30,6 @@ public class CreateUserPO extends BasePO {
     public void enterUserCreateFullname(String s) {
         userCreateFullname.sendKeys(s);
     }
-
 
     public void enterUserCreatePassword(String s) {
         userCreatePassword.sendKeys(s);
