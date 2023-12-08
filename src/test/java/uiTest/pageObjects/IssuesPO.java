@@ -52,6 +52,21 @@ public class IssuesPO extends BasePO{
     @FindBy(xpath = "//input[@id='create-issue-submit']")
     public WebElement submitIssueCreation;
 
+    @FindBy(xpath = "//a[@id='permission_schemes']")
+    public WebElement permissionSchemesButton;
+
+    @FindBy(xpath = "//div[@class='aui-buttons']")
+    public WebElement addPermissionSchemeButton;
+
+    @FindBy(xpath = "//input[@id='add-permissions-scheme-newSchemeName']")
+    public WebElement inputNewSchemeName;
+
+    @FindBy(xpath = "//button[@id='add-permissions-scheme-submit']")
+    public WebElement newPermissionSchemeSubmit;
+
+    @FindBy(xpath = "//tr[contains(.,'PS-1')]/td/ul/li/a[contains(.,'Permissions')]")
+    public WebElement editPermissionButton;
+
     public void clickManageSprintEditButton(){
         manageSprintEditButton.click();
     }
@@ -97,6 +112,26 @@ public class IssuesPO extends BasePO{
         epicNameInput.sendKeys(epicName);
         epicSumInput.sendKeys(epicSummary);
         submitIssueCreation.click();
+    }
+
+    public void clickPermissionSchemesButton(){
+        permissionSchemesButton.click();
+    }
+
+    public void clickAddPermissionSchemeButton(){
+        addPermissionSchemeButton.click();
+    }
+
+    public void nameANewScheme(String name){
+        inputNewSchemeName.sendKeys(name);
+    }
+
+    public void submitANewScheme(){
+        newPermissionSchemeSubmit.click();
+    }
+
+    public void editPermission(){
+        editPermissionButton.click();
     }
 
 }

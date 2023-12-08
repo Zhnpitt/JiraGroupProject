@@ -27,6 +27,7 @@ public class ProjectRoleMgmtStepDef {
     private final SystemPagePO systemPagePO = new SystemPagePO();
     private final ProjectPO projectPO = new ProjectPO();
     private final IssuesPO issuesPO = new IssuesPO();
+    private final AdminMenuPO adminMenuPO = new AdminMenuPO();
 
 
     // Background: Login in as an administrator and navigate to Project roles page
@@ -164,6 +165,34 @@ public class ProjectRoleMgmtStepDef {
         projectPO.filterTeamLead();
     }
 
+    //create a permission scheme
+    @And("I click the issue button")
+    public void iClickTheIssueButton(){
+        adminMenuPO.clickIssueAdminButton();
+    }
+    @And("I click the Permission schemes button")
+    public void iClickThePermissionSchemesButton(){
+        issuesPO.clickPermissionSchemesButton();
+    }
+    @And("I click the Add permission scheme button")
+    public void iClickTheAddPermissionSchemeButton(){
+        issuesPO.clickAddPermissionSchemeButton();
+    }
+
+    @And("I name the scheme {}")
+    public void iNameTheNewScheme(String name){
+        issuesPO.nameANewScheme(name);
+    }
+
+    @And("I click the permission scheme submit button")
+    public void iClickThePermissionSchemeSubmitButton(){
+        issuesPO.submitANewScheme();
+    }
+
+    @And("I choose this scheme to edit")
+    public void iChooseThisSchemeToEdit(){
+        issuesPO.editPermission();
+    }
 
 
     //  Scenario: After creation, I can enable team lead manage sprints
@@ -210,6 +239,8 @@ public class ProjectRoleMgmtStepDef {
         issuesPO.chooseQA();
         issuesPO.clickGrantButton();
     }
+
+
 
 
 
