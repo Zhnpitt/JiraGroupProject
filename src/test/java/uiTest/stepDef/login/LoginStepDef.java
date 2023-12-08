@@ -6,14 +6,18 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import uiTest.constants.URL;
+import uiTest.constants.UserRole;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.LoginPO;
 import utils.AdminProperties;
+import utils.TestDataProvider;
+import utils.User;
 
 import java.util.List;
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 public class LoginStepDef {
     private final LoginPO loginPO = new LoginPO();
@@ -26,14 +30,8 @@ public class LoginStepDef {
 
     @When("I enter the admin username and password")
     public void iEnterTheAdminUsernameAndPassword() {
-        /*List<Map<String, String>> data = usercredentials.asMaps(String.class, String.class);
-        loginPO.enterUsername(data.get(0).get("username"));
-        loginPO.enterPassword(data.get(0).get("password"));
-        */
         loginPO.enterUsername(AdminProperties.getAdminUsername());
         loginPO.enterPassword(AdminProperties.getAdminPassword());
-
-
     }
 
     @When("I enter the {string} and {string}")
@@ -52,4 +50,26 @@ public class LoginStepDef {
         assertEquals(DriverFactory.getDriver().getCurrentUrl(),
               URL.DashBoard.toString());
     }
+
+    @When("I enter the developer username and password")
+    public void iEnterTheDeveloperUsernameAndPassword() {
+        User user = TestDataProvider.getUserWithRole(UserRole.Developer.toString());
+        assertNotNull(user,"There is no developer in test data");
+        iEnterTheUsernameAndPassword(user.getUsername(),user.getPassword());
+    }
+
+    @When("I enter the QA username and password")
+    public void iEnterTheQAUsernameAndPassword() {
+        User user = TestDataProvider.getUserWithRole(UserRole.QA.toString());
+        assertNotNull(user,"There is no QA in test data");
+        iEnterTheUsernameAndPassword(user.getUsername(),user.getPassword());
+    }
+
+    @When("I enter the Team lead username and password")
+    public void iEnterTheTeamLeadUsernameAndPassword() {
+        User user = TestDataProvider.getUserWithRole(UserRole.TeamLead.toString());
+        assertNotNull(user,"There is no Team lead in test data");
+        iEnterTheUsernameAndPassword(user.getUsername(),user.getPassword());
+    }
+
 }

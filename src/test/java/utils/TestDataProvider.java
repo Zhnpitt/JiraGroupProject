@@ -32,6 +32,13 @@ public class TestDataProvider {
 
         return userList.toArray(new User[0]);
     }
+    public static User getUserWithRole(String role){
+        return userList.stream()
+              .filter(user -> role.equals(user.getRole()))
+              .findFirst()
+              .orElse(null);
+    }
+
     public static UserGroup[] getGroups() {
 
         return userGroupList.toArray(new UserGroup[0]);
