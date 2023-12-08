@@ -1,5 +1,4 @@
-{
-  "groups": [
+[
     {
       "name": "Jira-group1"
     },
@@ -9,5 +8,4 @@
     {
       "name": "Jira-group3"
     }
-  ]
-}
+]
