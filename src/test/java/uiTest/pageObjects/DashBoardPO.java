@@ -14,6 +14,10 @@ public class DashBoardPO extends BasePO {
     public WebElement userMgmtBtn;
     @FindBy(xpath = "//a[@id = 'admin_issues_menu']")
     public WebElement adminIssuesBtn;
+    @FindBy(xpath = "//a[@id=\"browse_link\"]")
+    public WebElement projectsBtn;
+    @FindBy(xpath = "//a[@id=\"project_view_all_link_lnk\"]")
+    public WebElement allProjectBtn;
 
     public boolean checkIfAdminUser() {
         boolean isAdminUser = true;
@@ -41,4 +45,18 @@ public class DashBoardPO extends BasePO {
         adminIssuesBtn.click();
     }
 
+    public void clickProjectsBtn() {
+        projectsBtn.click();
+    }
+
+    public void clickAllProjectBtn() {
+        allProjectBtn.click();
+    }
+
+
+/*
+    public void click() {
+        .click();
+    }
+    */
 }

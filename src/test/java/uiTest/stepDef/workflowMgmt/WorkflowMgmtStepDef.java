@@ -17,12 +17,12 @@ import static org.testng.Assert.assertEquals;
 
 public class WorkflowMgmtStepDef {
     private final AdminListWorkflowsOP adminListWorkflowsOP = new AdminListWorkflowsOP();
-    ;
-    private final AdminViewWorkflowStepsPO adminViewWorkflowStepsPO = new AdminViewWorkflowStepsPO();
-    ;
 
-    @When("I click the workflows btn in the Issues sidebar")
-    public void iClickTheWorkflowsBtnInTheIssuesSidebar() {
+    private final AdminViewWorkflowStepsPO adminViewWorkflowStepsPO = new AdminViewWorkflowStepsPO();
+
+
+    @When("I click workflows btn in the Issues sidebar")
+    public void iClickWorkflowsBtnInTheIssuesSidebar() {
         //DriverFactory.getDriver().findElement(By.xpath("//a[@id = \"workflows\"]")).click();
         adminViewWorkflowStepsPO.clickWorkflowBtn();
 
@@ -35,8 +35,8 @@ public class WorkflowMgmtStepDef {
               URL.AdminListWorkflows.toString());
     }
 
-    @When("I click the add workflow btn in Issues")
-    public void iClickTheAddWorkflowBtn() {
+    @When("I click add workflow btn in Issues")
+    public void iClickAddWorkflowBtn() {
         adminListWorkflowsOP.clickAddWorkflowBtn();
     }
 
@@ -46,8 +46,8 @@ public class WorkflowMgmtStepDef {
         adminListWorkflowsOP.enterDescription(description);
     }
 
-    @And("I click add btn in the add workflow form")
-    public void iClickAddBtnInTheAddWorkflowForm() {
+    @And("I click add btn in add workflow form")
+    public void iClickAddBtnInAddWorkflowForm() {
         adminListWorkflowsOP.clickWorkflowFormAddBtn();
     }
 
