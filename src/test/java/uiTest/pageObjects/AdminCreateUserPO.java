@@ -3,7 +3,7 @@ package uiTest.pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CreateUserPO extends BasePO {
+public class AdminCreateUserPO extends BasePO {
     @FindBy(xpath = "//input[@id=\"user-create-email\"]")
     public WebElement userCreateEmail;
 

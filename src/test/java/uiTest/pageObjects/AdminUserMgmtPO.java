@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class UserMgmtPO extends BasePO {
+public class AdminUserMgmtPO extends BasePO {
     @FindBy(xpath = "//input[@id='login-form-authenticatePassword']")
     public WebElement authenticatePassword;
 

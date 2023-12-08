@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 //http://localhost:8080/secure/admin/workflows/ViewWorkflowSteps.jspa
-public class ViewWorkflowStepsPO extends BasePO {
+public class AdminViewWorkflowStepsPO extends BasePO {
 
     @FindBy(xpath = "//a[@id = \"workflow-text\"]")
     public WebElement workflowsTextBtn;

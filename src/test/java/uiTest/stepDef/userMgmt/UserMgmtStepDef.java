@@ -7,9 +7,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
-import uiTest.pageObjects.CreateUserPO;
+import uiTest.pageObjects.AdminCreateUserPO;
 import uiTest.pageObjects.DashBoardPO;
-import uiTest.pageObjects.UserMgmtPO;
+import uiTest.pageObjects.AdminUserMgmtPO;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -20,54 +20,54 @@ public class UserMgmtStepDef {
 
 
     private final DashBoardPO dashboardPO = new DashBoardPO();
-    private final UserMgmtPO userMgmtPO = new UserMgmtPO();
-    private final CreateUserPO createUserPO = new CreateUserPO();
+    private final AdminUserMgmtPO adminUserMgmtPO = new AdminUserMgmtPO();
+    private final AdminCreateUserPO adminCreateUserPO = new AdminCreateUserPO();
 
 
     @Then("I should see user management page")
     public void iShouldSeeUserManagementPage() {
         assertEquals(DriverFactory.getDriver().getCurrentUrl(),
-              URL.UserMgmt.toString());
+              URL.AdminUserMgmt.toString());
     }
 
     @And("I enter password in Administrator Access Page {string}")
     public void iEnterPasswordInAdministratorAccessPage(String password) {
-        userMgmtPO.enterAuthenticatePassword(password);
+        adminUserMgmtPO.enterAuthenticatePassword(password);
 
     }
 
     @And("I click confirm in Administrator Access Page")
     public void iClickConfirmInAdministratorAccessPage() {
-        userMgmtPO.clickAuthenticateConfirmBtn();
+        adminUserMgmtPO.clickAuthenticateConfirmBtn();
     }
 
     @When("I click create user btn")
     public void iClickCreateUserBtn() {
-        userMgmtPO.clickCreateUserBtn();
+        adminUserMgmtPO.clickCreateUserBtn();
     }
 
     @Then("I should see create user page")
     public void iShouldSeeCreateUserPage() {
         assertEquals(DriverFactory.getDriver().getCurrentUrl(),
-              URL.CreateUser.toString());
+              URL.AdminCreateUser.toString());
     }
 
     @When("I enter {string} {string} {string} {string} in create user page")
     public void iEnterEmailUsernameFullnamePassword(String email, String username, String fullname, String password) {
-        createUserPO.enterUserCreateEmail(email);
-        createUserPO.enterUserCreateUsername(username);
-        createUserPO.enterUserCreateFullname(fullname);
-        createUserPO.enterUserCreatePassword(password);
+        adminCreateUserPO.enterUserCreateEmail(email);
+        adminCreateUserPO.enterUserCreateUsername(username);
+        adminCreateUserPO.enterUserCreateFullname(fullname);
+        adminCreateUserPO.enterUserCreatePassword(password);
     }
 
     @And("I click the user create btn")
     public void iClickTheUserCreateBtn() {
-        createUserPO.clickUserCreateBtn();
+        adminCreateUserPO.clickUserCreateBtn();
     }
 
     @Then("I should see the created user {string} in user browser table")
     public void iShouldSeeTheCreatedUserUsernameInUserBrowserTable(String username) {
-        int i = userMgmtPO.searchInUserBrowserTableBody(username);
+        int i = adminUserMgmtPO.searchInUserBrowserTableBody(username);
         assertTrue(i != -1);
     }
 
@@ -78,13 +78,13 @@ public class UserMgmtStepDef {
 
     @When("I deactivate the user with the username {string}")
     public void iDeactivateTheUserWithTheUsernameUsername(String username) {
-        userMgmtPO.deactivateUser(username);
+        adminUserMgmtPO.deactivateUser(username);
 
     }
 
     @Then("I activate the user with the username {string}")
     public void iActivateTheUserWithTheUsernameUsername(String username) {
-        userMgmtPO.activateUser(username);
+        adminUserMgmtPO.activateUser(username);
     }
 
     @Then("I should stay at login page")
@@ -100,22 +100,22 @@ public class UserMgmtStepDef {
 
     @When("I select {string} in status filter")
     public void iSelectInStatusFilter(String status) {
-        userMgmtPO.applyStatusFilter(status);
+        adminUserMgmtPO.applyStatusFilter(status);
     }
 
     @And("I click filter btn")
     public void iClickFilterBtn() {
-        userMgmtPO.clickFilterBtn();
+        adminUserMgmtPO.clickFilterBtn();
     }
 
     @Then("I should see the user {string} in the inactive status result set")
     public void iShouldSeeTheUserUsernameInTheInactiveStatusResultSet(String username) {
-        assertNotNull(userMgmtPO.findInactiveUserInUserBrowserTable(username));
+        assertNotNull(adminUserMgmtPO.findInactiveUserInUserBrowserTable(username));
     }
 
     @Then("I click the filter reset btn")
     public void iClickTheFilterResetBtn() {
-        userMgmtPO.clickFilterRestBtn();
+        adminUserMgmtPO.clickFilterRestBtn();
     }
 
 
@@ -123,20 +123,20 @@ public class UserMgmtStepDef {
     //TODO:deduplicate groupNames with current groups
     @When("I assign the user {string} to {string}")
     public void iAssignTheUserUsernameToGroup(String username, String groupNames) {
-        String[] groupNamesArray = userMgmtPO.groupNamesProvider(groupNames);
-        userMgmtPO.clickUserBrowserTableMoreBtn(username);
-        userMgmtPO.clickEditUserGroupsBtn();
+        String[] groupNamesArray = adminUserMgmtPO.groupNamesProvider(groupNames);
+        adminUserMgmtPO.clickUserBrowserTableMoreBtn(username);
+        adminUserMgmtPO.clickEditUserGroupsBtn();
         for (String groupName : groupNamesArray) {
-            userMgmtPO.enterGroupsToJoin(groupName);
-            userMgmtPO.clickMatchingGroup();
+            adminUserMgmtPO.enterGroupsToJoin(groupName);
+            adminUserMgmtPO.clickMatchingGroup();
         }
-        userMgmtPO.clickManageUserGroupJoinBtn();
+        adminUserMgmtPO.clickManageUserGroupJoinBtn();
     }
 
     @Then("the user {string} should be assigned to {string}")
     public void theUserUsernameShouldBeAssignedToGroup(String username, String groupNames) {
-        String[] groupNamesArray = userMgmtPO.groupNamesProvider(groupNames);
-        HashSet<String> groupSet = new HashSet<>(Arrays.asList(userMgmtPO.getUserGroups(username)));
+        String[] groupNamesArray = adminUserMgmtPO.groupNamesProvider(groupNames);
+        HashSet<String> groupSet = new HashSet<>(Arrays.asList(adminUserMgmtPO.getUserGroups(username)));
         for (String groupName : groupNamesArray) {
             assertTrue(groupSet.contains(groupName));
         }
@@ -145,13 +145,13 @@ public class UserMgmtStepDef {
 
     @When("I select {string} in group filter")
     public void iSelectGroupInGroupFilter(String groupNames) {
-        userMgmtPO.applyGroupFilter(groupNames);
+        adminUserMgmtPO.applyGroupFilter(groupNames);
     }
 
 
     @Then("I should see the user {string} in the result set")
     public void iShouldSeeTheUserUsernameInTheResultSet(String username) {
-        assertNotNull(userMgmtPO.findUserRowInBrowserTable(username));
+        assertNotNull(adminUserMgmtPO.findUserRowInBrowserTable(username));
     }
 
 

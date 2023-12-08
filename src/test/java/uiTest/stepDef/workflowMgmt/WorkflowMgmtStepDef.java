@@ -6,8 +6,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
-import uiTest.pageObjects.ListWorkflowsOP;
-import uiTest.pageObjects.ViewWorkflowStepsPO;
+import uiTest.pageObjects.AdminListWorkflowsOP;
+import uiTest.pageObjects.AdminViewWorkflowStepsPO;
 
 import java.util.List;
 import java.util.Map;
@@ -16,15 +16,15 @@ import static org.testng.Assert.assertEquals;
 
 
 public class WorkflowMgmtStepDef {
-    private final ListWorkflowsOP listWorkflowsOP = new ListWorkflowsOP();
+    private final AdminListWorkflowsOP adminListWorkflowsOP = new AdminListWorkflowsOP();
     ;
-    private final ViewWorkflowStepsPO viewWorkflowStepsPO = new ViewWorkflowStepsPO();
+    private final AdminViewWorkflowStepsPO adminViewWorkflowStepsPO = new AdminViewWorkflowStepsPO();
     ;
 
     @When("I click the workflows btn in the Issues sidebar")
     public void iClickTheWorkflowsBtnInTheIssuesSidebar() {
         //DriverFactory.getDriver().findElement(By.xpath("//a[@id = \"workflows\"]")).click();
-        viewWorkflowStepsPO.clickWorkflowBtn();
+        adminViewWorkflowStepsPO.clickWorkflowBtn();
 
     }
 
@@ -32,48 +32,48 @@ public class WorkflowMgmtStepDef {
     @Then("I should see workflow page")
     public void iShouldSeeWorkflowPage() {
         assertEquals(DriverFactory.getDriver().getCurrentUrl(),
-              URL.ListWorkflows.toString());
+              URL.AdminListWorkflows.toString());
     }
 
     @When("I click the add workflow btn in Issues")
     public void iClickTheAddWorkflowBtn() {
-        listWorkflowsOP.clickAddWorkflowBtn();
+        adminListWorkflowsOP.clickAddWorkflowBtn();
     }
 
     @And("I enter {string} and {string}")
     public void iEnterWorkflowNameAndDescription(String workflowName, String description) {
-        listWorkflowsOP.enterWorkflowName(workflowName);
-        listWorkflowsOP.enterDescription(description);
+        adminListWorkflowsOP.enterWorkflowName(workflowName);
+        adminListWorkflowsOP.enterDescription(description);
     }
 
     @And("I click add btn in the add workflow form")
     public void iClickAddBtnInTheAddWorkflowForm() {
-        listWorkflowsOP.clickWorkflowFormAddBtn();
+        adminListWorkflowsOP.clickWorkflowFormAddBtn();
     }
 
     @Then("I should see view workflow steps page")
     public void iShouldSeeViewWorkflowStepsPage() {
         assertEquals(URL.removeQueryString(DriverFactory.getDriver().getCurrentUrl()),
-              URL.ViewWorkflowSteps.toString());
+              URL.AdminViewWorkflowSteps.toString());
 
     }
 
 
     @When("I click workflows text btn")
     public void iClickWorkflowsTextBtn() {
-        viewWorkflowStepsPO.clickWorkflowsTextBtn();
+        adminViewWorkflowStepsPO.clickWorkflowsTextBtn();
     }
 
     @And("I add following new steps into workflow")
     public void iAddFollowingNewStepsIntoWorkflow(DataTable steps) {
         List<Map<String, String>> data = steps.asMaps(String.class, String.class);
         for (Map<String, String> step : data) {
-            viewWorkflowStepsPO.enterStepName(step.get("stepName"));
-            viewWorkflowStepsPO.enterLinkedStatus(step.get("linkedStatus"));
+            adminViewWorkflowStepsPO.enterStepName(step.get("stepName"));
+            adminViewWorkflowStepsPO.enterLinkedStatus(step.get("linkedStatus"));
             //click add
-            viewWorkflowStepsPO.clickWorkflowStepAddSubmitBtn();
+            adminViewWorkflowStepsPO.clickWorkflowStepAddSubmitBtn();
             if (!step.get("linkedStatus").equals("Closed")) {
-                viewWorkflowStepsPO.setStepDestination(step.get("destination"), step.get("transitionName"));
+                adminViewWorkflowStepsPO.setStepDestination(step.get("destination"), step.get("transitionName"));
             }
 
         }
@@ -82,7 +82,7 @@ public class WorkflowMgmtStepDef {
     @Then("I should see the issues page")
     public void iShouldSeeTheIssuesPage() {
         assertEquals(DriverFactory.getDriver().getCurrentUrl(),
-              URL.ViewIssueTypes.toString());
+              URL.AdminViewIssueTypes.toString());
 
     }
 

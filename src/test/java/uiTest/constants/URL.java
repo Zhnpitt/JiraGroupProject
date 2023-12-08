@@ -8,12 +8,12 @@ import java.net.URISyntaxException;
 public enum URL {
     Login("login.jsp"),
     DashBoard("secure/Dashboard.jspa"),
-    UserMgmt("secure/admin/user/UserBrowser.jspa"),
-    CreateUser("secure/admin/user/AddUser!default.jspa"),
-    ViewIssueTypes("secure/admin/ViewIssueTypes.jspa"),
-    ListWorkflows("secure/admin/workflows/ListWorkflows.jspa"),
-    ViewWorkflowSteps("secure/admin/workflows/ViewWorkflowSteps.jspa");
-
+    AdminUserMgmt("secure/admin/user/UserBrowser.jspa"),
+    AdminCreateUser("secure/admin/user/AddUser!default.jspa"),
+    AdminViewIssueTypes("secure/admin/ViewIssueTypes.jspa"),
+    AdminListWorkflows("secure/admin/workflows/ListWorkflows.jspa"),
+    AdminViewWorkflowSteps("secure/admin/workflows/ViewWorkflowSteps.jspa"),
+    BrowseProjects("secure/BrowseProjects.jspa");
     private final String url;
 
     URL(String path) {
