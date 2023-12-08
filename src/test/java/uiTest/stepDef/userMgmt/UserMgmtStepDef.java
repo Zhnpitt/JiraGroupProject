@@ -1,7 +1,6 @@
 package uiTest.stepDef.userMgmt;
 
 
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,13 +9,10 @@ import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.CreateUserPO;
 import uiTest.pageObjects.DashBoardPO;
-import uiTest.pageObjects.LoginPO;
 import uiTest.pageObjects.UserMgmtPO;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 
 import static org.testng.Assert.*;
 
