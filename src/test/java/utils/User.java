@@ -1,6 +1,7 @@
 package utils;
 
 import lombok.Data;
+import uiTest.constants.UserRole;
 
 @Data
 public class User {
@@ -8,5 +9,5 @@ public class User {
     private String fullName;
     private String username;
     private String password;
-    private String role;
+    private UserRole role;
 }

@@ -53,21 +53,21 @@ public class LoginStepDef {
 
     @When("I enter the developer username and password")
     public void iEnterTheDeveloperUsernameAndPassword() {
-        User user = TestDataProvider.getUserWithRole(UserRole.Developer.toString());
+        User user = TestDataProvider.getUserWithRole(UserRole.Developer);
         assertNotNull(user,"There is no developer in test data");
         iEnterTheUsernameAndPassword(user.getUsername(),user.getPassword());
     }
 
     @When("I enter the QA username and password")
     public void iEnterTheQAUsernameAndPassword() {
-        User user = TestDataProvider.getUserWithRole(UserRole.QA.toString());
+        User user = TestDataProvider.getUserWithRole(UserRole.QA);
         assertNotNull(user,"There is no QA in test data");
         iEnterTheUsernameAndPassword(user.getUsername(),user.getPassword());
     }
 
     @When("I enter the Team lead username and password")
     public void iEnterTheTeamLeadUsernameAndPassword() {
-        User user = TestDataProvider.getUserWithRole(UserRole.TeamLead.toString());
+        User user = TestDataProvider.getUserWithRole(UserRole.TeamLead);
         assertNotNull(user,"There is no Team lead in test data");
         iEnterTheUsernameAndPassword(user.getUsername(),user.getPassword());
     }

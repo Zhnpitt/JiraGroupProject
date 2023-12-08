@@ -1,6 +1,7 @@
 package utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import uiTest.constants.UserRole;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,31 +9,29 @@ import java.util.Arrays;
 import java.util.List;
 
 
-
-
-
 public class TestDataProvider {
 
     private static List<User> userList;
     private static List<UserGroup> userGroupList;
     private static List<Issue> issueList;
+
     static {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             userList = Arrays.asList(objectMapper.readValue(new File("src/test/resources/testdata/users.json"), User[].class));
             userGroupList = Arrays.asList(objectMapper.readValue(new File("src/test/resources/testdata/groups.json"), UserGroup[].class));
             issueList = Arrays.asList(objectMapper.readValue(new File("src/test/resources/testdata/issues.json"), Issue[].class));
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static User[] getUsers() {
-
         return userList.toArray(new User[0]);
     }
-    public static User getUserWithRole(String role){
+
+    public static User getUserWithRole(UserRole role) {
         return userList.stream()
               .filter(user -> role.equals(user.getRole()))
               .findFirst()
@@ -40,7 +39,6 @@ public class TestDataProvider {
     }
 
     public static UserGroup[] getGroups() {
-
         return userGroupList.toArray(new UserGroup[0]);
     }
 }
