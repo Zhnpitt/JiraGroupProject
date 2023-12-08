@@ -1,12 +1,12 @@
 Feature: Project workflow assignment
 
-  Background: Login in as an administrator and navigate to user management page
+  Background: Login in as an administrator
     Given I visit the login page
     When I enter the admin username and password
     And I click the login button
     Then I should view the dashboard
 
-  Scenario Outline: create a project
+  Scenario Outline:
     When I navigate to the admin projects page
     #/secure/project/BrowseProjects.jspa
     Then I should see project page
