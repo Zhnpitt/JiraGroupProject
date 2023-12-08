@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import uiTest.drivers.DriverFactory;
 
+
 public class BasePO {
 
     public BasePO() {
@@ -12,5 +13,9 @@ public class BasePO {
         driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(5));
 
         PageFactory.initElements(driver, this);
+    }
+
+    public WebDriver getDriver() {
+            return DriverFactory.getDriver();
     }
 }

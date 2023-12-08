@@ -4,9 +4,8 @@ import utils.ApplicationProperties;
 
 public enum URL {
     Login("login.jsp"),
-    DashBoard("secure/Dashboard.jspa");
-
-
+    DashBoard("secure/Dashboard.jspa"),
+    userMgmt("secure/admin/user/UserBrowser.jspa");
     private final String url;
     URL(String path) {
         this.url = ApplicationProperties.get("baseUrl") + path;
