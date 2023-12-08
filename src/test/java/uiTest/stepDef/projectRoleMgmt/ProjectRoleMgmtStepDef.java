@@ -1,7 +1,6 @@
 package uiTest.stepDef.projectRoleMgmt;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.bs.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,32 +8,33 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en_scouse.An;
 import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.*;
 
-import java.security.Permissions;
 import java.util.List;
 import java.util.Map;
 
 import static org.testng.Assert.*;
 
 public class ProjectRoleMgmtStepDef {
+    WebDriver driver = DriverFactory.getDriver();
     private final LoginPO loginPO = new LoginPO();
     private final DashBoardPO dashboardPO = new DashBoardPO();
     private final SystemPagePO systemPagePO = new SystemPagePO();
     private final ProjectPO projectPO = new ProjectPO();
     private final IssuesPO issuesPO = new IssuesPO();
 
+
     // Background: Login in as an administrator and navigate to Project roles page
     @Given("I visit the login page")
     public void iVisitTheLoginPage() {
-        DriverFactory.getDriver().manage().deleteAllCookies();
-        DriverFactory.getDriver().navigate().to(URL.Login.toString());
-        assertEquals(DriverFactory.getDriver().getCurrentUrl(), URL.Login.toString());
+        driver.manage().deleteAllCookies();
+        driver.navigate().to(URL.Login.toString());
+        assertEquals(driver.getCurrentUrl(), URL.Login.toString());
     }
     @When("I enter the admin username and password")
     public void iEnterTheAdminUsernameAndPassword(DataTable usercredentials) {
@@ -53,7 +53,7 @@ public class ProjectRoleMgmtStepDef {
     }
     @Then("I should view the dashboard")
     public void iShouldViewTheDashBoardPage() {
-        assertEquals(DriverFactory.getDriver().getCurrentUrl(),
+        assertEquals(driver.getCurrentUrl(),
                 URL.DashBoard.toString());
     }
 
@@ -138,10 +138,10 @@ public class ProjectRoleMgmtStepDef {
     public void iClickTheAddUsersToARoleButton(){
         projectPO.clickAddUserToARoleButton();
     }
-    @And("I enter valid {} and role")
-    public void iEnterValidUserAndRole(String userName) throws InterruptedException {
+    @And("I enter valid {} and {}")
+    public void iEnterValidUserAndRole(String userName, String roleName) throws InterruptedException {
         projectPO.enterUserName(userName);
-        projectPO.chooseARole();
+        projectPO.chooseARole(roleName);
     }
     @And("I click the Add button")
     public void iClickTheAddButton(){
@@ -151,30 +151,22 @@ public class ProjectRoleMgmtStepDef {
 
 
     //Scenario: After creation, I can filter users in a project based on their roles.
-    @And("I click the drop box of created roles")
-    public void iClickTheDropBoxOfCreatedRoles(){
-        projectPO.clickCreatedRolesDropBox();
+    @And("I can filter all developer")
+    public void iCanFilterAllDeveloper() throws InterruptedException {
+        projectPO.filterDeveloper();
     }
-//    @And("I select a role")
-//    public void iSelectARole(){
-//        projectPO.clickCreatedRolesDropBox();
-//    }
-    //@Then("I should see all users in this role")
+    @And("I can filter all QA")
+    public void iCanFilterAllQA() throws InterruptedException {
+        projectPO.filterQA();
+    }
+    @And("I can filter all Team Lead")
+    public void iCanFilterAllTeamLead() throws InterruptedException {
+        projectPO.filterTeamLead();
+    }
+
 
 
     //  Scenario: After creation, I can enable team lead manage sprints
-    @When("I click the admin menu button forth")
-    public void iClickTheAdminMenuButtonForth(){
-        dashboardPO.clickAdminMenu();
-    }
-    @And("I click the Projects button forth")
-    public void iClickTheProjectsButtonForth(){
-        dashboardPO.clickProjectsButton();
-    }
-    @And("I choose a project again")
-    public void iChooseAProjectAgain(){
-        projectPO.chooseAProject();
-    }
     @And("I click the Permissions button")
     public void iClickThePermissionsButton(){
         projectPO.clickPermissionsButton();
@@ -183,19 +175,45 @@ public class ProjectRoleMgmtStepDef {
     public void iClickTheActionsDropboxAndSelectEditPermissions() throws InterruptedException {
         projectPO.editPermissions();
     }
-    @And("I enter again password in Administrator Access Page {string}")
-    public void iEnterPasswordAgain(String password){
-        dashboardPO.enterAuthenticatePassword(password);
-    }
-    @And("I click again confirm in Administrator Access Page")
-    public void iClickConfirmInAdministratorAccessPageAgain() {
-        dashboardPO.clickAuthenticateConfirmBtn();
-    }
-
-    @And("I click manage sprints edit button")
-    private void iClickManageSprintsEditButton(){
+    @And("I click permission edit button")
+    public void iClickManageSprintsEditButton(){
         issuesPO.clickManageSprintEditButton();
     }
+
+    @And("I select a permission {}")
+    public void iSelectAPermission(String permission){
+        issuesPO.selectAPermission(permission);
+    }
+    @And("I select Granted to Project Role")
+    public void iSelectGrantedToProjectRole(){
+        issuesPO.selectProjectRoleGrant();
+    }
+
+    @And("I grant a team lead")
+    public void iGrantATeamLead(){
+        issuesPO.clickRoleInputTextBox();
+        issuesPO.chooseTeamLead();
+        issuesPO.clickGrantButton();
+    }
+
+
+    @And("I grant a developer")
+    public void iGrantADeveloper(){
+        issuesPO.clickRoleInputTextBox();
+        issuesPO.chooseDeveloper();
+        issuesPO.clickGrantButton();
+    }
+
+    @And("I grant a QA")
+    public void iGrantAQA(){
+        issuesPO.clickRoleInputTextBox();
+        issuesPO.chooseQA();
+        issuesPO.clickGrantButton();
+    }
+
+
+
+
 
 
 }

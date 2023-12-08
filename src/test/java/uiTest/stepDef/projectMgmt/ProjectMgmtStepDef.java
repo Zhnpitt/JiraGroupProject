@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en_scouse.An;
+import org.apache.commons.math3.stat.descriptive.summary.Sum;
 import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.interactions.Actions;
 import uiTest.constants.URL;
@@ -22,6 +23,7 @@ public class ProjectMgmtStepDef {
     private final LoginPO loginPO = new LoginPO();
     private final DashBoardPO dashboardPO = new DashBoardPO();
     private final ProjectPO projectPO = new ProjectPO();
+    private final IssuesPO issuesPO = new IssuesPO();
 
 
     //  Background: Login in as an administrator and navigate to Project page
@@ -88,7 +90,6 @@ public class ProjectMgmtStepDef {
     public void iChooseAProject(){
         projectPO.chooseAProject();
     }
-
     @And("I click the Permissions button")
     public void iClickThePermissionsButton(){
         projectPO.clickPermissionsButton();
@@ -102,41 +103,30 @@ public class ProjectMgmtStepDef {
         dashboardPO.enterAuthenticatePassword(password);
     }
     @And("I click confirm in Administrator Access Page")
-    public void iClickConfirmInAdministratorAccessPage() {
+    public void iClickConfirmInAdministratorAccessPage() throws InterruptedException {
         dashboardPO.clickAuthenticateConfirmBtn();
+        Thread.sleep(1000);
     }
     @And("I select a scheme and click associate button")
     public void iSelectASchemeAndClickAssociateButton() throws InterruptedException {
         projectPO.selectAPermissionScheme();
-        Thread.sleep(200);
+        Thread.sleep(1000);
         projectPO.clickAssociateButton();
     }
 
 
     //  Scenario: I can create different epics
-    @When("I click the admin menu button third")
-    public void iClickTheAdminMenuButtonThird(){
-        dashboardPO.clickAdminMenu();
+    @When("I click the create button")
+    public void iClickTheCreateButton() throws InterruptedException {
+        dashboardPO.clickCreateButton();
+        Thread.sleep(500);
     }
-    @And("I click the Project button third")
-    public void IClickTheProjectsButtonThird(){
-        dashboardPO.clickProjectsButton();
+    @And("I select a Issue Type as Epic")
+    public void iSelectAIssueTypeAsEpic(){
+        issuesPO.selectEpic();
     }
-    @And("I select a project third")
-    public void iChooseAProjectThird(){
-        projectPO.chooseAProject();
+    @And("I enter {} and {} to create an Epic")
+    public void iEnterNameAndSumToCreateAnEpic(String epicName, String epicSummary){
+        issuesPO.createEpic(epicName, epicSummary);
     }
-    @And("I click the Epic button")
-    public void iClickTheEpicButton(){
-        projectPO.clickEpicButton();
-    }
-    @And("I click the Edit Workflow button")
-    public void iClickTheEditWorkflowButton(){
-        projectPO.clickEditWorkflowButton();
-    }
-    @And("I click the Add status button and add a status")
-    public void iClickTheAddStatusButtonAndAddAStatus(String statusName) throws InterruptedException {
-        projectPO.addStatus(statusName);
-    }
-    //@Then("I get a new status")
 }

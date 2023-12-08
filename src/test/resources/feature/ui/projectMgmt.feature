@@ -1,5 +1,5 @@
 Feature: Project management
-  Background: Login in as an administrator and navigate to Project page
+  Background: Login in as an administrator
     Given I visit the login page
     When I enter the admin username and password
       | username   | password |
@@ -22,14 +22,20 @@ Feature: Project management
     And I click confirm in Administrator Access Page
     And I select a scheme and click associate button
 
-  Scenario: I can create different epics
-    When I click the admin menu button third
-    And I click the Project button third
-    And I select a project third
-    And I click the Epic button
-    And I click the Edit Workflow button
-    And I click the Add status button and add a status
 
+
+  Scenario: I can create different epics
+    When I click the create button
+    #And I select a Issue Type as Epic
+    And I enter Frontend dev and Frontend dev summary to create an Epic
+
+    And I click the create button
+    #And I select a Issue Type as Epic
+    And I enter Backend dev and Backend dev summary to create an Epic
+
+    And I click the create button
+    #And I select a Issue Type as Epic
+    And I enter UI/UX design and UI/UX design summary to create an Epic
 
 
 

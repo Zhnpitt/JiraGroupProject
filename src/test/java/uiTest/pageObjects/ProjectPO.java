@@ -44,17 +44,26 @@ public class ProjectPO extends BasePO{
     @FindBy(xpath = "//div[@class=' css-2b097c-container']")
     public WebElement roleDropDownBox;
 
-    @FindBy(xpath = "(//div[@class=' css-1ljkvdv']/div)[1]")
+    @FindBy(xpath = "(//div[contains(@class,'css-2b097c-container')]//input)[2]")
+    public WebElement roleNameTextBox;
+
+    @FindBy(xpath = "//div[@class=' css-26l3qy-menu']/div/div")
     public WebElement roleSuggestion;
 
     @FindBy(xpath = "//button[@class='css-1l4j2co']")
     public WebElement addButton;
 
     @FindBy(xpath = "(//div[@class='sc-feJyhm dfkaKe']/span)[2]")
-    public WebElement rolesDropBox;
+    public WebElement roleFilterMenu;
 
     @FindBy(xpath = "//div[@id='uid1']//div[@role='menu']/div/span")
-    public WebElement roleInDropBox;
+    public WebElement developerRole;
+
+    @FindBy(xpath = "(//div[@id='uid1']//div[@role='menu']/div/span)[2]")
+    public WebElement QARole;
+
+    @FindBy(xpath = "(//div[@id='uid1']//div[@role='menu']/div/span)[3]")
+    public WebElement teamLeadRole;
 
 
     @FindBy(xpath = "//a[@id='view_project_permissions']")
@@ -125,21 +134,40 @@ public class ProjectPO extends BasePO{
         nameSuggestion.click();
         Thread.sleep(200);
     }
-    public void chooseARole() throws InterruptedException {
+    public void chooseARole(String roleName) throws InterruptedException {
         roleDropDownBox.click();
         Thread.sleep(200);
+        roleNameTextBox.sendKeys(roleName);
+        Thread.sleep(200);
         roleSuggestion.click();
+        Thread.sleep(200);
     }
     public void clickAddButton(){
         addButton.click();
     }
-    public void clickCreatedRolesDropBox(){
-        rolesDropBox.click();
-        roleInDropBox.click();
-        rolesDropBox.click();
+    public void filterDeveloper() throws InterruptedException {
+        roleFilterMenu.click();
+        developerRole.click();
+        roleFilterMenu.click();
+        Thread.sleep(2000);
     }
+    public void filterQA() throws InterruptedException {
+        roleFilterMenu.click();
+        developerRole.click();
+        QARole.click();
+        roleFilterMenu.click();
+        Thread.sleep(2000);
+    }
+    public void filterTeamLead() throws InterruptedException {
+        roleFilterMenu.click();
+        QARole.click();
+        teamLeadRole.click();
+        roleFilterMenu.click();
+        Thread.sleep(2000);
+    }
+
     public void setRoleFilter(){
-        roleInDropBox.click();
+        developerRole.click();
     }
     public void clickPermissionsButton(){
         permissionsButton.click();

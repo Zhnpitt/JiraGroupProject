@@ -51,16 +51,8 @@ public class DashBoardPO extends BasePO {
     @FindBy(xpath = "//table[@id=\"user_browser_table\"]/tbody")
     public WebElement userBrowserTableBody;
 
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//a[@id='create_link']")
+    public WebElement createButton;
 
     @FindBy(xpath = "//form[@id=\"user-edit\"]/div[1]/fieldset/div/label")
     public WebElement userEditActiveCheckedBox;
@@ -165,27 +157,20 @@ public class DashBoardPO extends BasePO {
     public void clickUserCreateBtn() {
         userCreateBtn.click();
     }
+
     public void clickUserBrowserTableEditBtn(String username) {
         WebElement row = findUserRowInBrowserTable(username);
         row.findElement(By.xpath(".//a[text()[normalize-space() = \"Edit\"]]")).click();
     }
+
     public void clickInactivatedUserBrowserTableEditBtn(String username) {
         WebElement row = findInactiveUserInUserBrowserTable(username);
         row.findElement(By.xpath(".//a[text()[normalize-space() = \"Edit\"]]")).click();
     }
+
     public void clickProjectsButton(){
         projectsButton.click();
     }
-
-
-
-
-
-
-
-
-
-
 
     public void deactivateUser(String username){
         clickUserBrowserTableEditBtn(username);
@@ -198,6 +183,7 @@ public class DashBoardPO extends BasePO {
         checkUserEditActiveCheckedBox();
         clickUserEditUpdateBtn();
     }
+
     public void uncheckUserEditActiveCheckedBox(){
         if (userEditActiveCheckedBoxStatus.isSelected()){
             userEditActiveCheckedBox.click();
@@ -218,6 +204,7 @@ public class DashBoardPO extends BasePO {
         Select statusDropDownMenu = new Select(statusFilter);
         statusDropDownMenu.selectByVisibleText(status);
     }
+
     public void clickFilterBtn() {
         filterBtn.click();
     }
@@ -287,5 +274,9 @@ public class DashBoardPO extends BasePO {
 
     public String[] groupNamesProvider(String groupNames){
         return groupNames.split(";");
+    }
+
+    public void clickCreateButton(){
+        createButton.click();
     }
 }
