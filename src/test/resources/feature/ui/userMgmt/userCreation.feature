@@ -7,7 +7,7 @@ Feature: User Creation
     Then I should view the dashboard
     Then I should see admin menu
     When I navigate to the user management page
-    And I enter password in Administrator Access Page "qirV3*z!rWX2SGF"
+    And I enter password in Administrator Access Page
     And I click confirm in Administrator Access Page
     Then I should see user management page
 

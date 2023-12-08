@@ -10,6 +10,7 @@ import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.AdminCreateUserPO;
 import uiTest.pageObjects.DashBoardPO;
 import uiTest.pageObjects.AdminUserMgmtPO;
+import utils.AdminProperties;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -30,9 +31,10 @@ public class UserMgmtStepDef {
               URL.AdminUserMgmt.toString());
     }
 
-    @And("I enter password in Administrator Access Page {string}")
-    public void iEnterPasswordInAdministratorAccessPage(String password) {
-        adminUserMgmtPO.enterAuthenticatePassword(password);
+    @And("I enter password in Administrator Access Page")
+    public void iEnterPasswordInAdministratorAccessPage() {
+
+        adminUserMgmtPO.enterAuthenticatePassword(AdminProperties.getAdminPassword());
 
     }
 
