@@ -64,6 +64,7 @@ public class WorkflowMgmtStepDef {
         adminViewWorkflowStepsPO.clickWorkflowsTextBtn();
     }
 
+    //Add transition between first step and the initial step Open
     @And("I add following new steps into workflow")
     public void iAddFollowingNewStepsIntoWorkflow(DataTable steps) {
         List<Map<String, String>> data = steps.asMaps(String.class, String.class);
@@ -73,10 +74,10 @@ public class WorkflowMgmtStepDef {
             //click add
             adminViewWorkflowStepsPO.clickWorkflowStepAddSubmitBtn();
             if (!step.get("linkedStatus").equals("Closed")) {
-                adminViewWorkflowStepsPO.setStepDestination(step.get("destination"), step.get("transitionName"));
+                adminViewWorkflowStepsPO.setStepDestination(step.get("stepName"),step.get("destination"), step.get("transitionName"));
             }
-
         }
+        adminViewWorkflowStepsPO.setStepDestination("Open", "To Do","O2T");
     }
 
     @Then("I should see the issues page")

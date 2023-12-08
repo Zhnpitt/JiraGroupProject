@@ -12,11 +12,11 @@ Feature: Workflow Creation
     Then I should see the issues page
 
   Scenario Outline: Admin create a workflow
-    When I click the workflows btn in the Issues sidebar
+    When I click workflows btn in the Issues sidebar
     Then I should see workflow page
-    When I click the add workflow btn in Issues
+    When I click add workflow btn in Issues
     And I enter <workflowName> and <description>
-    And I click add btn in the add workflow form
+    And I click add btn in add workflow form
     Then I should see view workflow steps page
     When I click workflows text btn
     And I add following new steps into workflow
@@ -25,6 +25,7 @@ Feature: Workflow Creation
       | Resolved    | Resolved     | Closed      | R2C            |
       | In Progress | In Progress  | Resolved    | I2R            |
       | To Do       | To Do        | In Progress | T2I            |
+
 
 
 
