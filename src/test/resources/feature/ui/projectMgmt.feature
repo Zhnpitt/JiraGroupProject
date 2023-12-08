@@ -10,7 +10,7 @@ Feature: Project management
   Scenario:I create a Scrum project
     When I click the admin menu button
     And I click the Project button
-    And I setup the project with "projectName1" and "PKey1"
+    And I setup the project with "PNAMEa" and "PKEYa"
 
   Scenario:I apply an existing permission scheme on a project
     When I click the admin menu button again
@@ -21,8 +21,6 @@ Feature: Project management
     And I enter password in Administrator Access Page "Whou3344603~"
     And I click confirm in Administrator Access Page
     And I select a scheme and click associate button
-
-
 
   Scenario: I can create different epics
     When I click the create button
@@ -37,6 +35,6 @@ Feature: Project management
     #And I select a Issue Type as Epic
     And I enter UI/UX design and UI/UX design summary to create an Epic
 
-
+    #/html/body/div[6]/aui-spinner
 
 
