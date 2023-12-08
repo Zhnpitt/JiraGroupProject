@@ -11,7 +11,7 @@ Feature: User Creation
     And I click confirm in Administrator Access Page
     Then I should see user management page
 
-  Scenario Outline: Admin deactivates a user
+  Scenario Outline: Admin creates a user
     When I click create user btn
     Then I should see create user page
     When I enter <email> <username> <fullname> <password> in create user page
