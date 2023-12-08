@@ -1,4 +1,4 @@
-Feature: As an admin user I can create three project roles (team lead, developer, QA)
+Feature: As an admin user I can create a project
   Background: Login in as an administrator
     Given I visit the login page
     When I enter the admin username and password
