@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+###Local admin credential
+src/test/resources/admin.properties
