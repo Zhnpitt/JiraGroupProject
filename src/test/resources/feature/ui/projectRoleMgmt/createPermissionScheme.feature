@@ -1,4 +1,4 @@
-Feature: As an admin user I can create three project roles (team lead, developer, QA)
+Feature: As an admin user I can create the permission scheme
   #login as an admin user
   Background: Login in as an administrator
     Given I visit the login page
@@ -43,3 +43,112 @@ Feature: As an admin user I can create three project roles (team lead, developer
     And I select a permission Close Issues
     And I select Granted to Project Role
     And I grant a QA
+
+
+    #Browse Projects
+    And I click permission edit button
+    And I select a permission Browse Projects
+    And I select Granted to Application access
+    And I grant Any logged in user
+
+     #Browse Projects
+    And I click permission edit button
+    And I select a permission Browse Projects
+    And I select Granted to Application access
+    And I grant Any logged in user
+
+     #View Development Tools
+    And I click permission edit button
+    And I select a permission View Development Tools
+    And I select Granted to Application access
+    And I grant Any logged in user
+
+    #View Read-Only Workflow
+    And I click permission edit button
+    And I select a permission View Read-Only Workflow
+    And I select Granted to Application access
+    And I grant Any logged in user
+
+
+############################################################################################
+  #other basic setup
+  #Create Issues
+    And I click permission edit button
+    And I select a permission Create Issues
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Edit Issues
+    And I click permission edit button
+    And I select a permission Edit Issues
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Link Issues
+    And I click permission edit button
+    And I select a permission Link Issues
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Move Issues
+    And I click permission edit button
+    And I select a permission Move Issues
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Schedule Issues
+    And I click permission edit button
+    And I select a permission Schedule Issues
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Transition Issues
+    And I click permission edit button
+    And I select a permission Transition Issues
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #View Voters and Watchers
+    And I click permission edit button
+    And I select a permission View Voters and Watchers
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Add Comments
+    And I click permission edit button
+    And I select a permission Add Comments
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Delete Own Comments
+    And I click permission edit button
+    And I select a permission Delete Own Comments
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Edit Own Comments
+    And I click permission edit button
+    And I select a permission Edit Own Comments
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Create Attachments
+    And I click permission edit button
+    And I select a permission Create Attachments
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Delete Own Attachments
+    And I click permission edit button
+    And I select a permission Delete Own Attachments
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Delete Own Worklogs
+    And I click permission edit button
+    And I select a permission Delete Own Worklogs
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Edit Own Worklogs
+    And I click permission edit button
+    And I select a permission Edit Own Worklogs
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Work On Issues
+    And I click permission edit button
+    And I select a permission Work On Issues
+    And I select Granted to Application access
+    And I grant Any logged in user
+  #Assignable User
+    And I click permission edit button
+    And I select a permission Assignable User
+    And I select Granted to Application access
+    And I grant Any logged in user

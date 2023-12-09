@@ -5,12 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en_scouse.An;
-import org.checkerframework.checker.units.qual.A;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.*;
@@ -206,7 +201,7 @@ public class ProjectRoleMgmtStepDef {
     }
     @And("I click permission edit button")
     public void iClickManageSprintsEditButton(){
-        issuesPO.clickManageSprintEditButton();
+        issuesPO.clickGrantPermissionButton();
     }
 
     @And("I select a permission {}")
@@ -217,9 +212,13 @@ public class ProjectRoleMgmtStepDef {
     public void iSelectGrantedToProjectRole(){
         issuesPO.selectProjectRoleGrant();
     }
+    @And("I select Granted to Application access")
+    public void iSelectGrantedToApplicationAccess(){
+        issuesPO.selectApplicationAccessGrant();
+    }
 
     @And("I grant a team lead")
-    public void iGrantATeamLead(){
+    public void iGrantATeamLead() throws InterruptedException {
         issuesPO.clickRoleInputTextBox();
         issuesPO.chooseTeamLead();
         issuesPO.clickGrantButton();
@@ -227,19 +226,23 @@ public class ProjectRoleMgmtStepDef {
 
 
     @And("I grant a developer")
-    public void iGrantADeveloper(){
+    public void iGrantADeveloper() throws InterruptedException {
         issuesPO.clickRoleInputTextBox();
         issuesPO.chooseDeveloper();
         issuesPO.clickGrantButton();
     }
 
     @And("I grant a QA")
-    public void iGrantAQA(){
+    public void iGrantAQA() throws InterruptedException {
         issuesPO.clickRoleInputTextBox();
         issuesPO.chooseQA();
         issuesPO.clickGrantButton();
     }
 
+    @And("I grant Any logged in user")
+    public void iGrantAnyLoggedinUser() throws InterruptedException {
+        issuesPO.clickGrantButton();
+    }
 
 
 

@@ -185,7 +185,7 @@ public class ProjectPO extends BasePO{
     }
     public void selectAPermissionScheme(){
         Select select = new Select(permissionSchemeDropBox);
-        select.selectByVisibleText("Default software scheme");
+        select.selectByVisibleText("PS-1");
     }
     public void clickAssociateButton(){
         associateButton.click();
