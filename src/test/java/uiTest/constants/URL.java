@@ -5,7 +5,7 @@ import utils.ApplicationProperties;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public enum URL {
+public enum URL{
     Login("login.jsp"),
     DashBoard("secure/Dashboard.jspa"),
     AdminUserMgmt("secure/admin/user/UserBrowser.jspa"),
@@ -13,34 +13,38 @@ public enum URL {
     AdminViewIssueTypes("secure/admin/ViewIssueTypes.jspa"),
     AdminListWorkflows("secure/admin/workflows/ListWorkflows.jspa"),
     AdminViewWorkflowSteps("secure/admin/workflows/ViewWorkflowSteps.jspa"),
-    BrowseProjects("secure/BrowseProjects.jspa");
+    BrowseProjects("secure/BrowseProjects.jspa"),
+    RapidView("secure/RapidView.jspa");
     private final String url;
 
-    URL(String path) {
+    URL(String path){
         this.url = ApplicationProperties.get("baseUrl") + path;
     }
 
     @Override
-    public String toString() {
+    public String toString(){
         return url;
     }
-    public  static String removeQueryString(String urlString) {
+
+    public static String removeQueryString(String urlString){
 
         URI uri = null;
-        try {
+        try{
             uri = new URI(urlString);
-        } catch (URISyntaxException e) {
+        } catch (URISyntaxException e){
             e.printStackTrace();
         }
 
 
         URI newUri = null;
-        try {
+        try{
             newUri = new URI(uri.getScheme(), uri.getAuthority(), uri.getPath(), null, uri.getFragment());
-        } catch (URISyntaxException e) {
+        } catch (URISyntaxException e){
             e.printStackTrace();
         }
 
         return newUri.toString();
     }
+    //assertEquals(URL.removeQueryString(DriverFactory.getDriver().getCurrentUrl()), );
+
 }
