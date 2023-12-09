@@ -1,12 +1,9 @@
 package uiTest.pageObjects;
 
-import org.bouncycastle.jcajce.provider.asymmetric.X509;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
 
 public class TeamLeadPO extends BasePO{
 
@@ -53,10 +50,13 @@ public class TeamLeadPO extends BasePO{
 
 
     @FindBy(xpath = "(//span[@class='ghx-type']/img)[1]")
-    public WebElement issueInBackLog;
+    public WebElement issueAInBackLog;
 
     @FindBy(xpath = "(//span[@class='ghx-type']/img)[2]")
-    public WebElement anotherIssueInBackLog;
+    public WebElement IssueBInBackLog;
+
+    @FindBy(xpath = "//span[@class='ghx-type']")
+    public List<WebElement>  issuesInBackLog;
 
     @FindBy(xpath = "//div[@class='ghx-sprint-group']/div")
     public WebElement targetSprint;
@@ -68,6 +68,7 @@ public class TeamLeadPO extends BasePO{
     public WebElement confirmStart;
 
     @FindBy(css = ".button-panel-button.aui-button")
+
     public WebElement confirmMoveMore;
 
     @FindBy(xpath = "(//div[@class='ghx-sprint-group']//span[@class='ghx-type']/img)[1]")
@@ -75,6 +76,9 @@ public class TeamLeadPO extends BasePO{
 
     @FindBy(xpath = "(//div[@class='ghx-sprint-group']//span[@class='ghx-type']/img)[2]")
     public WebElement issueBInSprint;
+
+    @FindBy(xpath = "//div[@class='ghx-sprint-group']//span[@class='ghx-type']/img")
+    public List<WebElement> issuesInSprint;
 
 
     public void clickProjectButton(){
@@ -122,9 +126,13 @@ public class TeamLeadPO extends BasePO{
         confirmStart.click();
     }
     public void viewIssuesInCurrentSprint() throws InterruptedException {
-        issueAInSprint.click();
-        Thread.sleep(2000);
-        issueBInSprint.click();
-        Thread.sleep(2000);
+//        issueAInSprint.click();
+//        Thread.sleep(2000);
+//        issueBInSprint.click();
+//        Thread.sleep(2000);
+        for (WebElement issue : issuesInSprint){
+            issue.click();
+            Thread.sleep(2000);
+        }
     }
 }

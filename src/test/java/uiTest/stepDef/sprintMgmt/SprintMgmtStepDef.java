@@ -1,23 +1,13 @@
 package uiTest.stepDef.sprintMgmt;
 
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.LoginPO;
 import uiTest.pageObjects.TeamLeadPO;
 
-
-
-import javax.swing.*;
-import java.util.List;
-import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 
@@ -43,13 +33,20 @@ public class SprintMgmtStepDef {
 
     @And("I Move Issues From Backlog To Sprint")
     public void iMoveIssuesFromBacklogToSprint() throws InterruptedException {
-        WebElement issue1 = teamLeadPO.issueInBackLog;
-        WebElement issue2 = teamLeadPO.anotherIssueInBackLog;
+        WebElement issue1 = teamLeadPO.issueAInBackLog;
+        WebElement issue2 = teamLeadPO.IssueBInBackLog;
         WebElement sprint = teamLeadPO.targetSprint;
         Actions builder = new Actions(driver);
         builder.dragAndDrop(issue1, sprint).perform();
         Thread.sleep(500);
         builder.dragAndDrop(issue2, sprint).perform();
+
+//        WebElement sprint = teamLeadPO.targetSprint;
+//        Actions builder = new Actions(driver);
+//        for (WebElement issue : teamLeadPO.issuesInBackLog){
+//            builder.dragAndDrop(issue, sprint).perform();
+//            Thread.sleep(500);
+//        }
     }
     @And("I start the sprint")
     public void iStartTheSprint(){
