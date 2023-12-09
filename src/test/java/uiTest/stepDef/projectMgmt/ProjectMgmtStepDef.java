@@ -18,6 +18,7 @@ public class ProjectMgmtStepDef {
     private final DashBoardPO dashboardPO = new DashBoardPO();
     private final ProjectPO projectPO = new ProjectPO();
     private final IssuesPO issuesPO = new IssuesPO();
+    private final TeamLeadPO teamLeadPO = new TeamLeadPO();
 
 
     //  Background: Login in as an administrator and navigate to Project page
@@ -46,9 +47,10 @@ public class ProjectMgmtStepDef {
     }
 
     @Then("I should view the dashboard")
-    public void iShouldViewTheDashBoardPage() {
+    public void iShouldViewTheDashBoardPage() throws InterruptedException {
         assertEquals(DriverFactory.getDriver().getCurrentUrl(),
-              URL.DashBoard.toString());
+                URL.DashBoard.toString());
+        Thread.sleep(500);
     }
 
 
@@ -122,19 +124,36 @@ public class ProjectMgmtStepDef {
 
 
     //  Scenario: I can create different epics
-    @When("I click the create button")
-    public void iClickTheCreateButton() throws InterruptedException {
-        dashboardPO.clickCreateButton();
-        Thread.sleep(500);
+    @When("I click the project button in team lead dashboard")
+    public void iClickTheProjectButtonInTeamLeadDashboard(){
+        teamLeadPO.clickProjectButton();
+    }
+    @And("I choose current project")
+    public void iChooseCurrentProject(){
+        teamLeadPO.chooseCurrentProject();
+    }
+
+    @And("I create an issue")
+    public void iClickCreateSssueButton(){
+        teamLeadPO.createIssue();
     }
 
     @And("I select a Issue Type as Epic")
-    public void iSelectAIssueTypeAsEpic() {
-        issuesPO.selectEpic();
+    public void iSelectAIssueTypeAsEpic(){
+        teamLeadPO.selectEpic();
+    }
+    @And("I enter Epic name as {} and {}")
+    public void iEnterNameAndSumToCreateAnEpic(String epicName, String epicSummary){
+        teamLeadPO.createEpic(epicName, epicSummary);
+    }
+    @And("I submit an issue")
+    public void iSubmitAnIssue() throws InterruptedException {
+        teamLeadPO.submitIssue();
+        Thread.sleep(500);
     }
 
-    @And("I enter {} and {} to create an Epic")
-    public void iEnterNameAndSumToCreateAnEpic(String epicName, String epicSummary) {
-        issuesPO.createEpic(epicName, epicSummary);
+    @And("I click the team lead Backlog button")
+    public void iClickTheTeamLeadBacklogButton(){
+        teamLeadPO.clickBacklogButton();
     }
 }

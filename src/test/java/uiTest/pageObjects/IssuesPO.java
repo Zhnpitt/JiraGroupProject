@@ -46,20 +46,10 @@ public class IssuesPO extends BasePO{
     @FindBy(xpath = "//ul[@role='listbox']/li")
     public WebElement roleSuggestion;
 
-    @FindBy(xpath = "//input[@id='issuetype-field']")
-    public WebElement issueTypeInputBox;
 
-    @FindBy(xpath = "//ul[@class='aui-last']/li")
-    public WebElement issueSuggestion;
 
-    @FindBy(xpath = "//input[@id='customfield_10104']")
-    public WebElement epicNameInput;
 
-    @FindBy(xpath = "//input[@id='summary']")
-    public WebElement epicSumInput;
 
-    @FindBy(xpath = "//input[@id='create-issue-submit']")
-    public WebElement submitIssueCreation;
 
     @FindBy(xpath = "//a[@id='permission_schemes']")
     public WebElement permissionSchemesButton;
@@ -112,19 +102,6 @@ public class IssuesPO extends BasePO{
     public void clickGrantButton() throws InterruptedException {
         grantButton.click();
         Thread.sleep(500);
-    }
-
-    public void selectEpic(){
-//        issueTypeInputBox.clear();
-//        issueTypeInputBox.sendKeys("");
-//        issueTypeInputBox.sendKeys("Epic");
-//        issueSuggestion.click();
-    }
-
-    public void createEpic(String epicName, String epicSummary){
-        epicNameInput.sendKeys(epicName);
-        epicSumInput.sendKeys(epicSummary);
-        submitIssueCreation.click();
     }
 
     public void clickPermissionSchemesButton(){
