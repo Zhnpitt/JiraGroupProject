@@ -144,4 +144,9 @@ public class ProjectMgmtStepDef {
         teamLeadPO.submitIssue();
         Thread.sleep(500);
     }
+
+    @And("I click the team lead Backlog button")
+    public void iClickTheTeamLeadBacklogButton(){
+        teamLeadPO.clickBacklogButton();
+    }
 }

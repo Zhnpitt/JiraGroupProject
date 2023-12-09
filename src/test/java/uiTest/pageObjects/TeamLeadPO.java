@@ -1,11 +1,16 @@
 package uiTest.pageObjects;
 
+import org.bouncycastle.jcajce.provider.asymmetric.X509;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TeamLeadPO extends BasePO{
+
+
     @FindBy(xpath = "//a[@id='browse_link']")
     public WebElement projectButton;
 
@@ -15,7 +20,7 @@ public class TeamLeadPO extends BasePO{
     @FindBy(xpath = "//button[normalize-space()='Create sprint']")
     public WebElement createSprintButton;
 
-    @FindBy(xpath = "//input[@id='ghx-sprint-name']")
+    @FindBy(css = "#ghx-sprint-name")
     public WebElement sprintNameInput;
 
     @FindBy(xpath = "//button[normalize-space()='Create']")
@@ -30,12 +35,9 @@ public class TeamLeadPO extends BasePO{
 
     @FindBy(css = "#issuetype-field")
     public WebElement issueTypeBox;
-    //#issuetype-field
 
     @FindBy(xpath = "//ul[@class='aui-last']/li")
     public WebElement epicOption;
-    //a[normalize-space()='Epic'])[1]
-
 
     @FindBy(xpath = "//input[@id='customfield_10104']")
     public WebElement epicNameInput;
@@ -45,6 +47,34 @@ public class TeamLeadPO extends BasePO{
 
     @FindBy(xpath = "//input[@id='create-issue-submit']")
     public WebElement createIssueSubmitButton;
+
+    @FindBy(xpath = "//a[@aria-label='Backlog of projectName']")
+    public WebElement backlogButton;
+
+
+    @FindBy(xpath = "(//span[@class='ghx-type']/img)[1]")
+    public WebElement issueInBackLog;
+
+    @FindBy(xpath = "(//span[@class='ghx-type']/img)[2]")
+    public WebElement anotherIssueInBackLog;
+
+    @FindBy(xpath = "//div[@class='ghx-sprint-group']/div")
+    public WebElement targetSprint;
+
+    @FindBy(xpath = "//button[normalize-space()='Start sprint']")
+    public WebElement startSprintButton;
+
+    @FindBy(xpath = "//button[normalize-space()='Start']")
+    public WebElement confirmStart;
+
+    @FindBy(css = ".button-panel-button.aui-button")
+    public WebElement confirmMoveMore;
+
+    @FindBy(xpath = "(//div[@class='ghx-sprint-group']//span[@class='ghx-type']/img)[1]")
+    public WebElement issueAInSprint;
+
+    @FindBy(xpath = "(//div[@class='ghx-sprint-group']//span[@class='ghx-type']/img)[2]")
+    public WebElement issueBInSprint;
 
 
     public void clickProjectButton(){
@@ -57,9 +87,12 @@ public class TeamLeadPO extends BasePO{
         createSprintButton.click();
     }
     public void setSprintName(String name){
+        //sprintNameInput.click();
+        sprintNameInput.clear();
         sprintNameInput.sendKeys(name);
     }
     public void subMitSprint(){
+        submitSprintButton.click();
         submitSprintButton.click();
     }
 
@@ -70,11 +103,9 @@ public class TeamLeadPO extends BasePO{
     }
     public void selectEpic(){
         issueTypeBox.click();
-        //epicOption.click();
         issueTypeBox.sendKeys("Epic");
         epicOption.click();
     }
-
     public void createEpic(String epicName, String epicSummary){
         epicNameInput.sendKeys(epicName);
         epicSumInput.sendKeys(epicSummary);
@@ -82,5 +113,18 @@ public class TeamLeadPO extends BasePO{
     public void submitIssue(){
         createIssueSubmitButton.click();
     }
+    public void clickBacklogButton(){
+        backlogButton.click();
+    }
 
+    public void startSprint(){
+        startSprintButton.click();
+        confirmStart.click();
+    }
+    public void viewIssuesInCurrentSprint() throws InterruptedException {
+        issueAInSprint.click();
+        Thread.sleep(2000);
+        issueBInSprint.click();
+        Thread.sleep(2000);
+    }
 }

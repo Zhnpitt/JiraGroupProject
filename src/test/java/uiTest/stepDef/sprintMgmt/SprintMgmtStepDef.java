@@ -5,11 +5,17 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.LoginPO;
 import uiTest.pageObjects.TeamLeadPO;
 
+
+
+import javax.swing.*;
 import java.util.List;
 import java.util.Map;
 
@@ -18,43 +24,10 @@ import static org.testng.Assert.assertEquals;
 public class SprintMgmtStepDef {
     private final LoginPO loginPO = new LoginPO();
     private final TeamLeadPO teamLeadPO = new TeamLeadPO();
-    @Given("I visit the login page")
-    public void iVisitTheLoginPage() {
-        DriverFactory.getDriver().manage().deleteAllCookies();
-        DriverFactory.getDriver().navigate().to(URL.Login.toString());
-        assertEquals(DriverFactory.getDriver().getCurrentUrl(), URL.Login.toString());
-    }
-    @When("I enter the admin username and password")
-    public void iEnterTheAdminUsernameAndPassword(DataTable usercredentials) {
-        List<Map<String, String>> data = usercredentials.asMaps(String.class, String.class);
-        loginPO.enterUsername(data.get(0).get("username"));
-        loginPO.enterPassword(data.get(0).get("password"));
-    }
-    @When("I enter the {string} and {string}")
-    public void iEnterTheUsernameAndPassword(String username, String password) {
-        loginPO.enterUsername(username);
-        loginPO.enterPassword(password);
-    }
-    @And("I click the login button")
-    public void iClickTheLoginButton() {
-        loginPO.clickLoginButton();
-    }
-    @Then("I should view the dashboard")
-    public void iShouldViewTheDashBoardPage() throws InterruptedException {
-        assertEquals(DriverFactory.getDriver().getCurrentUrl(),
-                URL.DashBoard.toString());
-        Thread.sleep(500);
-    }
+    WebDriver driver = DriverFactory.getDriver();
 
     //  Scenario: create and start a new sprint
-    @When("I click the project button in team lead dashboard")
-    public void iClickTheProjectButtonInTeamLeadDashboard(){
-        teamLeadPO.clickProjectButton();
-    }
-    @And("I choose current project")
-    public void iChooseCurrentProject(){
-        teamLeadPO.chooseCurrentProject();
-    }
+
     @And("I click the create Sprint Button")
     public void iClickTheCreateSprintButton(){
         teamLeadPO.clickCreateSprintButton();
@@ -66,5 +39,25 @@ public class SprintMgmtStepDef {
     @And("I create this sprint")
     public void iCreateThisSprint(){
         teamLeadPO.subMitSprint();
+    }
+
+    @And("I Move Issues From Backlog To Sprint")
+    public void iMoveIssuesFromBacklogToSprint() throws InterruptedException {
+        WebElement issue1 = teamLeadPO.issueInBackLog;
+        WebElement issue2 = teamLeadPO.anotherIssueInBackLog;
+        WebElement sprint = teamLeadPO.targetSprint;
+        Actions builder = new Actions(driver);
+        builder.dragAndDrop(issue1, sprint).perform();
+        Thread.sleep(500);
+        builder.dragAndDrop(issue2, sprint).perform();
+    }
+    @And("I start the sprint")
+    public void iStartTheSprint(){
+        teamLeadPO.startSprint();
+    }
+
+    @And("I view all the issues in the current sprint")
+    public void iViewAllIssuesInCurrentSprint() throws InterruptedException {
+        teamLeadPO.viewIssuesInCurrentSprint();
     }
 }
