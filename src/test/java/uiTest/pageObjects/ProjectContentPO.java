@@ -51,6 +51,7 @@ public class ProjectContentPO extends BasePO{
     @FindBy(xpath = "//*[@id=\"ghx-dialog-add-column\"]//button[text() = 'Add']")
     public WebElement addBtnInAddColumnDialog;
 
+
     /*
     @FindBy(xpath = "")
     public WebElement ;
@@ -207,9 +208,76 @@ public class ProjectContentPO extends BasePO{
         column.findElement(By.xpath(".//div[@class = 'ghx-action ghx-config-delete']")).click();
     }
 
+    public void clickSprintMoreBtn(String sprintName){
+        String path = "//*[@id=\"ghx-content-group\"]/div[1]/div[./div/div[@class = 'ghx-name']/span[text() = '" + sprintName + "']]//a[@aria-label= \"More actions for {0}\"]";
+        DriverFactory.getDriver().findElement(By.xpath(path)).click();
+    }
+
+    @FindBy(xpath = "//*[@id=\"sidebar\"]//a[span[text() = 'Active sprints'] ]")
+    public WebElement activeSprintsInSideBar;
+
+    public void clickActiveSprintsInSideBar(){
+        activeSprintsInSideBar.click();
+    }
+
+    @FindBy(xpath = "//*[@id=\"ghx-complete-sprint\"]")
+    public WebElement completeSprintBtn;
+
+    public void clickCompleteSprintBtn(){
+        completeSprintBtn.click();
+    }
+
+    @FindBy(xpath = "//*[@id=\"ghx-dialog-complete-sprint\"]//button[text() = 'Complete']")
+    public WebElement completeBtnInCompleteSprintDialog;
+
+    public void clickCompleteBtnInCompleteSprintDialog(){
+        completeBtnInCompleteSprintDialog.click();
+    }
+
+    @FindBy(xpath = "//*[@id=\"sidebar\"]//a[span[text() = 'Reports'] ]")
+    public WebElement reportsInSidebar;
+
+    public void clickReportsInSidebar(){
+        reportsInSidebar.click();
+    }
+
+    @FindBy(xpath = "//*[@id='subnav-trigger-report']")
+    public WebElement switchReportBtn;
+
+    public void clickSwitchReportBtn(){
+        switchReportBtn.click();
+    }
+
+    @FindBy(xpath = "//*[@id=\"subnav-opts-report\"]//ul/li/a[text() = 'Velocity Chart']")
+    public WebElement velocityChartInSwitchReportDropdown;
+
+    public void clickVelocityChartInSwitchReportDropdown(){
+        velocityChartInSwitchReportDropdown.click();
+    }
+
+    public void changeTimeFrameInVelocityChart(String lengthInMonth){
+        int length = Integer.parseInt(lengthInMonth);
+        String path = "//*[@id='velocity-chart-timeframes']//span[text() = '" + length + " months']";
+        DriverFactory.getDriver().findElement(By.xpath(path)).click();
+
+    }
+
+    @FindBy(xpath = "//*[@id=\"js-apply-btn\"]")
+    public WebElement timeframeApplyBtn;
+
+    public void clickTimeframeApplyBtn(){
+        timeframeApplyBtn.click();
+    }
+
+    @FindBy(xpath = "")
+    public WebElement velocityChartCanvas;
+
+    public void downloadVelocityChart(){
+
+    }
+
         /*
     @FindBy(xpath = "")
     public WebElement ;
     * */
 }
-//*[@id="ghx-mapping-columns"]/ul[.//h3[text() = 'column 1']]
