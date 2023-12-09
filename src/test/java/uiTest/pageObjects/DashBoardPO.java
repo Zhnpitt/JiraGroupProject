@@ -51,8 +51,11 @@ public class DashBoardPO extends BasePO {
     @FindBy(xpath = "//table[@id=\"user_browser_table\"]/tbody")
     public WebElement userBrowserTableBody;
 
-    @FindBy(xpath = "//a[@id='create_link']")
+    @FindBy(xpath = "//a[@id='create_link']") ///html/body/div[6]/aui-spinner////a[@id='create_link']
     public WebElement createButton;
+
+    @FindBy(xpath = "//input[@id='issuetype-field']")
+    public WebElement issueTypeBox;
 
     @FindBy(xpath = "//form[@id=\"user-edit\"]/div[1]/fieldset/div/label")
     public WebElement userEditActiveCheckedBox;
@@ -278,5 +281,8 @@ public class DashBoardPO extends BasePO {
 
     public void clickCreateButton(){
         createButton.click();
+    }
+    public void selectIssueType(String issue){
+        issueTypeBox.sendKeys(issue);
     }
 }

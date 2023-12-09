@@ -24,6 +24,7 @@ public class ProjectMgmtStepDef {
     private final DashBoardPO dashboardPO = new DashBoardPO();
     private final ProjectPO projectPO = new ProjectPO();
     private final IssuesPO issuesPO = new IssuesPO();
+    private final TeamLeadPO teamLeadPO = new TeamLeadPO();
 
 
     //  Background: Login in as an administrator and navigate to Project page
@@ -39,7 +40,7 @@ public class ProjectMgmtStepDef {
         loginPO.enterUsername(data.get(0).get("username"));
         loginPO.enterPassword(data.get(0).get("password"));
     }
-    @When("I enter the {string} and {string}")
+    @When("I enter the username {} and password {}")
     public void iEnterTheUsernameAndPassword(String username, String password) {
         loginPO.enterUsername(username);
         loginPO.enterPassword(password);
@@ -49,9 +50,10 @@ public class ProjectMgmtStepDef {
         loginPO.clickLoginButton();
     }
     @Then("I should view the dashboard")
-    public void iShouldViewTheDashBoardPage() {
+    public void iShouldViewTheDashBoardPage() throws InterruptedException {
         assertEquals(DriverFactory.getDriver().getCurrentUrl(),
                 URL.DashBoard.toString());
+        Thread.sleep(500);
     }
 
 
@@ -116,17 +118,30 @@ public class ProjectMgmtStepDef {
 
 
     //  Scenario: I can create different epics
-    @When("I click the create button")
-    public void iClickTheCreateButton() throws InterruptedException {
-        dashboardPO.clickCreateButton();
-        Thread.sleep(500);
+    @When("I click the project button in team lead dashboard")
+    public void iClickTheProjectButtonInTeamLeadDashboard(){
+        teamLeadPO.clickProjectButton();
+    }
+    @And("I choose current project")
+    public void iChooseCurrentProject(){
+        teamLeadPO.chooseCurrentProject();
+    }
+
+    @And("I create an issue")
+    public void iClickCreateSssueButton(){
+        teamLeadPO.createIssue();
     }
     @And("I select a Issue Type as Epic")
     public void iSelectAIssueTypeAsEpic(){
-        issuesPO.selectEpic();
+        teamLeadPO.selectEpic();
     }
-    @And("I enter {} and {} to create an Epic")
+    @And("I enter Epic name as {} and {}")
     public void iEnterNameAndSumToCreateAnEpic(String epicName, String epicSummary){
-        issuesPO.createEpic(epicName, epicSummary);
+        teamLeadPO.createEpic(epicName, epicSummary);
+    }
+    @And("I submit an issue")
+    public void iSubmitAnIssue() throws InterruptedException {
+        teamLeadPO.submitIssue();
+        Thread.sleep(500);
     }
 }
