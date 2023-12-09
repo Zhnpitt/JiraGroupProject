@@ -3,8 +3,6 @@ Feature: As an admin user, I can add user to the current project
   Background: Login in as an administrator
     Given I visit the login page
     When I enter the admin username and password
-      | username   | password |
-      | zhoulikekk | Whou3344603~ |
     And I click the login button
     Then I should view the dashboard
 

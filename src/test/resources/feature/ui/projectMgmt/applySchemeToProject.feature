@@ -3,8 +3,6 @@ Feature: As an admin user I can apply an existing permission scheme on our proje
   Background: Login in as an administrator
     Given I visit the login page
     When I enter the admin username and password
-      | username   | password |
-      | zhoulikekk | Whou3344603~ |
     And I click the login button
     Then I should view the dashboard
 
@@ -14,6 +12,6 @@ Feature: As an admin user I can apply an existing permission scheme on our proje
     And I select a project
     And I click the Permissions button
     And I click the Actions button and select use a different scheme
-    And I enter password in Administrator Access Page "Whou3344603~"
+    And I enter password in Administrator Access Page
     And I click confirm in Administrator Access Page
     And I select a scheme and click associate button

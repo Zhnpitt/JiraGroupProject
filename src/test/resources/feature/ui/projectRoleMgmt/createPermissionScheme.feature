@@ -3,8 +3,6 @@ Feature: As an admin user I can create the permission scheme
   Background: Login in as an administrator
     Given I visit the login page
     When I enter the admin username and password
-      | username   | password |
-      | zhoulikekk | Whou3344603~ |
     And I click the login button
     Then I should view the dashboard
 
@@ -12,7 +10,7 @@ Feature: As an admin user I can create the permission scheme
     #create a permission scheme
     When I click the admin menu button
     And I click the issue button
-    And I enter password in Administrator Access Page "Whou3344603~"
+    And I enter password in Administrator Access Page
     And I click confirm in Administrator Access Page
     And I click the Permission schemes button
     And I click the Add permission scheme button

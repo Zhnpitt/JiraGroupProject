@@ -1,6 +1,5 @@
 package uiTest.stepDef.projectRoleMgmt;
 
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,12 +9,9 @@ import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.*;
 
-import java.util.List;
-import java.util.Map;
+import static org.testng.Assert.assertEquals;
 
-import static org.testng.Assert.*;
-
-public class ProjectRoleMgmtStepDef {
+public class ProjectRoleMgmtStepDef{
     WebDriver driver = DriverFactory.getDriver();
     private final LoginPO loginPO = new LoginPO();
     private final DashBoardPO dashboardPO = new DashBoardPO();
@@ -27,30 +23,33 @@ public class ProjectRoleMgmtStepDef {
 
     // Background: Login in as an administrator and navigate to Project roles page
     @Given("I visit the login page")
-    public void iVisitTheLoginPage() {
+    public void iVisitTheLoginPage(){
         driver.manage().deleteAllCookies();
         driver.navigate().to(URL.Login.toString());
         assertEquals(driver.getCurrentUrl(), URL.Login.toString());
     }
-    @When("I enter the admin username and password")
-    public void iEnterTheAdminUsernameAndPassword(DataTable usercredentials) {
-        List<Map<String, String>> data = usercredentials.asMaps(String.class, String.class);
-        loginPO.enterUsername(data.get(0).get("username"));
-        loginPO.enterPassword(data.get(0).get("password"));
-    }
+
+    //    @When("I enter the admin username and password")
+//    public void iEnterTheAdminUsernameAndPassword(DataTable usercredentials) {
+//        List<Map<String, String>> data = usercredentials.asMaps(String.class, String.class);
+//        loginPO.enterUsername(data.get(0).get("username"));
+//        loginPO.enterPassword(data.get(0).get("password"));
+//    }
     @When("I enter the {string} and {string}")
-    public void iEnterTheUsernameAndPassword(String username, String password) {
+    public void iEnterTheUsernameAndPassword(String username, String password){
         loginPO.enterUsername(username);
         loginPO.enterPassword(password);
     }
+
     @And("I click the login button")
-    public void iClickTheLoginButton() {
+    public void iClickTheLoginButton(){
         loginPO.clickLoginButton();
     }
+
     @Then("I should view the dashboard")
-    public void iShouldViewTheDashBoardPage() {
+    public void iShouldViewTheDashBoardPage(){
         assertEquals(driver.getCurrentUrl(),
-                URL.DashBoard.toString());
+              URL.DashBoard.toString());
     }
 
 
@@ -59,27 +58,33 @@ public class ProjectRoleMgmtStepDef {
     public void iClickTheAdminMenuButton(){
         dashboardPO.clickAdminMenu();
     }
+
     @And("I click the System button")
     public void iClickTheSystemButton(){
         dashboardPO.clickSystemButton();
     }
-    @And("I enter password in Administrator Access Page {string}")
-    public void iEnterPassword(String password){
-        dashboardPO.enterAuthenticatePassword(password);
-    }
+
+//    @And("I enter password in Administrator Access Page {string}")
+//    public void iEnterPassword(String password) {
+//        dashboardPO.enterAuthenticatePassword(password);
+//    }
+
     @And("I click confirm in Administrator Access Page")
-    public void iClickConfirmInAdministratorAccessPage() {
+    public void iClickConfirmInAdministratorAccessPage(){
         dashboardPO.clickAuthenticateConfirmBtn();
     }
+
     @And("I click the Project roles button")
     public void iClickTheProjectRolesButton(){
         systemPagePO.clickProjectRolesButton();
     }
+
     @And("I enter the valid {} and {}")
     public void iEnterTheValidRoleNameAndDescription(String roleName, String description){
         systemPagePO.enterRoleName(roleName);
         systemPagePO.enterRoleDescription(description);
     }
+
     @And("I click the Add Project Role button")
     public void iClickTheAddProjectRoleButton(){
         systemPagePO.clickRoleSubmitButton();
@@ -97,12 +102,14 @@ public class ProjectRoleMgmtStepDef {
     public void iClickTheAdminMenuButtonAgain(){
         dashboardPO.clickAdminMenu();
     }
+
     @And("I click the Projects button")
     public void IClickTheProjectsButton(){
         dashboardPO.clickProjectsButton();
     }
+
     @And("I create and setup the project with {} and {}")
-    public void iSetupTheProject(String projectName, String projectKey ) throws InterruptedException {
+    public void iSetupTheProject(String projectName, String projectKey) throws InterruptedException{
         projectPO.clickCreateProjectButton();
         Thread.sleep(200);
         projectPO.clickNextButton();
@@ -118,27 +125,33 @@ public class ProjectRoleMgmtStepDef {
     public void iClickTheAdminMenuButtonThird(){
         dashboardPO.clickAdminMenu();
     }
+
     @And("I click the Projects button again")
     public void IClickTheProjectsButtonAgain(){
         dashboardPO.clickProjectsButton();
     }
+
     @And("I choose a project")
     public void iChooseAProject(){
         projectPO.chooseAProject();
     }
+
     @And("I click the Users and roles button")
     public void iClickTheUsersAndRolesButton(){
         projectPO.clickUsersAndRolesButton();
     }
+
     @And("I click the Add users to a role button")
     public void iClickTheAddUsersToARoleButton(){
         projectPO.clickAddUserToARoleButton();
     }
+
     @And("I enter valid {} and {}")
-    public void iEnterValidUserAndRole(String userName, String roleName) throws InterruptedException {
+    public void iEnterValidUserAndRole(String userName, String roleName) throws InterruptedException{
         projectPO.enterUserName(userName);
         projectPO.chooseARole(roleName);
     }
+
     @And("I click the Add button")
     public void iClickTheAddButton(){
         projectPO.clickAddButton();
@@ -148,15 +161,17 @@ public class ProjectRoleMgmtStepDef {
 
     //Scenario: After creation, I can filter users in a project based on their roles.
     @And("I can filter all developer")
-    public void iCanFilterAllDeveloper() throws InterruptedException {
+    public void iCanFilterAllDeveloper() throws InterruptedException{
         projectPO.filterDeveloper();
     }
+
     @And("I can filter all QA")
-    public void iCanFilterAllQA() throws InterruptedException {
+    public void iCanFilterAllQA() throws InterruptedException{
         projectPO.filterQA();
     }
+
     @And("I can filter all Team Lead")
-    public void iCanFilterAllTeamLead() throws InterruptedException {
+    public void iCanFilterAllTeamLead() throws InterruptedException{
         projectPO.filterTeamLead();
     }
 
@@ -165,10 +180,12 @@ public class ProjectRoleMgmtStepDef {
     public void iClickTheIssueButton(){
         adminMenuPO.clickIssueAdminButton();
     }
+
     @And("I click the Permission schemes button")
     public void iClickThePermissionSchemesButton(){
         issuesPO.clickPermissionSchemesButton();
     }
+
     @And("I click the Add permission scheme button")
     public void iClickTheAddPermissionSchemeButton(){
         issuesPO.clickAddPermissionSchemeButton();
@@ -195,10 +212,12 @@ public class ProjectRoleMgmtStepDef {
     public void iClickThePermissionsButton(){
         projectPO.clickPermissionsButton();
     }
+
     @And("I click the Actions dropbox and select Edit permissions")
-    public void iClickTheActionsDropboxAndSelectEditPermissions() throws InterruptedException {
+    public void iClickTheActionsDropboxAndSelectEditPermissions() throws InterruptedException{
         projectPO.editPermissions();
     }
+
     @And("I click permission edit button")
     public void iClickManageSprintsEditButton(){
         issuesPO.clickGrantPermissionButton();
@@ -208,17 +227,19 @@ public class ProjectRoleMgmtStepDef {
     public void iSelectAPermission(String permission){
         issuesPO.selectAPermission(permission);
     }
+
     @And("I select Granted to Project Role")
     public void iSelectGrantedToProjectRole(){
         issuesPO.selectProjectRoleGrant();
     }
+
     @And("I select Granted to Application access")
     public void iSelectGrantedToApplicationAccess(){
         issuesPO.selectApplicationAccessGrant();
     }
 
     @And("I grant a team lead")
-    public void iGrantATeamLead() throws InterruptedException {
+    public void iGrantATeamLead() throws InterruptedException{
         issuesPO.clickRoleInputTextBox();
         issuesPO.chooseTeamLead();
         issuesPO.clickGrantButton();
@@ -226,28 +247,23 @@ public class ProjectRoleMgmtStepDef {
 
 
     @And("I grant a developer")
-    public void iGrantADeveloper() throws InterruptedException {
+    public void iGrantADeveloper() throws InterruptedException{
         issuesPO.clickRoleInputTextBox();
         issuesPO.chooseDeveloper();
         issuesPO.clickGrantButton();
     }
 
     @And("I grant a QA")
-    public void iGrantAQA() throws InterruptedException {
+    public void iGrantAQA() throws InterruptedException{
         issuesPO.clickRoleInputTextBox();
         issuesPO.chooseQA();
         issuesPO.clickGrantButton();
     }
 
     @And("I grant Any logged in user")
-    public void iGrantAnyLoggedinUser() throws InterruptedException {
+    public void iGrantAnyLoggedinUser() throws InterruptedException{
         issuesPO.clickGrantButton();
     }
-
-
-
-
-
 
 
 }
