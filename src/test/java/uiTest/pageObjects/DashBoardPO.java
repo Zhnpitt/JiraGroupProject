@@ -9,7 +9,7 @@ import uiTest.drivers.DriverFactory;
 
 import java.util.List;
 
-public class DashBoardPO extends BasePO {
+public class DashBoardPO extends BasePO{
 
     @FindBy(xpath = "//li[@id='system-admin-menu']")
     public WebElement adminMenu;
@@ -96,13 +96,13 @@ public class DashBoardPO extends BasePO {
     public WebElement groupFilter;
     //like end
 
-    public boolean checkIfAdminUser() {
+    public boolean checkIfAdminUser(){
         boolean isAdminUser = true;
-        try {
+        try{
             adminMenu = DriverFactory.getDriver().findElement(By.xpath("//a[@id = 'admin_menu']"));
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e){
             isAdminUser = false;
-        } catch (Exception e) {
+        } catch (Exception e){
             e.printStackTrace();
         }
         return isAdminUser;
@@ -114,42 +114,38 @@ public class DashBoardPO extends BasePO {
         }
     }
 
-    public void clickUserMgmtLink() {
-        userMgmtBtn.click();
-    }
-
-    public void clickAdminIssuesBtn() {
-        adminIssuesBtn.click();
-    }
-
-    public void clickProjectsBtn() {
-        projectsBtn.click();
-    }
-
-    public void clickAllProjectBtn() {
-        allProjectBtn.click();
-    }
-
-
-/*
-    public void click() {
-        .click();
-    }
-    */
-//like start    
-public void clickSystemButton(){
-        systemButton.click();
-    }
-
     public void clickUserMgmtLink(){
         userMgmtBtn.click();
     }
 
-    public void enterAuthenticatePassword(String password) {
+    public void clickAdminIssuesBtn(){
+        adminIssuesBtn.click();
+    }
+
+    public void clickProjectsBtn(){
+        projectsBtn.click();
+    }
+
+    public void clickAllProjectBtn(){
+        allProjectBtn.click();
+    }
+
+
+    /*
+        public void click() {
+            .click();
+        }
+        */
+//like start
+    public void clickSystemButton(){
+        systemButton.click();
+    }
+
+    public void enterAuthenticatePassword(String password){
         authenticatePassword.sendKeys(password);
     }
 
-    public void clickAuthenticateConfirmBtn() {
+    public void clickAuthenticateConfirmBtn(){
         authenticateConfirmBtn.click();
     }
 
@@ -157,46 +153,46 @@ public void clickSystemButton(){
         createUserBtn.click();
     }
 
-    public void enterUserCreateEmail(String s) {
+    public void enterUserCreateEmail(String s){
         userCreateEmail.sendKeys(s);
     }
 
-    public void enterUserCreateFullname(String s) {
+    public void enterUserCreateFullname(String s){
         userCreateFullname.sendKeys(s);
     }
 
-    public void enterUserCreateUsername(String s) {
+    public void enterUserCreateUsername(String s){
         userCreateUsername.sendKeys(s);
     }
 
-    public void enterUserCreatePassword(String s) {
+    public void enterUserCreatePassword(String s){
         userCreatePassword.sendKeys(s);
     }
 
     //return 0-index of the searched user, return -1 if not found
-    public int searchInUserBrowserTableBody(String username) {
+    public int searchInUserBrowserTableBody(String username){
         List<WebElement> rows = userBrowserTableBody.findElements(By.xpath("./tr"));
-        for (int i =0; i < rows.size();i++) {
+        for (int i = 0; i < rows.size(); i++){
             WebElement row = rows.get(i);
             WebElement rowUsername = row.findElement(By.xpath("./td[2]/div/span"));
 
-            if (username.equals(rowUsername.getText())) {
+            if (username.equals(rowUsername.getText())){
                 return i;
             }
         }
         return -1;
     }
 
-    public void clickUserCreateBtn() {
+    public void clickUserCreateBtn(){
         userCreateBtn.click();
     }
 
-    public void clickUserBrowserTableEditBtn(String username) {
+    public void clickUserBrowserTableEditBtn(String username){
         WebElement row = findUserRowInBrowserTable(username);
         row.findElement(By.xpath(".//a[text()[normalize-space() = \"Edit\"]]")).click();
     }
 
-    public void clickInactivatedUserBrowserTableEditBtn(String username) {
+    public void clickInactivatedUserBrowserTableEditBtn(String username){
         WebElement row = findInactiveUserInUserBrowserTable(username);
         row.findElement(By.xpath(".//a[text()[normalize-space() = \"Edit\"]]")).click();
     }
@@ -233,40 +229,40 @@ public void clickSystemButton(){
         userEditUpdateBtn.click();
     }
 
-    public void applyStatusFilter(String status) {
+    public void applyStatusFilter(String status){
         Select statusDropDownMenu = new Select(statusFilter);
         statusDropDownMenu.selectByVisibleText(status);
     }
 
-    public void clickFilterBtn() {
+    public void clickFilterBtn(){
         filterBtn.click();
     }
 
-    public WebElement findInactiveUserInUserBrowserTable(String username) {
+    public WebElement findInactiveUserInUserBrowserTable(String username){
         List<WebElement> rows = userBrowserTableBody.findElements(By.xpath("./tr"));
-        for (WebElement row : rows) {
+        for (WebElement row : rows){
             WebElement curUsername = row.findElement(By.xpath("./td[2]/div/span/del"));
-            if (username.equals(curUsername.getText())) {
+            if (username.equals(curUsername.getText())){
                 return row;
             }
         }
         return null;
     }
 
-    public void clickFilterRestBtn() {
+    public void clickFilterRestBtn(){
         filterResetBtn.click();
     }
 
-    public void clickUserBrowserTableMoreBtn(String username) {
+    public void clickUserBrowserTableMoreBtn(String username){
         WebElement row = findUserRowInBrowserTable(username);
         row.findElement(By.xpath("./td[@data-cell-type=\"operations\"]/a[2]")).click();
     }
 
     public WebElement findUserRowInBrowserTable(String username){
         List<WebElement> rows = userBrowserTableBody.findElements(By.xpath("./tr"));
-        for (WebElement row : rows) {
+        for (WebElement row : rows){
             WebElement rowUsername = row.findElement(By.xpath("./td[2]/div/span"));
-            if (username.equals(rowUsername.getText())) {
+            if (username.equals(rowUsername.getText())){
                 return row;
             }
         }
@@ -277,7 +273,7 @@ public void clickSystemButton(){
         editUserGroupsBtn.click();
     }
 
-    public void enterGroupsToJoin(String groupName) {
+    public void enterGroupsToJoin(String groupName){
         groupsToJoin.sendKeys(groupName);
     }
 
@@ -312,7 +308,7 @@ public void clickSystemButton(){
     public void clickCreateButton(){
         createButton.click();
     }
-    
+
     public void selectIssueType(String issue){
         issueTypeBox.sendKeys(issue);
     }

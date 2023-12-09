@@ -1,19 +1,10 @@
 package uiTest.stepDef.projectMgmt;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import uiTest.constants.URL;
-import uiTest.drivers.DriverFactory;
-import uiTest.pageObjects.DashBoardPO;
-import uiTest.pageObjects.IssuesPO;
-import uiTest.pageObjects.LoginPO;
-import uiTest.pageObjects.ProjectPO;
+import uiTest.pageObjects.*;
 
-import static org.testng.Assert.assertEquals;
-
-public class ProjectMgmtStepDef {
+public class ProjectMgmtStepDef{
     private final LoginPO loginPO = new LoginPO();
     private final DashBoardPO dashboardPO = new DashBoardPO();
     private final ProjectPO projectPO = new ProjectPO();
@@ -22,12 +13,12 @@ public class ProjectMgmtStepDef {
 
 
     //  Background: Login in as an administrator and navigate to Project page
-    @Given("I visit the login page")
-    public void iVisitTheLoginPage() {
-        DriverFactory.getDriver().manage().deleteAllCookies();
-        DriverFactory.getDriver().navigate().to(URL.Login.toString());
-        assertEquals(DriverFactory.getDriver().getCurrentUrl(), URL.Login.toString());
-    }
+//    @Given("I visit the login page")
+//    public void iVisitTheLoginPage(){
+//        DriverFactory.getDriver().manage().deleteAllCookies();
+//        DriverFactory.getDriver().navigate().to(URL.Login.toString());
+//        assertEquals(DriverFactory.getDriver().getCurrentUrl(), URL.Login.toString());
+//    }
 
     //    @When("I enter the admin username and password")
 //    public void iEnterTheAdminUsernameAndPassword(DataTable usercredentials) {
@@ -35,38 +26,38 @@ public class ProjectMgmtStepDef {
 //        loginPO.enterUsername(data.get(0).get("username"));
 //        loginPO.enterPassword(data.get(0).get("password"));
 //    }
-    @When("I enter the {string} and {string}")
-    public void iEnterTheUsernameAndPassword(String username, String password) {
-        loginPO.enterUsername(username);
-        loginPO.enterPassword(password);
-    }
+//    @When("I enter the {string} and {string}")
+//    public void iEnterTheUsernameAndPassword(String username, String password){
+//        loginPO.enterUsername(username);
+//        loginPO.enterPassword(password);
+//    }
 
-    @And("I click the login button")
-    public void iClickTheLoginButton() {
-        loginPO.clickLoginButton();
-    }
+//    @And("I click the login button")
+//    public void iClickTheLoginButton(){
+//        loginPO.clickLoginButton();
+//    }
 
-    @Then("I should view the dashboard")
-    public void iShouldViewTheDashBoardPage() throws InterruptedException {
-        assertEquals(DriverFactory.getDriver().getCurrentUrl(),
-                URL.DashBoard.toString());
-        Thread.sleep(500);
-    }
+//    @Then("I should view the dashboard")
+//    public void iShouldViewTheDashBoardPage() throws InterruptedException{
+//        assertEquals(DriverFactory.getDriver().getCurrentUrl(),
+//              URL.DashBoard.toString());
+//        Thread.sleep(500);
+//    }
 
 
     //  Scenario: create a Scrum project and apply an existing permission scheme
     @When("I click the admin menu button")
-    public void iClickTheAdminMenuButton() {
+    public void iClickTheAdminMenuButton(){
         dashboardPO.clickAdminMenu();
     }
 
     @And("I click the Project button")
-    public void IClickTheProjectsButton() {
+    public void IClickTheProjectsButton(){
         dashboardPO.clickProjectsButton();
     }
 
     @And("I setup the project with {string} and {string}")
-    public void iSetupTheProject(String projectName, String projectKey) throws InterruptedException {
+    public void iSetupTheProject(String projectName, String projectKey) throws InterruptedException{
         projectPO.clickCreateProjectButton();
         Thread.sleep(200);
         projectPO.clickNextButton();
@@ -80,43 +71,43 @@ public class ProjectMgmtStepDef {
 
     //Scenario:I apply an existing permission scheme
     @When("I click the admin menu button again")
-    public void iClickTheAdminMenuButtonAgain() {
+    public void iClickTheAdminMenuButtonAgain(){
         dashboardPO.clickAdminMenu();
     }
 
     @And("I click the Project button again")
-    public void iClickTheProjectsButtonAgain() {
+    public void iClickTheProjectsButtonAgain(){
         dashboardPO.clickProjectsButton();
     }
 
     @And("I select a project")
-    public void iChooseAProject() {
+    public void iChooseAProject(){
         projectPO.chooseAProject();
     }
 
     @And("I click the Permissions button")
-    public void iClickThePermissionsButton() {
+    public void iClickThePermissionsButton(){
         projectPO.clickPermissionsButton();
     }
 
     @And("I click the Actions button and select use a different scheme")
-    public void iClickTheActionsButtonAndSelectUseADifferentScheme() throws InterruptedException {
+    public void iClickTheActionsButtonAndSelectUseADifferentScheme() throws InterruptedException{
         projectPO.editPermissionsScheme();
     }
 
     @And("I enter password in Administrator Access Page {string}")
-    public void iEnterPassword(String password) {
+    public void iEnterPassword(String password){
         dashboardPO.enterAuthenticatePassword(password);
     }
 
     @And("I click confirm in Administrator Access Page")
-    public void iClickConfirmInAdministratorAccessPage() throws InterruptedException {
+    public void iClickConfirmInAdministratorAccessPage() throws InterruptedException{
         dashboardPO.clickAuthenticateConfirmBtn();
         Thread.sleep(1000);
     }
 
     @And("I select a scheme and click associate button")
-    public void iSelectASchemeAndClickAssociateButton() throws InterruptedException {
+    public void iSelectASchemeAndClickAssociateButton() throws InterruptedException{
         projectPO.selectAPermissionScheme();
         Thread.sleep(1000);
         projectPO.clickAssociateButton();
@@ -128,6 +119,8 @@ public class ProjectMgmtStepDef {
     public void iClickTheProjectButtonInTeamLeadDashboard(){
         teamLeadPO.clickProjectButton();
     }
+
+
     @And("I choose current project")
     public void iChooseCurrentProject(){
         teamLeadPO.chooseCurrentProject();
@@ -142,12 +135,14 @@ public class ProjectMgmtStepDef {
     public void iSelectAIssueTypeAsEpic(){
         teamLeadPO.selectEpic();
     }
+
     @And("I enter Epic name as {} and {}")
     public void iEnterNameAndSumToCreateAnEpic(String epicName, String epicSummary){
         teamLeadPO.createEpic(epicName, epicSummary);
     }
+
     @And("I submit an issue")
-    public void iSubmitAnIssue() throws InterruptedException {
+    public void iSubmitAnIssue() throws InterruptedException{
         teamLeadPO.submitIssue();
         Thread.sleep(500);
     }

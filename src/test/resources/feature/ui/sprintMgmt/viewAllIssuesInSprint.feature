@@ -3,7 +3,7 @@ Feature: I can view all the issues in the current sprint
   #2 issues created in backlog
   Background: Login in as an leader user
     Given I visit the login page
-    When I enter the username John Doe and password password123
+    When I enter the Team lead username and password
     And I click the login button
     Then I should view the dashboard
 

@@ -1,15 +1,10 @@
 package uiTest.stepDef.projectRoleMgmt;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.*;
-
-import static org.testng.Assert.assertEquals;
 
 public class ProjectRoleMgmtStepDef{
     WebDriver driver = DriverFactory.getDriver();
@@ -22,12 +17,12 @@ public class ProjectRoleMgmtStepDef{
 
 
     // Background: Login in as an administrator and navigate to Project roles page
-    @Given("I visit the login page")
-    public void iVisitTheLoginPage(){
-        driver.manage().deleteAllCookies();
-        driver.navigate().to(URL.Login.toString());
-        assertEquals(driver.getCurrentUrl(), URL.Login.toString());
-    }
+//    @Given("I visit the login page")
+//    public void iVisitTheLoginPage(){
+//        driver.manage().deleteAllCookies();
+//        driver.navigate().to(URL.Login.toString());
+//        assertEquals(driver.getCurrentUrl(), URL.Login.toString());
+//    }
 
     //    @When("I enter the admin username and password")
 //    public void iEnterTheAdminUsernameAndPassword(DataTable usercredentials) {
@@ -35,22 +30,22 @@ public class ProjectRoleMgmtStepDef{
 //        loginPO.enterUsername(data.get(0).get("username"));
 //        loginPO.enterPassword(data.get(0).get("password"));
 //    }
-    @When("I enter the {string} and {string}")
-    public void iEnterTheUsernameAndPassword(String username, String password){
-        loginPO.enterUsername(username);
-        loginPO.enterPassword(password);
-    }
+//    @When("I enter the {string} and {string}")
+//    public void iEnterTheUsernameAndPassword(String username, String password){
+//        loginPO.enterUsername(username);
+//        loginPO.enterPassword(password);
+//    }
 
-    @And("I click the login button")
-    public void iClickTheLoginButton(){
-        loginPO.clickLoginButton();
-    }
+//    @And("I click the login button")
+//    public void iClickTheLoginButton(){
+//        loginPO.clickLoginButton();
+//    }
 
-    @Then("I should view the dashboard")
-    public void iShouldViewTheDashBoardPage(){
-        assertEquals(driver.getCurrentUrl(),
-              URL.DashBoard.toString());
-    }
+//    @Then("I should view the dashboard")
+//    public void iShouldViewTheDashBoardPage(){
+//        assertEquals(driver.getCurrentUrl(),
+//              URL.DashBoard.toString());
+//    }
 
 
     //  Scenario: Admin creates three project roles

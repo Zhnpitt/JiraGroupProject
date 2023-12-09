@@ -4,11 +4,11 @@ Feature: As a team leader user, I can create new sprint and move issues from the
   #2 issues created in backlog
   Background: Login in as an leader user
     Given I visit the login page
-    When I enter the username John Doe and password password123
+    When I enter the Team lead username and password
     And I click the login button
     Then I should view the dashboard
 
-  Scenario: create a sprint move issues to it, then start
+  Scenario: create a sprint, move issues to it, then start
     When I click the project button in team lead dashboard
     And I choose current project
     And I click the team lead Backlog button
@@ -19,5 +19,3 @@ Feature: As a team leader user, I can create new sprint and move issues from the
     And I Move Issues From Backlog To Sprint
 
     And I start the sprint
-
-
