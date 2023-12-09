@@ -46,6 +46,7 @@ public class TeamLeadPO extends BasePO{
     public WebElement createIssueSubmitButton;
 
     @FindBy(xpath = "//a[@aria-label='Backlog of projectName']")
+
     public WebElement backlogButton;
 
 
@@ -56,7 +57,7 @@ public class TeamLeadPO extends BasePO{
     public WebElement IssueBInBackLog;
 
     @FindBy(xpath = "//span[@class='ghx-type']")
-    public List<WebElement>  issuesInBackLog;
+    public List<WebElement> issuesInBackLog;
 
     @FindBy(xpath = "//div[@class='ghx-sprint-group']/div")
     public WebElement targetSprint;
@@ -84,17 +85,21 @@ public class TeamLeadPO extends BasePO{
     public void clickProjectButton(){
         projectButton.click();
     }
+
     public void chooseCurrentProject(){
         currentProject.click();
     }
+
     public void clickCreateSprintButton(){
         createSprintButton.click();
     }
+
     public void setSprintName(String name){
         //sprintNameInput.click();
         sprintNameInput.clear();
         sprintNameInput.sendKeys(name);
     }
+
     public void subMitSprint(){
         submitSprintButton.click();
         submitSprintButton.click();
@@ -105,18 +110,22 @@ public class TeamLeadPO extends BasePO{
         createIssueButton.click();
         openInDialogButton.click();
     }
+
     public void selectEpic(){
         issueTypeBox.click();
         issueTypeBox.sendKeys("Epic");
         epicOption.click();
     }
+
     public void createEpic(String epicName, String epicSummary){
         epicNameInput.sendKeys(epicName);
         epicSumInput.sendKeys(epicSummary);
     }
+
     public void submitIssue(){
         createIssueSubmitButton.click();
     }
+
     public void clickBacklogButton(){
         backlogButton.click();
     }
@@ -125,7 +134,8 @@ public class TeamLeadPO extends BasePO{
         startSprintButton.click();
         confirmStart.click();
     }
-    public void viewIssuesInCurrentSprint() throws InterruptedException {
+
+    public void viewIssuesInCurrentSprint() throws InterruptedException{
 //        issueAInSprint.click();
 //        Thread.sleep(2000);
 //        issueBInSprint.click();
