@@ -1,4 +1,7 @@
 Feature: As a developer user, I can manage issues
+  # login in as developer
+  # three issues has been created
+  # comment has been left by John (team leader)
 
   Scenario: Login in as a team leader user and get WebSudo
     Given I visit the Login page

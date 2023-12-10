@@ -1,5 +1,5 @@
 Feature: As an admin user, I can create groups and assign existing users to different groups
-
+  #1.login in as an admin
   Scenario: Login in as an admin user and get WebSudo
     Given I visit the Login page
     When I enter the username "zhangchris280"
