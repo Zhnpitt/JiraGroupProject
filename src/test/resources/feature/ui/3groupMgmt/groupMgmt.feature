@@ -1,17 +1,15 @@
 Feature: As an admin user, I can create groups and assign existing users to different groups
 
-  Scenario: Login in as an admin user and get WebSudo
-    Given I visit the Login page
-    When I enter the username "zhangchris280"
-    And I enter the password "Zhn122737"
+  Scenario: login in as an administrator and navigate to user management page
+    Given I visit the login page
+    When I enter the admin username and password
     And I click the login button
-    Then I should view the dashBoard
-    When I click Setting button
-    And I click user management option
-    Then I should view webSudo authentication page
-    When I enter WebSudo password "Zhn122737"
-    And And I click the confirm button
-    Then I should view user management page
+    Then I should view the dashboard
+    Then I should see admin menu
+    When I navigate to the user management page
+    And I enter password in Administrator Access Page
+    And I click confirm in Administrator Access Page
+    Then I should see user management page
 
   Scenario: Create different groups
     When I click groups button

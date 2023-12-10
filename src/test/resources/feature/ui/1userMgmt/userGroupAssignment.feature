@@ -1,4 +1,5 @@
 Feature: User Group Assignment
+
   Background: Login in as an administrator and navigate to user management page
     Given I visit the login page
     When I enter the admin username and password
@@ -6,7 +7,7 @@ Feature: User Group Assignment
     Then I should view the dashboard
     Then I should see admin menu
     When I navigate to the user management page
-    And I enter password in Administrator Access Page "qirV3*z!rWX2SGF"
+    And I enter password in Administrator Access Page
     And I click confirm in Administrator Access Page
     Then I should see user management page
 
@@ -24,6 +25,5 @@ Feature: User Group Assignment
 
 
     Examples:
-      | email                 | username     | fullname     | password     | groups            |
-      | "adamsmith@gmail.com" | "Adam Smith" | "Adam Smith" | "password123 | "Group 1;Group 2" |
-
+      | email                 | username     | fullname     | password     | groups                |
+      | "adamsmith@gmail.com" | "Adam Smith" | "Adam Smith" | "password123 | "jira-software-users" |

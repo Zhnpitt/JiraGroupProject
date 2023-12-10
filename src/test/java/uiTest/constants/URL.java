@@ -8,6 +8,7 @@ import java.net.URISyntaxException;
 public enum URL{
     Login("login.jsp"),
     DashBoard("secure/Dashboard.jspa"),
+    Welcome("secure/WelcomeToJIRA.jspa"),
     AdminUserMgmt("secure/admin/user/UserBrowser.jspa"),
     AdminCreateUser("secure/admin/user/AddUser!default.jspa"),
     AdminViewIssueTypes("secure/admin/ViewIssueTypes.jspa"),

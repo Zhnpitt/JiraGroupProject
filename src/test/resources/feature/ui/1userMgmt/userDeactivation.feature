@@ -47,8 +47,3 @@ Feature: User Deactivation
     Examples:
       | username    | password      |
       | "Bob Dylan" | "password123" |
-
-
-
-# currently i have to create groups in the web first
-# TODO: in the set up i should create groups in background (check if groups exist)

@@ -1,3 +1,4 @@
+#1
 Feature: User Creation
 
   Background: Login in as an administrator and navigate to user management page
