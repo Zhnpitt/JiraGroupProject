@@ -9,6 +9,7 @@ public class UiTestRunner extends AbstractTestNGCucumberTests {
 
     @AfterTest
     public void quitBrowser() {
+        System.out.println();
         DriverFactory.teardown();
     }
 }
