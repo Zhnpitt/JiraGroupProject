@@ -17,8 +17,8 @@ Feature: Log in as a team leader and download the velocity chart of the last 6
     And I click Switch report btn
     And I click velocity chart in Switch report dropdown
     And I change the time frame to <timeFrameLength> months and apply
-    And I download the velocity chart
-    Then I should have a velocity chart report
+    And I download the velocity chart and name it <reportName>
+    Then I should have a velocity chart report <reportName>
     Examples:
-      | projectName   | timeFrameLength |
-      | "projectName" | "6"             |
+      | projectName   | timeFrameLength | reportName                |
+      | "projectName" | "6"             | "velocityChartReport.png" |

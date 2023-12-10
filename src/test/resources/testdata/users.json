@@ -14,6 +14,13 @@
     "role": "Developer"
   },
   {
+    "email": "dianawest@gmail.com",
+    "fullName": "Diana West",
+    "username": "Diana West",
+    "password": "password123",
+    "role": "QA"
+  },
+  {
     "email": "bobdylan@gmail.com",
     "fullName": "Bob Dylan",
     "username": "Bob Dylan",
@@ -26,12 +33,5 @@
     "username": "Cindy Lee",
     "password": "password123",
     "role": "Developer"
-  },
-  {
-    "email": "dianawest@gmail.com",
-    "fullName": "Diana West",
-    "username": "Diana West",
-    "password": "password123",
-    "role": "QA"
   }
 ]

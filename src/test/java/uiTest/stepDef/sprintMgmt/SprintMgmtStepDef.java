@@ -1,13 +1,18 @@
 package uiTest.stepDef.sprintMgmt;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.LoginPO;
 import uiTest.pageObjects.ProjectContentPO;
 import uiTest.pageObjects.TeamLeadPO;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class SprintMgmtStepDef{
     private final LoginPO loginPO = new LoginPO();
@@ -100,12 +105,20 @@ public class SprintMgmtStepDef{
 
     @And("I change the time frame to {string} months and apply")
     public void iChangeTheTimeFrameToTimeFrameLengthMonthsAndApply(String lengthInMonth){
+        projectContentPO.clickTimeframeBtn();
         projectContentPO.changeTimeFrameInVelocityChart(lengthInMonth);
         projectContentPO.clickTimeframeApplyBtn();
     }
 
-    @And("I download the velocity chart")
-    public void iDownloadTheVelocityChart(){
-        projectContentPO.downloadVelocityChart();
+    @And("I download the velocity chart and name it {string}")
+    public void iDownloadTheVelocityChart(String fileName){
+        projectContentPO.downloadVelocityChart(fileName);
+    }
+
+    @Then("I should have a velocity chart report {string}")
+    public void iShouldHaveAVelocityChartReport(String imageName){
+        Path imagePath = Paths.get(imageName);
+        Assert.assertTrue(imagePath.toFile().exists());
+
     }
 }

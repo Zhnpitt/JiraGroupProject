@@ -7,6 +7,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import uiTest.drivers.DriverFactory;
 
+import javax.imageio.ImageIO;
+import javax.xml.bind.DatatypeConverter;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -241,14 +248,14 @@ public class ProjectContentPO extends BasePO{
         reportsInSidebar.click();
     }
 
-    @FindBy(xpath = "//*[@id='subnav-trigger-report']")
+    @FindBy(xpath = "//*[@id='subnav-trigger-reports']")
     public WebElement switchReportBtn;
 
     public void clickSwitchReportBtn(){
         switchReportBtn.click();
     }
 
-    @FindBy(xpath = "//*[@id=\"subnav-opts-report\"]//ul/li/a[text() = 'Velocity Chart']")
+    @FindBy(xpath = "//*[@id=\"subnav-opts-reports\"]//ul/li/a[text() = 'Velocity Chart']")
     public WebElement velocityChartInSwitchReportDropdown;
 
     public void clickVelocityChartInSwitchReportDropdown(){
@@ -257,7 +264,7 @@ public class ProjectContentPO extends BasePO{
 
     public void changeTimeFrameInVelocityChart(String lengthInMonth){
         int length = Integer.parseInt(lengthInMonth);
-        String path = "//*[@id='velocity-chart-timeframes']//span[text() = '" + length + " months']";
+        String path = "//*[@id='velocity-chart-timeframes']//aui-item-radio[span[text() = '" + length + " months']]";
         DriverFactory.getDriver().findElement(By.xpath(path)).click();
 
     }
@@ -269,13 +276,48 @@ public class ProjectContentPO extends BasePO{
         timeframeApplyBtn.click();
     }
 
-    @FindBy(xpath = "")
-    public WebElement velocityChartCanvas;
+//    @FindBy(xpath = "")
+//    public WebElement velocityChartCanvas;
 
-    public void downloadVelocityChart(){
-
+    public void downloadVelocityChart(String filename){
+        captureCanvasAsImage(DriverFactory.getDriver(), filename);
     }
 
+    private static void captureCanvasAsImage(WebDriver driver, String imageName){
+        // Use JavaScript to capture the canvas content as base64 image data
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String imageData = (String) js.executeScript(
+              "var canvas = document.querySelector('[data-zr-dom-id=\"zr_0\"]');" +
+                    "return canvas.toDataURL('image/png').replace(/^data:image\\/png;base64,/, '');");
+
+        byte[] imageBytes = DatatypeConverter.parseBase64Binary(imageData);
+
+        BufferedImage originalImage = null;
+        try{
+            originalImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
+            BufferedImage newImage = new BufferedImage(
+                  originalImage.getWidth(), originalImage.getHeight(),
+                  BufferedImage.TYPE_INT_RGB);
+
+            Graphics2D graphics = newImage.createGraphics();
+            graphics.setColor(Color.WHITE);
+            graphics.fillRect(0, 0, newImage.getWidth(), newImage.getHeight());
+            graphics.drawImage(originalImage, 0, 0, null);
+
+            ImageIO.write(newImage, "png", new File(imageName));
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    @FindBy(xpath = "//*[@id=\"configure-velocity-chart-form\"]/button[@aria-controls='velocity-chart-timeframe-dropdown']")
+    public WebElement timeframeBtn;
+
+    public void clickTimeframeBtn(){
+        timeframeBtn.click();
+    }
         /*
     @FindBy(xpath = "")
     public WebElement ;

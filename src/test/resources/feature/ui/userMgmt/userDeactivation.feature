@@ -1,4 +1,5 @@
 Feature: User Deactivation
+  #must have users in examples and they must be log in or first ime
   Background: Login in as an administrator and navigate to user management page
     Given I visit the login page
     When I enter the admin username and password
@@ -36,17 +37,16 @@ Feature: User Deactivation
     When I select "Inactive" in status filter
     And I click filter btn
     Then I should see the user <username> in the inactive status result set
- # if sequential, add this line to reset filter
-    Then I click the filter reset btn
-
-    #add this line when we need to use this user as an active user
-  #Scenario:Admin activated users
+    ##add this line when we need to use this user as an active user
     #Then I activate the user with the username <username>
 
-    Examples:
-    |email|username|fullname|password|groups|
-    |"johndoe@gmail.com"| "John Doe"| "John Doe"|"password123"|"Group 1;Group 2"|
+    ## if sequential, add this line to reset filter
+    #Then I click the filter reset btn
 
+
+    Examples:
+      | username    | password      |
+      | "Bob Dylan" | "password123" |
 
 
 

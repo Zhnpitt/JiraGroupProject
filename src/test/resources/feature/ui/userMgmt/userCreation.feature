@@ -11,7 +11,7 @@ Feature: User Creation
     And I click confirm in Administrator Access Page
     Then I should see user management page
 
-  Scenario Outline: Admin deactivates a user
+  Scenario Outline: Admin creates a user
     When I click create user btn
     Then I should see create user page
     When I enter <email> <username> <fullname> <password> in create user page
@@ -20,13 +20,8 @@ Feature: User Creation
     Then I should see the created user <username> in user browser table
 
     Examples:
-      | email                 | username     | fullname     | password      | groups                      |
-      | "johndoe@gmail.com"   | "John Doe"   | "John Doe"   | "password123" | "Jira-group-1;Jira-group-2" |
-      | "adamsmith@gmail.com" | "Adam Smith" | "Adam Smith" | "password123" | "Jira-group-1"              |
-      | "dianawest@gmail.com" | "Diana West" | "Diana West" | "password123" | "Jira-group-3"              |
-
-
-
-
-
-
+      | email                 | username     | fullname     | password      |
+      | "johndoe@gmail.com"   | "John Doe"   | "John Doe"   | "password123" |
+      | "adamsmith@gmail.com" | "Adam Smith" | "Adam Smith" | "password123" |
+      | "dianawest@gmail.com" | "Diana West" | "Diana West" | "password123" |
+      | "bobdylan@gmail.com"  | "Bob Dylan"  | "Bob Dylan"  | "password123" |
