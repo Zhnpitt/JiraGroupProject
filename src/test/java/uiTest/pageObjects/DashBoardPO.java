@@ -14,8 +14,9 @@ public class DashBoardPO extends BasePO{
     @FindBy(xpath = "//li[@id='system-admin-menu']")
     public WebElement adminMenu;
 
-    @FindBy(xpath = "//a[@id = 'admin_users_menu']")
+    @FindBy(linkText = "User management")
     public WebElement userMgmtBtn;
+
     @FindBy(xpath = "//a[@id = 'admin_issues_menu']")
     public WebElement adminIssuesBtn;
     @FindBy(xpath = "//a[@id=\"browse_link\"]")
@@ -95,6 +96,9 @@ public class DashBoardPO extends BasePO{
     @FindBy(xpath = "//input[@id=\"user-filter-group-field\"]")
     public WebElement groupFilter;
     //like end
+    @FindBy(css = ".aui-icon.aui-icon-small.aui-iconfont-configure")
+    public WebElement jiraSettingBtn;
+
 
     public boolean checkIfAdminUser(){
         boolean isAdminUser = true;
@@ -312,30 +316,13 @@ public class DashBoardPO extends BasePO{
     public void selectIssueType(String issue){
         issueTypeBox.sendKeys(issue);
     }
+
     //like end
-}
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-
-public class DashBoardPO extends BasePO{
-    @FindBy(css = ".aui-icon.aui-icon-small.aui-iconfont-configure")
-    public WebElement jiraSettingBtn;
-
-    @FindBy(linkText = "User management")
-    public WebElement userMgmtBtn;
-
-
-    public void clickSettingBtn() {
+    public void clickSettingBtn(){
         jiraSettingBtn.click();
     }
 
     public void clickUserMgmtBtn(){
         userMgmtBtn.click();
     }
-
-
 }
