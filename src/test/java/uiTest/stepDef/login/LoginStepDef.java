@@ -18,14 +18,22 @@ import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+import uiTest.drivers.DriverFactory;
+import uiTest.pageObjects.LoginPO;
 
 public class LoginStepDef {
     private final LoginPO loginPO = new LoginPO();
     @Given("I visit the login page")
-    public void iVisitTheLoginPage() {
+    public void iVisitTheloginPage() {
         DriverFactory.getDriver().manage().deleteAllCookies();
         DriverFactory.getDriver().navigate().to(URL.Login.toString());
         assertEquals(DriverFactory.getDriver().getCurrentUrl(), URL.Login.toString());
+    }
+
+    @Given("I visit the Login page")
+    public void iVisitTheLoginPage() {
+        DriverFactory.getDriver().navigate().to(URL.DashBoard.toString());
+        loginPO = new LoginPO();
     }
 
     @When("I enter the admin username and password")
@@ -39,6 +47,21 @@ public class LoginStepDef {
         loginPO.enterUsername(username);
         loginPO.enterPassword(password);
     }
+
+
+        @When("I enter the username {string}")
+        public void iEnterTheUsername(String username) {
+            loginPO.enterUsername(username);
+        }
+    
+        @And("I enter the password {string}")
+        public void iEnterThePassword(String password) {
+    
+            loginPO.enterPassword(password);
+        }
+
+
+
 
     @And("I click the login button")
     public void iClickTheLoginButton() {

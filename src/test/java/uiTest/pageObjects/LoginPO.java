@@ -1,31 +1,28 @@
 package uiTest.pageObjects;
 
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+//page_url = http://localhost:8080/login.jsp
 public class LoginPO extends BasePO{
+    @FindBy(id = "login-form-username")
+    public WebElement usernameInput;
 
-    @FindBy(xpath = "//input[@id='login-form-username']")
-    public WebElement inputUsername;
+    @FindBy(id = "login-form-password")
+    public WebElement passwordInput;
 
-    @FindBy(xpath = "//input[@id='login-form-password']")
-    public WebElement inputPassword;
+    @FindBy(id = "login")
+    public WebElement loginBtn;
 
-    @FindBy(xpath = "//button[@id = 'login-form-submit']")
-    public WebElement buttonLogin;
-
-    public void enterUsername(String username) {
-        inputUsername.clear();
-        inputUsername.sendKeys(username);
+    public void enterUsername (String username){
+        usernameInput.sendKeys(username);
+    }
+    public void enterPassword(String password){
+        passwordInput.sendKeys(password);
     }
 
-    public void enterPassword(String password) {
-        inputPassword.clear();
-        inputPassword.sendKeys(password);
+    public void clickLoginButton(){
+        loginBtn.click();
     }
-
-    public void clickLoginButton() {
-        buttonLogin.click();
-    }
-
 }
