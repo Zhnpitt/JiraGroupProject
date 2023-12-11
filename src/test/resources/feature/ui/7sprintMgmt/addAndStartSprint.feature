@@ -9,8 +9,8 @@ Feature: As a team leader user, I can create new sprint and move issues from the
     Then I should view the dashboard
 
   Scenario: create a sprint, move issues to it, then start
-    When I click the project button in team lead dashboard
-    And I choose current project
+
+
     And I click the team lead Backlog button
     And I click the create Sprint Button
     And I name the sprint sprintA

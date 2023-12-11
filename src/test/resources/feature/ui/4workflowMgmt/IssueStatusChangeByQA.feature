@@ -13,7 +13,7 @@ Feature: Log in as a developer user and change the status of an issue from “Re
     When I click <projectName> in project list
     #the following step is to guarantee a uniform start point(web app remembers last sidebar tab)
     And I click Issues in sidebar
-    And I click issue <resolvedIssueName> in list panel
+    And I click issue <resolvedIssueSummary> in list panel
     #Change Status
     Then I should see issue in <curStatus> status
     When I click the status btn in issue content
@@ -21,5 +21,5 @@ Feature: Log in as a developer user and change the status of an issue from “Re
     Then I should see issue in <nextStatus> status
 
     Examples:
-      | projectName       | resolvedIssueName |curStatus | nextStatus|
-      | "Scrum Project 1" | "ResolvedIssue"   | "Resolved" |"Closed"           |
+      | projectName   | resolvedIssueSummary | curStatus  | nextStatus |
+      | "projectName" | "task2 by John"      | "Resolved" | "Closed"   |

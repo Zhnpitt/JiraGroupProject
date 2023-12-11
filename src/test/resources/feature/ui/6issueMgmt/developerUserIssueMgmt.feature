@@ -1,6 +1,6 @@
 Feature: As a developer user, I can manage issues
 
-  Scenario: Login in as a team leader user and get WebSudo
+  Scenario: Login in as a developer user and get WebSudo
     Given I visit the Login page
     When I enter the username "Adam Smith"
     And I enter the password "password123"
@@ -21,4 +21,3 @@ Feature: As a developer user, I can manage issues
     And I click comment area and add " new edit"
     And I click save button
     Then I check "edited" sign
-

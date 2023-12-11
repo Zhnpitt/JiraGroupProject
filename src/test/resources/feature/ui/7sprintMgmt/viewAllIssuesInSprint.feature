@@ -1,7 +1,7 @@
 Feature: I can view all the issues in the current sprint
   #login as an team lead
   #2 issues created in backlog
-  Background: Login in as an leader user
+  Background: Login in as a developer  user
     Given I visit the login page
     When I enter the developer username and password
     And I click the login button

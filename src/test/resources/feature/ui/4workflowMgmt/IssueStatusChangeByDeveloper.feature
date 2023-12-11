@@ -13,7 +13,7 @@ Feature: Log in as a developer user and change the status of an issue from “To
     When I click <projectName> in project list
     #the following step is to guarantee a uniform start point(web app remembers last sidebar tab)
     And I click Issues in sidebar
-    And I click issue <todoIssueName> in list panel
+    And I click issue <todoIssueSummary> in list panel
     #Change Status
     Then I should see issue in <curStatus> status
     When I click the status btn in issue content
@@ -22,6 +22,6 @@ Feature: Log in as a developer user and change the status of an issue from “To
 
 
     Examples:
-      | projectName       | todoIssueName |curStatus | nextStatus|
-      | "Scrum Project 1" | "ToDOIssue"   |"To Do"   |"In Progress"|
-      | "Scrum Project 1" | "ToDOIssue"   |"In Progress"   |"Resolved"|
+      | projectName   | todoIssueSummary | curStatus     | nextStatus    |
+      | "projectName" | "task2 by John"  | "To Do"       | "In Progress" |
+      | "projectName" | "task2 by John"  | "In Progress" | "Resolved"    |
