@@ -38,10 +38,11 @@ public class UserAPI extends BaseAPI{
 
 
     //GET /rest/api/2/user/search
-    public Response findUsersByStatus(boolean status){
+    public Response findUsersByStatus(boolean status, String username){
         String param = status ? "includeActive" : "includeInactive";
         Response response = given(requestSpec)
               .cookies(cookies)
+              .queryParam("username", username)
               .queryParam(param, true)
               .auth().preemptive().basic(AdminProperties.getAdminUsername(), AdminProperties.getAdminPassword())
               .when()

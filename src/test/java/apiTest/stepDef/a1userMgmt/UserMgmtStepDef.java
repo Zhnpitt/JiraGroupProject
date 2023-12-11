@@ -7,10 +7,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.Arrays;
 import java.util.Map;
 
 import static org.testng.Assert.assertTrue;
@@ -75,21 +73,21 @@ public class UserMgmtStepDef{
     }
 
 
-    @When("I find users by inactive status")
-    public void iFindUsersByInactiveStatus(){
+    @When("I find user {string} by inactive status")
+    public void iFindUsersByInactiveStatus(String user){
         userAPI.setCookie(curResponse.get().getCookies());
-        curResponse.set(userAPI.findUsersByStatus(false));
+        curResponse.set(userAPI.findUsersByStatus(false, user));
     }
 
     @And("I should see {string} in result set")
     public void iShouldSeeUserNameInResultSet(String userName){
-        assertTrue(containUserWithName(curResponse.get().getBody().asString(), userName));
+        assertTrue(curResponse.get() != null && curResponse.get().jsonPath().get("name") == userName);
     }
 
-    private boolean containUserWithName(String jsonArrayString, String username){
-        JSONArray jsonArray = new JSONArray(jsonArrayString);
-        return Arrays.stream(jsonArray.toList().toArray()).map(JSONObject::new).anyMatch(jsonObject -> jsonObject.getString("name").equals(username));
-    }
+//    private boolean containUserWithName(String jsonArrayString, String username){
+//        JSONArray jsonArray = new JSONArray(jsonArrayString);
+//        return Arrays.stream(jsonArray.toList().toArray()).map(JSONObject::new).anyMatch(jsonObject -> jsonObject.getString("name").equals(username));
+//    }
 
     @When("I add user {} to group {}")
     public void iAddTheUserUserNameToGroupUserGroup(String userName, String userGroup){

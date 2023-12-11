@@ -22,7 +22,7 @@ Feature: User management
 
    #find user by status
   Scenario Outline:
-    When I find users by inactive status
+    When I find user <userName> by inactive status
     Then the response status code should be 200
     And I should see <userName> in result set
 
