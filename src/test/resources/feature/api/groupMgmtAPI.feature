@@ -3,7 +3,7 @@ Feature: As an admin user, I can create groups and assign existing users to diff
   Scenario Outline: Login in as an admin user and create new groups
     Given I login in as an admin
     When I create new group <groupName>
-    Then I verify the status code being "201"
+    Then I verify the status code of creating group being 201
 
     Examples:
       | groupName    |
@@ -14,7 +14,7 @@ Feature: As an admin user, I can create groups and assign existing users to diff
 
   Scenario Outline: Assign users to different groups
     When I assign user <userName> to group <group>
-    Then I verify the status code being "201"
+    Then I verify the status code of adding user to group being 201
     Examples:
       | userName     |  group |
       | Adam Smith   |Jira-group-1|

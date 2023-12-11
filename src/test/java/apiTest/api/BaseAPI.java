@@ -11,11 +11,11 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 
 public class BaseAPI {
-    protected static RequestSpecification requestSpec = given()
+    protected RequestSpecification requestSpec = given()
             .baseUri("http://localhost:8080")
             .contentType(ContentType.JSON);
 
-    protected static ResponseSpecification responseSpec = given()
+    protected ResponseSpecification responseSpec = given()
             .response()
             .time(Matchers.lessThan(10L), TimeUnit.SECONDS);
 

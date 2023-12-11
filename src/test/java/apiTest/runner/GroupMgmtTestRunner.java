@@ -7,10 +7,11 @@ import uiTest.drivers.DriverFactory;
 
 
 @CucumberOptions(
-      features = "classpath:features",
-      glue = "classpath:stepDef"
+        features = {"src/test/resources/feature/api/groupMgmtAPI.feature"
+        },
+        glue = {"apiTest.stepDef"}
 )
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class GroupMgmtTestRunner extends AbstractTestNGCucumberTests {
 
     @AfterTest
     public void quitBrowser() {
