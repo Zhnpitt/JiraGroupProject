@@ -1,9 +1,10 @@
 package apiTest.niuAPI;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
@@ -16,7 +17,10 @@ public class BaseAPI{
     protected ResponseSpecification responseSpec = given().then()
           .response().log().body();
 
-    public void checkResponseStatusCode(Response response, int code){
-        response.then().statusCode(code);
+    protected Map<String, String> cookies;
+
+    public void setCookie(Map<String, String> cookies){
+        this.cookies = cookies;
     }
+
 }

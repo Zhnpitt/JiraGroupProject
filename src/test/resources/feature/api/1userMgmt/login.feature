@@ -1,14 +1,41 @@
-Feature: I want to test to do item CRUD functionality with user signup
-
-  Scenario Outline: Admin User login and create user
-
-    #login
-    When the user logs in with with username <username> and password <password>
+Feature: User management
+  #prerequiste : userGroup "group-4"
+  Background:
+  #login
+    When the admin user login
     Then the response status code should be 200
 
+  Scenario Outline:
+    #create
     When I create a user <userName> <fullName> <email> <password>
     Then the response status code should be 201
+    #deactivate
+    When I deactivate user <userName>
+    Then the response status code should be 200
+    #deactivate user try to log in and fail
+    When the user login with <userName> and <password>
+    Then the response status code should be 401
 
     Examples:
-      | username       | password          | userName  | fullName               | email                      | password      | applicationKeys
-      | "niushang1997" | "qirV3*z!rWX2SGF" | "charlie" | "Charlie of Atlassian" | "   charlie@atlassian.com" | "abracadabra" | "jira-core"     |
+      | userName  | fullName               | email                   | password      |
+      | "charlie" | "Charlie of Atlassian" | "charlie@atlassian.com" | "abracadabra" |
+
+   #find user by status
+  Scenario Outline:
+    When I find users by inactive status
+    Then the response status code should be 200
+    And I should see <userName> in result set
+
+    Examples:
+      | userName  |
+      | "charlie" |
+
+  #assigning user to different group and apply filter
+  Scenario Outline:
+    When I add user <userName> to group <userGroup>
+    Then the response status code should be 201
+    When I get users from group <userGroup>
+    Then I should see <userName> in result set
+    Examples:
+      | userName     | userGroup |
+      | "Adam Smith" | "group-4" |

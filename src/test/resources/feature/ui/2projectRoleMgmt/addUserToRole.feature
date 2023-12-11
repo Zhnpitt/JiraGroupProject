@@ -1,6 +1,6 @@
 Feature: After creation, I can add existing user to a project role
   #login as an admin user
-  Background: Login in as an administrator
+  Background: Login as an administrator
     Given I visit the login page
     When I enter the admin username and password
     And I click the login button
