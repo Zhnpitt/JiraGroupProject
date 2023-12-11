@@ -1,6 +1,5 @@
-package apiTest.niuAPI.a1userMgmt;
+package apiTest.niuAPI;
 
-import apiTest.niuAPI.BaseAPI;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 

@@ -1,8 +1,8 @@
 package apiTest.stepDef.a1userMgmt;
 
-import apiTest.niuAPI.a1userMgmt.GroupAPI;
-import apiTest.niuAPI.a1userMgmt.SessionAPI;
-import apiTest.niuAPI.a1userMgmt.UserAPI;
+import apiTest.niuAPI.GroupAPI;
+import apiTest.niuAPI.SessionAPI;
+import apiTest.niuAPI.UserAPI;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
