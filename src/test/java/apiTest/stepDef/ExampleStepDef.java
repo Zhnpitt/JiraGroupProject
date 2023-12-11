@@ -1,4 +1,5 @@
 package apiTest.stepDef;
 
-public class ExampleStepDef {
+public class ExampleStepDef{
+
 }
