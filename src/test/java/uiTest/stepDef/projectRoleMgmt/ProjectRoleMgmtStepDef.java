@@ -64,11 +64,6 @@ public class ProjectRoleMgmtStepDef{
 //        dashboardPO.enterAuthenticatePassword(password);
 //    }
 
-    @And("I click confirm in Administrator Access Page")
-    public void iClickConfirmInAdministratorAccessPage(){
-        dashboardPO.clickAuthenticateConfirmBtn();
-    }
-
     @And("I click the Project roles button")
     public void iClickTheProjectRolesButton(){
         systemPagePO.clickProjectRolesButton();
@@ -103,7 +98,7 @@ public class ProjectRoleMgmtStepDef{
         dashboardPO.clickProjectsButton();
     }
 
-    @And("I create and setup the project with {} and {}")
+    @And("I create and setup the project with {string} and {string}")
     public void iSetupTheProject(String projectName, String projectKey) throws InterruptedException{
         projectPO.clickCreateProjectButton();
         Thread.sleep(200);
@@ -258,6 +253,18 @@ public class ProjectRoleMgmtStepDef{
     @And("I grant Any logged in user")
     public void iGrantAnyLoggedinUser() throws InterruptedException{
         issuesPO.clickGrantButton();
+    }
+
+    @And("I click the Actions button and select use a different scheme")
+    public void iClickTheActionsButtonAndSelectUseADifferentScheme() throws InterruptedException{
+        projectPO.editPermissionsScheme();
+    }
+
+    @And("I select a scheme and click associate button")
+    public void iSelectASchemeAndClickAssociateButton() throws InterruptedException{
+        projectPO.selectAPermissionScheme();
+        Thread.sleep(1000);
+        projectPO.clickAssociateButton();
     }
 
 

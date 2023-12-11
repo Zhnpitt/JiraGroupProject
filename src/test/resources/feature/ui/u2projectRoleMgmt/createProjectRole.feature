@@ -12,9 +12,9 @@ Feature: As an admin user I can create three project roles (team lead, developer
     And I enter password in Administrator Access Page
     And I click confirm in Administrator Access Page
     And I click the Project roles button
-    And I enter the valid team lead and team lead
+    And I enter the valid Team lead and team lead
     And I click the Add Project Role button
-    And I enter the valid developer and developer
+    And I enter the valid Developer and developer
     And I click the Add Project Role button
     And I enter the valid QA and QA
     And I click the Add Project Role button

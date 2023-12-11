@@ -105,36 +105,44 @@ public class ProjectPO extends BasePO{
     public void clickCreateProjectButton(){
         createProjectButton.click();
     }
+
     public void clickNextButton(){
         nextButton.click();
     }
+
     public void clickSelectButton(){
         selectButton.click();
     }
-    public void createAProject(String nameOfProject, String keyOfProject) throws InterruptedException {
+
+    public void createAProject(String nameOfProject, String keyOfProject) throws InterruptedException{
         projectName.sendKeys(nameOfProject);
         Thread.sleep(200);
-        projectKey.sendKeys(keyOfProject);
-        Thread.sleep(200);
+        //projectKey.sendKeys(keyOfProject);
+//        Thread.sleep(200);
         submitAProjectButton.click();
+        Thread.sleep(200);
     }
 
     public void chooseAProject(){
         projectLink.click();
     }
+
     public void clickUsersAndRolesButton(){
         usersAndRolesButton.click();
     }
+
     public void clickAddUserToARoleButton(){
         addUserToARoleButton.click();
     }
-    public void enterUserName(String userName) throws InterruptedException {
+
+    public void enterUserName(String userName) throws InterruptedException{
         userNameTextBox.sendKeys(userName);
         Thread.sleep(200);
         nameSuggestion.click();
         Thread.sleep(200);
     }
-    public void chooseARole(String roleName) throws InterruptedException {
+
+    public void chooseARole(String roleName) throws InterruptedException{
         roleDropDownBox.click();
         Thread.sleep(200);
         roleNameTextBox.sendKeys(roleName);
@@ -142,23 +150,27 @@ public class ProjectPO extends BasePO{
         roleSuggestion.click();
         Thread.sleep(200);
     }
+
     public void clickAddButton(){
         addButton.click();
     }
-    public void filterDeveloper() throws InterruptedException {
+
+    public void filterDeveloper() throws InterruptedException{
         roleFilterMenu.click();
         developerRole.click();
         roleFilterMenu.click();
         Thread.sleep(2000);
     }
-    public void filterQA() throws InterruptedException {
+
+    public void filterQA() throws InterruptedException{
         roleFilterMenu.click();
         developerRole.click();
         QARole.click();
         roleFilterMenu.click();
         Thread.sleep(2000);
     }
-    public void filterTeamLead() throws InterruptedException {
+
+    public void filterTeamLead() throws InterruptedException{
         roleFilterMenu.click();
         QARole.click();
         teamLeadRole.click();
@@ -169,34 +181,42 @@ public class ProjectPO extends BasePO{
     public void setRoleFilter(){
         developerRole.click();
     }
+
     public void clickPermissionsButton(){
         permissionsButton.click();
     }
-    public void editPermissions() throws InterruptedException {
+
+    public void editPermissions() throws InterruptedException{
         actionsDropBox.click();
         Thread.sleep(200);
         editPermissionsButton.click();
 
     }
-    public void editPermissionsScheme() throws InterruptedException {
+
+    public void editPermissionsScheme() throws InterruptedException{
         actionsDropBox.click();
         Thread.sleep(200);
         useADifferentSchemeButton.click();
     }
+
     public void selectAPermissionScheme(){
         Select select = new Select(permissionSchemeDropBox);
         select.selectByVisibleText("PS-1");
     }
+
     public void clickAssociateButton(){
         associateButton.click();
     }
+
     public void clickEpicButton(){
         epicButton.click();
     }
+
     public void clickEditWorkflowButton(){
         editWorkflowButton.click();
     }
-    public void addStatus(String statusName) throws InterruptedException {
+
+    public void addStatus(String statusName) throws InterruptedException{
         addStatusButton.click();
         Thread.sleep(200);
         statusNameTextBox.sendKeys(statusName);

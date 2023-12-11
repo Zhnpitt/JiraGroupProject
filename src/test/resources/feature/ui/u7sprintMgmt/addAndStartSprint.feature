@@ -10,7 +10,6 @@ Feature: As a team leader user, I can create new sprint and move issues from the
 
   Scenario: create a sprint, move issues to it, then start
 
-
     And I click the team lead Backlog button
     And I click the create Sprint Button
     And I name the sprint sprintA

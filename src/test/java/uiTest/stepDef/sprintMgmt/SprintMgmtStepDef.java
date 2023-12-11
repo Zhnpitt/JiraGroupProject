@@ -2,25 +2,27 @@ package uiTest.stepDef.sprintMgmt;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
-import uiTest.pageObjects.LoginPO;
-import uiTest.pageObjects.ProjectContentPO;
-import uiTest.pageObjects.TeamLeadPO;
+import uiTest.pageObjects.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static org.testng.Assert.assertEquals;
 
 public class SprintMgmtStepDef{
     private final LoginPO loginPO = new LoginPO();
     private final TeamLeadPO teamLeadPO = new TeamLeadPO();
     ProjectContentPO projectContentPO = new ProjectContentPO();
-
+    DashBoardPO dashBoardPO = new DashBoardPO();
     WebDriver driver = DriverFactory.getDriver();
-
+    BrowseProjectsPO browseProjectsPO = new BrowseProjectsPO();
     //  Scenario: create and start a new sprint
 
     @And("I click the create Sprint Button")
@@ -121,4 +123,40 @@ public class SprintMgmtStepDef{
         Assert.assertTrue(imagePath.toFile().exists());
 
     }
+
+    @And("I click the team lead Backlog button")
+    public void iClickTheTeamLeadBacklogButton(){
+        teamLeadPO.clickBacklogButton();
+    }
+
+    @When("I click project in the header")
+    public void iClickProjectInTheHeader(){
+        dashBoardPO.clickProjectsBtn();
+    }
+
+    @When("I click View All Projects")
+    public void iClickViewAllProjects(){
+        dashBoardPO.clickAllProjectBtn();
+    }
+
+    @Then("I should see BrowseProjects page")
+    public void iShouldSeeBrowseProjectsPage(){
+        assertEquals(URL.removeQueryString(DriverFactory.getDriver().getCurrentUrl()), URL.BrowseProjects.toString());
+    }
+
+    @When("I click {string} in project list")
+    public void iClickProjectNameInProjectList(String projectName){
+        browseProjectsPO.clickProjectByName(projectName);
+    }
+
+    @And("I choose current project")
+    public void iChooseCurrentProject(){
+        teamLeadPO.chooseCurrentProject();
+    }
+
+    @When("I click the project button in team lead dashboard")
+    public void iClickTheProjectButtonInTeamLeadDashboard(){
+        teamLeadPO.clickProjectButton();
+    }
+
 }

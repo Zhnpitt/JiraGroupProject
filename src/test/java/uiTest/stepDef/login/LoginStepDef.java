@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import uiTest.constants.URL;
 import uiTest.constants.UserRole;
 import uiTest.drivers.DriverFactory;
+import uiTest.pageObjects.AdminUserMgmtPO;
 import uiTest.pageObjects.LoginPO;
 import utils.AdminProperties;
 import utils.TestDataProvider;
@@ -17,6 +18,7 @@ import static org.testng.Assert.assertNotNull;
 
 public class LoginStepDef{
     private final LoginPO loginPO = new LoginPO();
+    private final AdminUserMgmtPO adminUserMgmtPO = new AdminUserMgmtPO();
 
     @Given("I visit the login page")
     public void iVisitTheloginPage(){
@@ -37,11 +39,11 @@ public class LoginStepDef{
         loginPO.enterPassword(AdminProperties.getAdminPassword());
     }
 
-//    @When("I enter the {string} and {string}")
-//    public void iEnterTheUsernameAndPassword(String username, String password){
-//        loginPO.enterUsername(username);
-//        loginPO.enterPassword(password);
-//    }
+    @When("I enter the username {} and password {}")
+    public void iEnterTheUsernameStringAndPasswordString(String username, String password){
+        loginPO.enterUsername(username);
+        loginPO.enterPassword(password);
+    }
 
     @When("I enter the {string} and {string}")
     public void iEnterTheUsernameAndPassword(String username, String password){
@@ -113,5 +115,23 @@ public class LoginStepDef{
     public void iClickTheFirstStepInNextStepSequence(){
 
         loginPO.clickStepInNextStepSequence(0);
+    }
+
+    @And("I enter password in Administrator Access Page")
+    public void iEnterPasswordInAdministratorAccessPage(){
+
+        adminUserMgmtPO.enterAuthenticatePassword(AdminProperties.getAdminPassword());
+
+    }
+
+    @And("I click confirm in Administrator Access Page")
+    public void iClickConfirmInAdministratorAccessPage(){
+        adminUserMgmtPO.clickAuthenticateConfirmBtn();
+    }
+
+    @Then("I should see user management page")
+    public void iShouldSeeUserManagementPage(){
+        assertEquals(DriverFactory.getDriver().getCurrentUrl(),
+              URL.AdminUserMgmt.toString());
     }
 }

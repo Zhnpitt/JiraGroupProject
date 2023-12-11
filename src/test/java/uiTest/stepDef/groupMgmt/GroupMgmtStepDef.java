@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import uiTest.constants.URL;
 import uiTest.drivers.DriverFactory;
+import uiTest.pageObjects.AdminUserMgmtPO;
 import uiTest.pageObjects.DashBoardPO;
 import uiTest.pageObjects.GroupMgmtPO;
 import uiTest.pageObjects.WebSudoPO;
@@ -15,6 +16,7 @@ public class GroupMgmtStepDef{
     private GroupMgmtPO groupMgmtPO = new GroupMgmtPO();
     private WebSudoPO webSudoPO = new WebSudoPO();
     private DashBoardPO dashBoardPO = new DashBoardPO();
+    private final AdminUserMgmtPO adminUserMgmtPO = new AdminUserMgmtPO();
 
     @Then("I should view the dashBoard")
     public void iShouldViewTheDashBoard(){
@@ -113,5 +115,18 @@ public class GroupMgmtStepDef{
         assertEquals(groupMgmtPO.adamUserPresence.getText(), "Adam Smith");
     }
 
+
+//    @Then("I should see user management page")
+//    public void iShouldSeeUserManagementPage(){
+//        assertEquals(DriverFactory.getDriver().getCurrentUrl(),
+//              URL.AdminUserMgmt.toString());
+//    }
+
+//    @And("I enter password in Administrator Access Page")
+//    public void iEnterPasswordInAdministratorAccessPage(){
+//
+//        adminUserMgmtPO.enterAuthenticatePassword(AdminProperties.getAdminPassword());
+//
+//    }
 
 }

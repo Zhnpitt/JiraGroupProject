@@ -1,4 +1,4 @@
-package uiTest.runner.issueMgmt;
+package uiTest.runner.u6issueMgmt;
 
 import io.cucumber.testng.CucumberOptions;
 import uiTest.runner.TestRunner;

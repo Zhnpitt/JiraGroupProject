@@ -100,11 +100,11 @@ public class ProjectMgmtStepDef{
         dashboardPO.enterAuthenticatePassword(password);
     }
 
-    @And("I click confirm in Administrator Access Page")
-    public void iClickConfirmInAdministratorAccessPage() throws InterruptedException{
-        dashboardPO.clickAuthenticateConfirmBtn();
-        Thread.sleep(1000);
-    }
+//    @And("I click confirm in Administrator Access Page")
+//    public void iClickConfirmInAdministratorAccessPage() throws InterruptedException{
+//        dashboardPO.clickAuthenticateConfirmBtn();
+//        Thread.sleep(1000);
+//    }
 
     @And("I select a scheme and click associate button")
     public void iSelectASchemeAndClickAssociateButton() throws InterruptedException{

@@ -8,5 +8,5 @@ Feature: As an admin user I can create a project
 
   Scenario:I create a Scrum project
     When I click the admin menu button
-    And I click the Project button
-    And I setup the project with "projectName" and "projectKey"
+    And I click the Projects button
+    And I create and setup the project with "projectName" and "projectKey"
