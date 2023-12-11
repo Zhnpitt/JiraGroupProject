@@ -1,7 +1,5 @@
 package apiTest.constants;
 
-import utils.ApplicationProperties;
-
 public enum ApiURL{
     Login("rest/auth/1/session");
 
@@ -9,7 +7,7 @@ public enum ApiURL{
     private final String url;
 
     ApiURL(String path){
-        this.url = ApplicationProperties.get("baseUrl") + path;
+        this.url = path;
     }
 
     @Override

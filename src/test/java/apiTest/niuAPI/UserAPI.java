@@ -8,9 +8,6 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 public class UserAPI extends BaseAPI{
-    public UserAPI(){
-        requestSpec.basePath("");
-    }
 
     public Response loginWithCredential(User payload){
 

@@ -1,7 +1,7 @@
 Feature: I want to test to do item CRUD functionality with user signup
 
   @User
-  Scenario Outline: User signup and login
+  Scenario Outline: User login
 
     #login
     When the user logs in with with username <username> and password <password>
