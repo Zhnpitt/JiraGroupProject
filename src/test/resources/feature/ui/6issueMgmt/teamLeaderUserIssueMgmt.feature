@@ -1,4 +1,6 @@
 Feature: As a team leader user, I can manage issues
+  # login in as team leader
+  # different epics created:  Frontend dev, Backend dev, UI/UX design, Testing
 
   Scenario: Login in as a team leader user
     Given I visit the Login page
@@ -14,7 +16,6 @@ Feature: As a team leader user, I can manage issues
     And I click backlog button
     And I click Epics button
     And I choose backend Epic
-    And I click create issue button
     And I click open in dialog
     And I set up issue summary "story1 by John"
     And I scroll down and click priority dropdown
@@ -25,23 +26,20 @@ Feature: As a team leader user, I can manage issues
     When I click create button on blue bar
     And I click issue type dropdown
     And I choose task type
-    And I set up issue summary "task1 by John"
-    And I scroll down to epic link Area and click
-    And I click frontend epic suggestion
-    And I click create button
-    And I click issue without epics
-    Then I should view new created task "task1 by John"
-
-    When I click create button on blue bar
-    And I click issue type dropdown
-    And I choose task type
     And I set up issue summary "task2 by John"
     And I scroll down to epic link Area and click
     And I click frontend epic suggestion
     And I click create button
     And I click issue without epics
-    Then I should view new created task "task2 by John"
+    Then I should view new created task2 "task2 by John"
 
+    When I click create button on blue bar
+    And I set up issue summary "task1 by John"
+    And I scroll down to epic link Area and click
+    And I click frontend epic suggestion
+    And I click create button
+    And I click issue without epics
+    Then I should view new created task1 "task1 by John"
 
   Scenario:As a team lead user, I can specify if the current issue is blocked by or is blocking other issues.
     When I click new created issue task

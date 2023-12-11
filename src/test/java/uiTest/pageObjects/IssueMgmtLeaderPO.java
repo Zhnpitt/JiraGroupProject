@@ -61,8 +61,11 @@ public class IssueMgmtLeaderPO extends BasePO {
     @FindBy(xpath = "(//a[@role='presentation'][normalize-space()='Task'])[1]")
     public WebElement taskType;
 
+    @FindBy(css = "div[title='task2 by John']")
+    public WebElement newCreatedIssueTask2;
+
     @FindBy(css = "div[title='task1 by John']")
-    public WebElement newCreatedIssueTask;
+    public WebElement newCreatedIssueTask1;
 
     @FindBy(xpath = "(//span[@class='aui-icon ghx-iconfont aui-icon-small aui-iconfont-more'])[2]")
     public WebElement threeDotsBtn;
@@ -149,7 +152,7 @@ public class IssueMgmtLeaderPO extends BasePO {
         assignConfirmBtn.click();
     }
     public void leaveMessageInCommentArea(String message){
-        getDriver().switchTo().frame("mce_10_ifr");
+        getDriver().switchTo().frame(0);
         commentArea.sendKeys(message);
         getDriver().switchTo().defaultContent();
     }
@@ -183,7 +186,7 @@ public class IssueMgmtLeaderPO extends BasePO {
         threeDotsBtn.click();
     }
     public void clickNewCreatedIssueTask(){
-        newCreatedIssueTask.click();
+        newCreatedIssueTask1.click();
     }
 
     public void chooseTaskType(){

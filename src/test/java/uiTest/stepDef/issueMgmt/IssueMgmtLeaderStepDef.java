@@ -98,9 +98,14 @@ public class IssueMgmtLeaderStepDef {
         issueMgmtLeaderPO.chooseTaskType();
     }
 
-    @Then("I should view new created task {string}")
-    public void iShouldViewNewCreatedTask(String task) {
-        assertEquals(issueMgmtLeaderPO.newCreatedIssueTask.getText(), task);
+    @Then("I should view new created task2 {string}")
+    public void iShouldViewNewCreatedTask2(String task) {
+        assertEquals(issueMgmtLeaderPO.newCreatedIssueTask2.getText(), task);
+    }
+
+    @Then("I should view new created task1 {string}")
+    public void iShouldViewNewCreatedTask1(String task) {
+        assertEquals(issueMgmtLeaderPO.newCreatedIssueTask1.getText(), task);
     }
 
     @When("I click new created issue task")
