@@ -44,12 +44,12 @@ public class UserMgmtStepDef{
         userJson.put("emailAddress", emailAddress);
         userJson.put("displayName", fullName);
         userJson.put("applicationKeys", applicationKeys);
-        userAPI.setCookie(curResponse.get().getCookies());
+        userAPI.setCookies(curResponse.get().getCookies());
         curResponse.set(userAPI.createUser(userJson));
     }
 
-    @When("the admin user login")
-    public void theAdminUserLogIn(){
+    @When("I log in as admin user")
+    public void iLogInAsAdminUser(){
         curResponse.set(sessionAPI.adminLoginWithCredential());
     }
 
@@ -85,7 +85,7 @@ public class UserMgmtStepDef{
 
     @When("I add user {string} to group {string}")
     public void iAddTheUserUserNameToGroupUserGroup(String userName, String userGroup){
-        groupAPI.setCookie(curResponse.get().getCookies());
+        groupAPI.setCookies(curResponse.get().getCookies());
         JSONObject body = new JSONObject();
         body.put("name", userName);
         curResponse.set(groupAPI.addUserToGroup(userGroup, body));

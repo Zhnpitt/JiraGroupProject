@@ -11,15 +11,14 @@ import static io.restassured.RestAssured.given;
 public class BaseAPI{
     protected RequestSpecification requestSpec = given()
           .baseUri("http://localhost:8080")
-          .contentType(ContentType.JSON).auth().preemptive().basic("niushang1997", "qirV3*z!rWX2SGF");
-
+          .contentType(ContentType.JSON);
 
     protected ResponseSpecification responseSpec = given().then()
           .response().log().body();
 
     protected Map<String, String> cookies;
 
-    public void setCookie(Map<String, String> cookies){
+    public void setCookies(Map<String, String> cookies){
         this.cookies = cookies;
     }
 

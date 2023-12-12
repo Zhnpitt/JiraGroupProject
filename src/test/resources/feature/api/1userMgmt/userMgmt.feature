@@ -2,7 +2,7 @@ Feature: User management
   #prerequiste : userGroup "group-4"
   Background:
   #login
-    When the admin user login
+    When I log in as admin user
     Then the response status code should be 200
 
   Scenario Outline: create

@@ -15,7 +15,7 @@ public class UserAPI extends BaseAPI{
     //POST /rest/api/2/user
     public Response createUser(JSONObject userJson){
         Response response = given(requestSpec)
-              .cookies(this.cookies)
+              .auth().preemptive().basic(AdminProperties.getAdminUsername(), AdminProperties.getAdminPassword())
               .auth().preemptive().basic("niushang1997", "qirV3*z!rWX2SGF")
               .body(userJson.toString())
               .when()
