@@ -3,13 +3,15 @@ package apiTest.constants;
 public enum ApiURL {
     Login("rest/auth/1/session"),
 
-    //role mgmt
+    //create and assign role
     CreatePRJRole("/rest/api/2/role"),
     AddUserToRole("/rest/api/2/project/{projectIdOrKey}/role/{id}"),
 
-
+    //filter users by role
     GetRolesInPRJ("/rest/api/2/project/{projectIdOrKey}/role"),
     GetUserInRole("/rest/api/2/project/{projectIdOrKey}/role/{id}"),
+
+    //create permission scheme and grant
     CreatePermissionScheme("/rest/api/2/permissionscheme"),
     CreatePermissionGrant("/rest/api/2/permissionscheme/{schemeId}/permission"),
 
