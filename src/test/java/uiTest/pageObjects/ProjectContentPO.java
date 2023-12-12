@@ -72,18 +72,25 @@ public class ProjectContentPO extends BasePO{
         WebElement issue = DriverFactory.getDriver().findElement(By.xpath(path));
         ((JavascriptExecutor) DriverFactory.getDriver()).executeScript("arguments[0].scrollIntoView();", issue);
         Duration duration = Duration.ofSeconds(3);
-        new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.invisibilityOfElementLocated(By.className("loading")));
+        //new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.invisibilityOfElementLocated(By.className("loading")));
+        new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"gh\"]/div[@class = 'ghx-throbber']")));
+
         DriverFactory.getDriver().findElement(By.xpath(path)).click();
 
     }
 
     public void clickIssueStatusBtn(){
+
         String path = "//*[@id=\"opsbar-transitions_more\"]";
         issueStatusBtn = DriverFactory.getDriver().findElement(By.xpath(path));
         issueStatusBtn.click();
+
     }
 
-    public String getIssueStatus(){
+    public String getIssueStatus(String curStatus){
+        Duration duration = Duration.ofSeconds(3);
+        new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"gh\"]/div[@class = 'ghx-throbber']")));
+
         String path = "//*[@id=\"opsbar-transitions_more\"]";
         issueStatusBtn = DriverFactory.getDriver().findElement(By.xpath(path));
         String s = issueStatusBtn.findElement(By.xpath("./span")).getText();
@@ -106,7 +113,7 @@ public class ProjectContentPO extends BasePO{
     }
 
     public void clickConfigureOptionInBoardDropDown(){
-        
+
         configureOptionInBoardDropDown.click();
     }
 
@@ -319,6 +326,12 @@ public class ProjectContentPO extends BasePO{
     public void clickTimeframeBtn(){
         timeframeBtn.click();
     }
+
+
+    public void editNewColumn(String columnName){
+        changeColumnNameInMappingColumns("New Column", columnName);
+    }
+
         /*
     @FindBy(xpath = "")
     public WebElement ;

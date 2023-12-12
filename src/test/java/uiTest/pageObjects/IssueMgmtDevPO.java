@@ -1,5 +1,6 @@
 package uiTest.pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -31,10 +32,15 @@ public class IssueMgmtDevPO extends BasePO{
     @FindBy(className = "update-info")
     public WebElement editedSign;
 
-    @FindBy(id = "comment-edit-submit")
+    @FindBy(xpath = "//div[@id='edit-comment']//button[@name = 'Save']")
     public WebElement saveBtn;
 
     public void clickSaveBtn(){
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         saveBtn.click();
     }
 
@@ -57,9 +63,29 @@ public class IssueMgmtDevPO extends BasePO{
     }
 
     public void editMessageInCommentArea(String message){
-        getDriver().switchTo().frame(0);
-        editCommentArea.sendKeys(message);
-        getDriver().switchTo().defaultContent();
+//        int frameCount = getDriver().findElements(By.tagName("iframe")).size();
+//        getDriver().switchTo().frame(getDriver().findElement(By.tagName("iframe")));
+//        WebElement paragraphElement = getDriver().findElement(By.tagName("p"));
+//
+//        // Get the current text of the <p> element
+//        String currentText = paragraphElement.getText();
+//        System.out.println("Current text of <p>: " + currentText);
+//
+//        String newText = currentText + message;
+//        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].innerText = arguments[1];", paragraphElement, newText);
+//
+//        try{
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e){
+//            e.printStackTrace();
+//        }
+//
+//        String updatedText = paragraphElement.getText();
+//        System.out.println("Updated text of <p>: " + updatedText);
+//        getDriver().switchTo().defaultContent();
+
+
+        getDriver().findElement(By.xpath("//div[@id = \"comment-wiki-edit\"]/textarea")).sendKeys(message);
     }
 
     public void clickAddComments(){

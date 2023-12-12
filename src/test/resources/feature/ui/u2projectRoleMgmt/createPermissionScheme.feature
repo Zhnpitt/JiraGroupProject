@@ -24,6 +24,18 @@ Feature: As an admin user I can create the permission scheme
     And I select Granted to Project Role
     And I grant a team lead
 
+    #grant team lead Edit Sprints
+    And I click permission edit button
+    And I select a permission Edit Sprints
+    And I select Granted to Project Role
+    And I grant a team lead
+
+  #grant team lead Start/Complete Sprints
+    And I click permission edit button
+    And I select a permission Start/Complete Sprints
+    And I select Granted to Project Role
+    And I grant a team lead
+
     #grant team lead Assign Issues
     And I click permission edit button
     And I select a permission Assign Issues
@@ -150,7 +162,11 @@ Feature: As an admin user I can create the permission scheme
     And I select a permission Assignable User
     And I select Granted to Application access
     And I grant Any logged in user
-
+  #Edit All Comments
+    And I click permission edit button
+    And I select a permission Edit All Comments
+    And I select Granted to Application access
+    And I grant Any logged in user
       #
     And I click permission edit button
     And I select a permission Delete Issues

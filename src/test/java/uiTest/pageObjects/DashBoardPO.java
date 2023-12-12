@@ -4,9 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import uiTest.drivers.DriverFactory;
 
+import java.time.Duration;
 import java.util.List;
 
 public class DashBoardPO extends BasePO{
@@ -127,6 +130,8 @@ public class DashBoardPO extends BasePO{
     }
 
     public void clickProjectsBtn(){
+        Duration duration = Duration.ofSeconds(3);
+        new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.elementToBeClickable(projectsBtn));
         projectsBtn.click();
     }
 

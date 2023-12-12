@@ -54,7 +54,8 @@ public class IssueStatusChangeStepDef{
 
     @Then("I should see issue in {string} status")
     public void iShouldSeeIssueInCurStatusStatus(String curStatus){
-        assertEquals(projectContentPO.getIssueStatus(), curStatus);
+
+        assertEquals(projectContentPO.getIssueStatus(curStatus), curStatus);
     }
 
     @And("I click {string} status in dropdown")

@@ -56,9 +56,10 @@ public class ColumnEditStepDef{
     @When("I add a new column with {string} and {string}")
     public void iAddANewColumnWithColumnNameAndCategory(String columnName, String category){
         projectContentPO.clickAddColumnBtn();
-        projectContentPO.enterColumnName(columnName);
-        projectContentPO.selectColumnCategory(category);
-        projectContentPO.clickAddBtnInAddColumnDialog();
+        //projectContentPO.enterColumnName(columnName);
+        //projectContentPO.selectColumnCategory(category);
+        //projectContentPO.clickAddBtnInAddColumnDialog();
+        projectContentPO.editNewColumn(columnName);
     }
 
     @Then("I should see column with name {string}")

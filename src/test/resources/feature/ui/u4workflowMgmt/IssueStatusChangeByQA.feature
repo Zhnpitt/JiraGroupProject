@@ -22,4 +22,4 @@ Feature: Log in as a developer user and change the status of an issue from “Re
 
     Examples:
       | projectName   | resolvedIssueSummary | curStatus  | nextStatus |
-      | "projectName" | "task2 by John"      | "Resolved" | "Closed"   |
+      | "projectName" | "task1 by John"      | "Resolved" | "Closed"   |

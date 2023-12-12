@@ -23,5 +23,5 @@ Feature: Log in as a developer user and change the status of an issue from “To
 
     Examples:
       | projectName   | todoIssueSummary | curStatus     | nextStatus    |
-      | "projectName" | "task2 by John"  | "To Do"       | "In Progress" |
-      | "projectName" | "task2 by John"  | "In Progress" | "Resolved"    |
+      | "projectName" | "task1 by John"  | "To Do"       | "In Progress" |
+      | "projectName" | "task1 by John"  | "In Progress" | "Resolved"    |

@@ -3,15 +3,22 @@
     <test name="SequentialRun">
         <classes>
             <!--            User management(1)-->
+            <!--            As an admin user I can create users-->
             <class name="uiTest.runner.u1userMgmt.TestUserCreationRunner"/>
 
             <!--            User management (2)-->
+            <!--            After creation I can deactivate a user and once users are deactivated, they cannot
+login anymore and I can view the user in the result set after I apply the user status filter-->
             <class name="uiTest.runner.u1userMgmt.TestUserDeactivationRunner"/>
 
             <!--            Group management (1)(2)(3)-->
+            <!--            As an admin user, I can create groups-->
+            <!--            After creation, I can assign existing users to different groups-->
+            <!--            After creation, I can filter users based on their roles-->
             <class name="uiTest.runner.u3groupMgmt.TestGroupMgmtRunner"/>
 
             <!--            User management(3)-->
+            <!--            After creation, I can assign the current user to different user groups.-->
             <class name="uiTest.runner.u1userMgmt.TestUserGroupAssignmentRunner"/>
 
             <!--            Project Role management(1)-->
@@ -33,6 +40,7 @@
             <class name="uiTest.runner.u5projectMgmt.TestTeamLeadCreateEpicRunner"/>
 
             <!--            Project Role management(2)-->
+            <!--            After creation, I can add existing user to a project role-->
             <class name="uiTest.runner.u2projectRoleMgmt.TestAddUserToRoleRunner"/>
 
             <!--            Project Role management(3)-->
@@ -42,9 +50,17 @@
             <class name="uiTest.runner.u4workflowMgmt.TestWorkflowCreationRunner"/>
 
             <!--            Assign workflow to project-->
-            <!--            <class name=""/>-->
+            <!--            1.ASSIGN WORKFLOW TO SCHEMES-->
+            <!--            2.ASSIGN SCHEMES TO PROEJECT-->
+
             <!--            Issue Management(1)(2)(3)(4)(5)-->
+            <!--            As a team lead user, I can create issues that belong to different epics and priorities in the backlog.-->
+            <!--            As a team lead user, I can specify if the current issue is blocked by or is blocking other issues.-->
+            <!--            As a team lead user, I can assign issues to different users.-->
             <class name="uiTest.runner.u6issueMgmt.TestIssueMgmtLeaderRunner"/>
+
+            <!--            As a developer user, I can view all the issues assigned to me-->
+            <!--            As a developer user, I can add, edit and reply to the comments of an issue-->
             <class name="uiTest.runner.u6issueMgmt.TestIssueMgmtDeveloperRunner"/>
 
             <!--            Workflow management(2)(3)(4)-->
