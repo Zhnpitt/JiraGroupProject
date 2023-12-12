@@ -11,7 +11,10 @@ public class TeamLeadPO extends BasePO{
     @FindBy(xpath = "//a[@id='browse_link']")
     public WebElement projectButton;
 
-    @FindBy(xpath = "//div[@id='project_current']//a")
+    @FindBy(xpath = "//a[@id='project_view_all_link_lnk']")
+    public WebElement allProjects;
+
+    @FindBy(xpath = "//td[contains(.,'projectName')]/a/span")
     public WebElement currentProject;
 
     @FindBy(xpath = "//button[normalize-space()='Create sprint']")
@@ -22,6 +25,11 @@ public class TeamLeadPO extends BasePO{
 
     @FindBy(xpath = "//button[normalize-space()='Create']")
     public WebElement submitSprintButton;
+
+
+
+    @FindBy(xpath = "//h5[normalize-space()='Fill your backlog with issues']")
+    public WebElement blank;
 
     @FindBy(xpath = "//div[@class='iic-trigger']//button[@type='button']")
     public WebElement createIssueButton;
@@ -84,6 +92,10 @@ public class TeamLeadPO extends BasePO{
     public void clickProjectButton(){
         projectButton.click();
     }
+
+    public void viewAllProjects(){
+        allProjects.click();
+    }
     public void chooseCurrentProject(){
         currentProject.click();
     }
@@ -102,6 +114,7 @@ public class TeamLeadPO extends BasePO{
 
 
     public void createIssue(){
+        blank.click();
         createIssueButton.click();
         openInDialogButton.click();
     }

@@ -114,8 +114,9 @@ public class ProjectPO extends BasePO{
     public void createAProject(String nameOfProject, String keyOfProject) throws InterruptedException {
         projectName.sendKeys(nameOfProject);
         Thread.sleep(200);
-        projectKey.sendKeys(keyOfProject);
-        Thread.sleep(200);
+//        projectKey.clear();
+//        projectKey.sendKeys(keyOfProject);
+//        Thread.sleep(200);
         submitAProjectButton.click();
     }
 
