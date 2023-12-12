@@ -14,21 +14,20 @@ public class GroupAPI extends BaseAPI{
     //POST /rest/api/2/group/user
     public Response addUserToGroup(String groupName, JSONObject body){
         Response response = given(requestSpec)
-              .cookies(cookies)
               .queryParam("groupname", groupName)
-              .body(body)
+              .body(body.toString())
               .when()
               .post("user");
         return response;
     }
 
     //GET /rest/api/2/group/member
-    public Response getUserToGroup(String userGroup){
+    public Response getUserFromGroup(String userGroup){
         Response response = given(requestSpec)
-              .cookies(cookies)
               .queryParam("groupname", userGroup)
               .when()
               .get("member");
+        response.then().statusCode(200);
         return response;
     }
 }

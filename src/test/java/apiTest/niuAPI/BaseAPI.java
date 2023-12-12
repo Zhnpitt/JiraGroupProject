@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 public class BaseAPI{
     protected RequestSpecification requestSpec = given()
           .baseUri("http://localhost:8080")
-          .contentType(ContentType.JSON);
+          .contentType(ContentType.JSON).auth().preemptive().basic("niushang1997", "qirV3*z!rWX2SGF");
 
 
     protected ResponseSpecification responseSpec = given().then()

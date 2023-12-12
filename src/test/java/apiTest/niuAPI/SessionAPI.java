@@ -19,7 +19,6 @@ public class SessionAPI extends BaseAPI{
               .body(jsonObject.toString())
               .when()
               .post();
-
         return response;
     }
 

@@ -20,19 +20,19 @@ public class UserAPI extends BaseAPI{
               .body(userJson.toString())
               .when()
               .post();
-        response.then().log().body();
+        //response.then().log().body();
         return response;
     }
 
     //PUT /rest/api/2/user
     public Response updateUser(String username, JSONObject updateBody){
         Response response = given(requestSpec)
-              .cookies(cookies)
-              .queryParam("name", username)
+              .queryParam("username", username)
               .auth().preemptive().basic(AdminProperties.getAdminUsername(), AdminProperties.getAdminPassword())
-              .body(updateBody)
+              .body(updateBody.toString())
               .when()
               .put();
+        //response.then().log().body();
         return response;
     }
 
@@ -41,12 +41,10 @@ public class UserAPI extends BaseAPI{
     public Response findUsersByStatus(boolean status, String username){
         String param = status ? "includeActive" : "includeInactive";
         Response response = given(requestSpec)
-              .cookies(cookies)
               .queryParam("username", username)
               .queryParam(param, true)
-              .auth().preemptive().basic(AdminProperties.getAdminUsername(), AdminProperties.getAdminPassword())
               .when()
-              .post("search");
+              .get("search");
         return response;
     }
 }
