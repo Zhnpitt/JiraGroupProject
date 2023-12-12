@@ -143,6 +143,11 @@ public class IssueMgmtLeaderStepDef{
     @And("I choose the first issue")
     public void iChooseTheFirstIssue(){
         issueMgmtLeaderPO.clickFirstIssue();
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
     }
 
     @Then("I should view {string} area")
@@ -201,9 +206,13 @@ public class IssueMgmtLeaderStepDef{
         issueMgmtLeaderPO.clickCreateBtnOnBlue();
     }
 
-
-    @And("I click Backlog in header")
-    public void iClickBacklogInHeader(){
+    @And("I click backlog on the header")
+    public void iClickBacklogOnTheHeader(){
         DriverFactory.getDriver().findElement(By.xpath("//*[@id=\"subnav-title\"]/span")).click();
+    }
+
+    @And("I choose create issue Button")
+    public void iChooseBackendCreateIssueButton(){
+        issueMgmtLeaderPO.clickCreateIssueBtn();
     }
 }

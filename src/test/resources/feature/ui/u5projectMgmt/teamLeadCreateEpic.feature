@@ -27,3 +27,8 @@ Feature: As an team lead, I can create different epics
     And I select a Issue Type as Epic
     And I enter Epic name as UI/UX design and UI/UX design summary
     And I submit an issue
+
+    And I create an issue
+    And I select a Issue Type as Epic
+    And I enter Epic name as Testing  and Testing summary
+    And I submit an issue

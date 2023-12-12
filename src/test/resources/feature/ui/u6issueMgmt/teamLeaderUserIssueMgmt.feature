@@ -16,7 +16,7 @@ Feature: As a team leader user, I can manage issues
     And I click backlog button
     And I click Epics button
     And I choose backend Epic
-    And I click Backlog in header
+    And I click backlog on the header
     And I click create issue button
     And I click open in dialog
     And I set up issue summary "story1 by John"
