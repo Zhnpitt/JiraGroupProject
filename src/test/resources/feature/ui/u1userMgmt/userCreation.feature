@@ -21,8 +21,10 @@ Feature: User Creation
     Then I should see the created user <username> in user browser table
 
     Examples:
-      | email                 | username     | fullname     | password      |
-      | "johndoe@gmail.com"   | "John Doe"   | "John Doe"   | "password123" |
-      | "adamsmith@gmail.com" | "Adam Smith" | "Adam Smith" | "password123" |
-      | "dianawest@gmail.com" | "Diana West" | "Diana West" | "password123" |
-      | "bobdylan@gmail.com"  | "Bob Dylan"  | "Bob Dylan"  | "password123" |
+      | email                       | username          | fullname          | password      |
+      | "johndoe@gmail.com"         | "John Doe"        | "John Doe"        | "password123" |
+      | "adamsmith@gmail.com"       | "Adam Smith"      | "Adam Smith"      | "password123" |
+      | "dianawest@gmail.com"       | "Diana West"      | "Diana West"      | "password123" |
+      | "bobdylan@gmail.com"        | "Bob Dylan"       | "Bob Dylan"       | "password123" |
+      | "cindylee@gmail.com"        | "Cindy Lee"       | "Cindy Lee"       | "password123" |
+      | "deactivateduser@gmail.com" | "DeactivatedUser" | "DeactivatedUser" | "password123" |

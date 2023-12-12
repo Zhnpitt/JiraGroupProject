@@ -8,8 +8,11 @@ Feature: As an team lead, I can create different epics
 
   Scenario: I can create different epics
     When I click the project button in team lead dashboard
-    And I choose current project
-
+    #And I choose current project
+    And I click View All Projects
+    Then I should see BrowseProjects page
+    When I click projectName in project list
+    When I click Backlog in sidebar
     And I create an issue
     And I select a Issue Type as Epic
     And I enter Epic name as Frontend dev2 and Frontend dev summary

@@ -19,7 +19,7 @@ public class IssuesPO extends BasePO{
     @FindBy(xpath = "//label[normalize-space()='Project Role']")
     public WebElement projectRoleGrant;
 
-    @FindBy(xpath = "//a[normalize-space()='team lead']")
+    @FindBy(xpath = "//a[normalize-space()='Team lead']")
     public WebElement teamLead;
 
     @FindBy(xpath = "//a[normalize-space()='QA']")
@@ -29,15 +29,10 @@ public class IssuesPO extends BasePO{
     public WebElement applicationAccessGrant;
 
 
-
-
     @FindBy(xpath = "//button[@id='grant-permission-dialog-grant-button']")
     public WebElement grantButton;
 
     //
-
-
-
 
 
     @FindBy(xpath = "//input[@id='projectrole-field']")
@@ -45,10 +40,6 @@ public class IssuesPO extends BasePO{
 
     @FindBy(xpath = "//ul[@role='listbox']/li")
     public WebElement roleSuggestion;
-
-
-
-
 
 
     @FindBy(xpath = "//a[@id='permission_schemes']")
@@ -80,6 +71,7 @@ public class IssuesPO extends BasePO{
     public void selectProjectRoleGrant(){
         projectRoleGrant.click();
     }
+
     public void selectApplicationAccessGrant(){
         applicationAccessGrant.click();
     }
@@ -99,7 +91,7 @@ public class IssuesPO extends BasePO{
     public void chooseDeveloper(){
     }
 
-    public void clickGrantButton() throws InterruptedException {
+    public void clickGrantButton() throws InterruptedException{
         grantButton.click();
         Thread.sleep(500);
     }
@@ -124,4 +116,24 @@ public class IssuesPO extends BasePO{
         editPermissionButton.click();
     }
 
+    @FindBy(xpath = "//label[normalize-space()='Group']")
+    public WebElement groupGrant;
+
+    public void selectGroupGrant(){
+        groupGrant.click();
+    }
+
+    @FindBy(xpath = "//*[@id=\"group-field\"]")
+    public WebElement groupInputTextBox;
+
+    public void clickGroupInputTextBox(){
+        groupInputTextBox.click();
+    }
+
+    @FindBy(xpath = "//a[normalize-space()='jira-administrators']")
+    public WebElement administrators;
+
+    public void chooseAdministrators(){
+        administrators.click();
+    }
 }

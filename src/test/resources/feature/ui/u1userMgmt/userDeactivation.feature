@@ -45,5 +45,5 @@ Feature: User Deactivation
 
 
     Examples:
-      | username    | password      |
-      | "Bob Dylan" | "password123" |
+      | username          | password      |
+      | "DeactivatedUser" | "password123" |

@@ -1,5 +1,6 @@
 package uiTest.pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -107,6 +108,7 @@ public class TeamLeadPO extends BasePO{
 
 
     public void createIssue(){
+        getDriver().findElement(By.xpath("//*[@id=\"ghx-content-group\"]")).click();
         createIssueButton.click();
         openInDialogButton.click();
     }

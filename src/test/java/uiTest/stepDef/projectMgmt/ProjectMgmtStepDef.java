@@ -1,8 +1,13 @@
 package uiTest.stepDef.projectMgmt;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import uiTest.constants.URL;
+import uiTest.drivers.DriverFactory;
 import uiTest.pageObjects.*;
+
+import static org.testng.Assert.assertEquals;
 
 public class ProjectMgmtStepDef{
     private final LoginPO loginPO = new LoginPO();
@@ -10,8 +15,8 @@ public class ProjectMgmtStepDef{
     private final ProjectPO projectPO = new ProjectPO();
     private final IssuesPO issuesPO = new IssuesPO();
     private final TeamLeadPO teamLeadPO = new TeamLeadPO();
-
-
+    private final BrowseProjectsPO browseProjectsPO = new BrowseProjectsPO();
+    ProjectContentPO projectContentPO = new ProjectContentPO();
     //  Background: Login in as an administrator and navigate to Project page
 //    @Given("I visit the login page")
 //    public void iVisitTheLoginPage(){
@@ -51,7 +56,7 @@ public class ProjectMgmtStepDef{
         dashboardPO.clickAdminMenu();
     }
 
-    @And("I click the Project button")
+    @And("I click the Projects button")
     public void IClickTheProjectsButton(){
         dashboardPO.clickProjectsButton();
     }
@@ -131,6 +136,11 @@ public class ProjectMgmtStepDef{
         teamLeadPO.createIssue();
     }
 
+    @When("I click Backlog in sidebar")
+    public void iClickBacklogInSidebar(){
+        projectContentPO.clickBacklogInSideBar();
+    }
+
     @And("I select a Issue Type as Epic")
     public void iSelectAIssueTypeAsEpic(){
         teamLeadPO.selectEpic();
@@ -151,4 +161,20 @@ public class ProjectMgmtStepDef{
     public void iClickTheTeamLeadBacklogButton(){
         teamLeadPO.clickBacklogButton();
     }
+
+    @When("I click {} in project list")
+    public void iClickProjectNameInProjectList(String projectName){
+        browseProjectsPO.clickProjectByName(projectName);
+    }
+
+    @When("I click View All Projects")
+    public void iClickViewAllProjects(){
+        dashboardPO.clickAllProjectBtn();
+    }
+
+    @Then("I should see BrowseProjects page")
+    public void iShouldSeeBrowseProjectsPage(){
+        assertEquals(URL.removeQueryString(DriverFactory.getDriver().getCurrentUrl()), URL.BrowseProjects.toString());
+    }
+
 }

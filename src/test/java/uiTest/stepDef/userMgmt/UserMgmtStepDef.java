@@ -113,7 +113,7 @@ public class UserMgmtStepDef{
     public void iAssignTheUserUsernameToGroup(String username, String groupNames){
         String[] groupNamesArray = adminUserMgmtPO.groupNamesProvider(groupNames);
         adminUserMgmtPO.clickUserBrowserTableMoreBtn(username);
-        adminUserMgmtPO.clickEditUserGroupsBtn();
+        adminUserMgmtPO.clickEditUserGroupsBtn(username);
         for (String groupName : groupNamesArray){
             adminUserMgmtPO.enterGroupsToJoin(groupName);
             adminUserMgmtPO.clickMatchingGroup();

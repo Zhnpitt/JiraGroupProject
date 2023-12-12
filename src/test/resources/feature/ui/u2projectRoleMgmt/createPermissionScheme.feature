@@ -150,3 +150,9 @@ Feature: As an admin user I can create the permission scheme
     And I select a permission Assignable User
     And I select Granted to Application access
     And I grant Any logged in user
+
+      #Assignable User
+    And I click permission edit button
+    And I select a permission Delete Issues
+    And I select Granted to Group
+    And I grant jira-administrators

@@ -25,5 +25,5 @@ Feature: User Group Assignment
 
 
     Examples:
-      | email                 | username     | fullname     | password     | groups                |
-      | "adamsmith@gmail.com" | "Adam Smith" | "Adam Smith" | "password123 | "jira-software-users" |
+      | email                 | username   | fullname     | password     | groups         |
+      | "adamsmith@gmail.com" | "John Doe" | "Adam Smith" | "password123 | "Jira-group-2" |

@@ -228,6 +228,18 @@ public class ProjectRoleMgmtStepDef{
         issuesPO.selectApplicationAccessGrant();
     }
 
+    @And("I select Granted to Group")
+    public void iSelectGrantedToGroup(){
+        issuesPO.selectGroupGrant();
+    }
+
+    @And("I grant jira-administrators")
+    public void iGrantJiraAdministrators() throws InterruptedException{
+        issuesPO.clickGroupInputTextBox();
+        issuesPO.chooseAdministrators();
+        issuesPO.clickGrantButton();
+    }
+
     @And("I grant a team lead")
     public void iGrantATeamLead() throws InterruptedException{
         issuesPO.clickRoleInputTextBox();

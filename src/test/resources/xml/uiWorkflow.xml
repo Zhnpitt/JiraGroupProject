@@ -4,43 +4,60 @@
         <classes>
             <!--            User management(1)-->
             <class name="uiTest.runner.u1userMgmt.TestUserCreationRunner"/>
+
             <!--            User management (2)-->
             <class name="uiTest.runner.u1userMgmt.TestUserDeactivationRunner"/>
+
             <!--            Group management (1)(2)(3)-->
             <class name="uiTest.runner.u3groupMgmt.TestGroupMgmtRunner"/>
+
             <!--            User management(3)-->
             <class name="uiTest.runner.u1userMgmt.TestUserGroupAssignmentRunner"/>
+
             <!--            Project Role management(1)-->
+            <!--            As an admin user I can create three project roles (team lead, developer, QA)-->
             <!--            Need assertions here-->
-            <class name="uiTest.runner.u5projectMgmt.TestCreateProjectRoleRunner"/>
+            <class name="uiTest.runner.u2projectRoleMgmt.TestCreateProjectRoleRunner"/>
+
+            <!--            Project Role management(4)-->
+            <!--            After creation, I can create the following permission scheme-->
+            <class name="uiTest.runner.u2projectRoleMgmt.TestCreatePermissionSchemeRunner"/>
+
+            <!--            Project Management(1)(2)(3)-->
+            <!--            As an admin user, I can create a Scrum project and apply an existing permission scheme-->
+            <class name="uiTest.runner.u5projectMgmt.TestCreateProjectRunner"/>
+            <class name="uiTest.runner.u5projectMgmt.TestApplySchemeToProjectRunner"/>
+            <!--            As an admin user, I can add user to the current project-->
+            <class name="uiTest.runner.u5projectMgmt.TestAddUserToCurrentProjectRunner"/>
+            <!--            As a team lead user, I can create different epics (Frontend dev,Backend dev, UI/UX design, Testing, etc)-->
+            <class name="uiTest.runner.u5projectMgmt.TestTeamLeadCreateEpicRunner"/>
+
             <!--            Project Role management(2)-->
             <class name="uiTest.runner.u2projectRoleMgmt.TestAddUserToRoleRunner"/>
-            <!--            Project Role management(4)-->
-            <class name="uiTest.runner.u2projectRoleMgmt.TestCreatePermissionSchemeRunner"/>
-            <!--            Project Management(1)(2)(3)-->
-            <class name="uiTest.runner.u5projectMgmt.TestCreateProjectRoleRunner"/>
-            <class name="uiTest.runner.u5projectMgmt.TestApplySchemeToProjectRunner"/>
-            <class name="uiTest.runner.u5projectMgmt.TestAddUserToCurrentProjectRunner"/>
-            <class name="uiTest.runner.u5projectMgmt.TestTeamLeadCreateEpicRunner"/>
+
             <!--            Project Role management(3)-->
             <class name="uiTest.runner.u2projectRoleMgmt.TestFilterUserByRoleRunner"/>
+
             <!--            Workflow management(1)-->
             <class name="uiTest.runner.u4workflowMgmt.TestWorkflowCreationRunner"/>
+
             <!--            Assign workflow to project-->
             <!--            <class name=""/>-->
             <!--            Issue Management(1)(2)(3)(4)(5)-->
             <class name="uiTest.runner.u6issueMgmt.TestIssueMgmtLeaderRunner"/>
             <class name="uiTest.runner.u6issueMgmt.TestIssueMgmtDeveloperRunner"/>
+
             <!--            Workflow management(2)(3)(4)-->
             <class name="uiTest.runner.u4workflowMgmt.TestColumnEditRunner"/>
             <class name="uiTest.runner.u4workflowMgmt.TestIssueStatusChangeByDeveloperRunner"/>
             <class name="uiTest.runner.u4workflowMgmt.TestIssueStatusChangeByQARunner"/>
+
             <!--            Sprint Management(1)(2)(3)(4)(5)-->
             <class name="uiTest.runner.u7sprintMgmt.TestAddAndStartSprintRunner"/>
             <class name="uiTest.runner.u7sprintMgmt.TestViewAllIssuesInSprintRunner"/>
             <class name="uiTest.runner.u7sprintMgmt.TestSprintTerminationAsTLRunner"/>
             <class name="uiTest.runner.u7sprintMgmt.TestVelocityChartDownloadRunner"/>
-            
+
         </classes>
     </test>
 </suite>
