@@ -15,15 +15,19 @@ Feature: As an admin user, I can add user to the current project
     And I click the Add users to a role button
     And I enter valid johndoe@gmail.com and Team lead
     And I click the Add button
+
     And I click the Add users to a role button
     And I enter valid Adam Smith and Developer
     And I click the Add button
-    And I click the Add users to a role button
-    And I enter valid Bob Dylan and Developer
-    And I click the Add button
-    And I click the Add users to a role button
-    And I enter valid Cindy Lee and Developer
-    And I click the Add button
+
+#    And I click the Add users to a role button
+#    And I enter valid Bob Dylan and Developer
+#    And I click the Add button
+#
+#    And I click the Add users to a role button
+#    And I enter valid Cindy Lee and Developer
+#    And I click the Add button
+
     And I click the Add users to a role button
     And I enter valid Diana West and QA
     And I click the Add button

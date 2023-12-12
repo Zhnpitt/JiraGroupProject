@@ -2,7 +2,6 @@ package uiTest.pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class IssueMgmtLeaderPO extends BasePO {
+public class IssueMgmtLeaderPO extends BasePO{
 
     @FindBy(xpath = "(//a[normalize-space()='Projects'])[1]")
     public WebElement projectsBtn;
@@ -24,9 +23,9 @@ public class IssueMgmtLeaderPO extends BasePO {
 
     public By backlogBtn = By.xpath("(//span[@class='aui-icon aui-icon-large agile-icon-plan aui-iconfont-backlog'])[1]");
 
-    public By epicsBtn =By.xpath("(//span[normalize-space()='Epics'])[1]");
+    public By epicsBtn = By.xpath("(//span[normalize-space()='Epics'])[1]");
 
-    @FindBy(css ="span[data-fieldvalue='Backend dev']")
+    @FindBy(css = "span[data-fieldvalue='Backend dev']")
     public WebElement backendEpic;
 
     @FindBy(css = "span[data-fieldvalue='Frontend dev']")
@@ -40,7 +39,7 @@ public class IssueMgmtLeaderPO extends BasePO {
 
     public By openInDialogBtn = By.cssSelector(".aui-button.aui-button-text.iic-widget__more");
 
-    @FindBy(id ="summary")
+    @FindBy(id = "summary")
     public WebElement summaryArea;
 
     @FindBy(id = "priority-field")
@@ -82,7 +81,7 @@ public class IssueMgmtLeaderPO extends BasePO {
     @FindBy(xpath = "(//a[@class='aui-list-item-link aui-iconised-link'])[1]")
     public WebElement firstIssue;
 
-    @FindBy(css = "input[title='Press Ctrl+Alt+s to submit this form']")
+    @FindBy(xpath = "//input[@value = 'Link']")//
     public WebElement linkIssueBtn;
 
     @FindBy(css = "dt[title='is blocked by']")
@@ -123,7 +122,6 @@ public class IssueMgmtLeaderPO extends BasePO {
     public WebElement issuesWithoutEpics;
 
 
-
     public void clickIssueWithoutEpics(){
         issuesWithoutEpics.click();
     }
@@ -131,49 +129,60 @@ public class IssueMgmtLeaderPO extends BasePO {
     public void clickCreateBtnOnBlue(){
         createBtnOnBlue.click();
     }
+
     public void scrolltoEpicLinkAreaAndClick(){
-        ((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);",epicLinkArea);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", epicLinkArea);
         epicLinkArea.click();
     }
 
     public void chooseFrontendEpicSuggestion(){
+        //getDriver().findElement(By.xpath(""))
         frontendEpicSuggestion.click();
     }
 
-//    public void clickAllIssuesBtn(){
+    //    public void clickAllIssuesBtn(){
 //        allIssuesBtn.click();
 //    }
     public void scrollToAssigneeCheckAreaAndCheck(){
-        ((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", assigneeCheckArea);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", assigneeCheckArea);
         new WebDriverWait(getDriver(), Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOfElementLocated(assignedBy));
+              .until(ExpectedConditions.visibilityOfElementLocated(assignedBy));
     }
+
     public void clickAssignConfirmBtn(){
         assignConfirmBtn.click();
     }
+
     public void leaveMessageInCommentArea(String message){
         getDriver().switchTo().frame(0);
         commentArea.sendKeys(message);
         getDriver().switchTo().defaultContent();
     }
+
     public void chooseAdamSmith(){
         adamSmith.click();
     }
+
     public void sendToAssigneeArea(String name){
         assigneeArea.sendKeys(name);
     }
+
     public void clickAssignBtn(){
         assignBtn.click();
     }
+
     public void clickLinkIssueBtn(){
         linkIssueBtn.click();
     }
+
     public void clickFirstIssue(){
         firstIssue.click();
     }
+
     public void setIssueArea(String str){
         issueArea.sendKeys(str);
     }
+
     public void thisIssueLinkType(){
         Select dropdown = new Select(thisIssueArea);
         dropdown.selectByValue("is blocked by");
@@ -182,9 +191,11 @@ public class IssueMgmtLeaderPO extends BasePO {
     public void clickLinkBtn(){
         linkBtn.click();
     }
+
     public void clickThreeDotsBtn(){
         threeDotsBtn.click();
     }
+
     public void clickNewCreatedIssueTask(){
         newCreatedIssueTask1.click();
     }
@@ -192,6 +203,7 @@ public class IssueMgmtLeaderPO extends BasePO {
     public void chooseTaskType(){
         taskType.click();
     }
+
     public void clickIssueTypeDropdown(){
         issueTypeDropdown.click();
     }
@@ -204,20 +216,20 @@ public class IssueMgmtLeaderPO extends BasePO {
         viewAllProjectsBtn.click();
     }
 
-    public void chooseScrumProject() {
+    public void chooseScrumProject(){
         scrumProject.click();
     }
 
     public void clickBacklogBtn(){
         new WebDriverWait(getDriver(), Duration.ofSeconds(5))
-                .until(ExpectedConditions.presenceOfElementLocated(backlogBtn))
-                .click();
+              .until(ExpectedConditions.presenceOfElementLocated(backlogBtn))
+              .click();
     }
 
-    public void clickEpicsBtn() {
-        new WebDriverWait(getDriver(),Duration.ofSeconds(5)).
-                until(ExpectedConditions.presenceOfElementLocated(epicsBtn))
-                .click();
+    public void clickEpicsBtn(){
+        new WebDriverWait(getDriver(), Duration.ofSeconds(5)).
+              until(ExpectedConditions.presenceOfElementLocated(epicsBtn))
+              .click();
     }
 
     public void clickBackendEpic(){
@@ -229,9 +241,9 @@ public class IssueMgmtLeaderPO extends BasePO {
     }
 
     public void clickOpenInDialogBtn(){
-        new WebDriverWait(getDriver(),Duration.ofSeconds(5))
-                .until(ExpectedConditions.presenceOfElementLocated(openInDialogBtn))
-                .click();
+        new WebDriverWait(getDriver(), Duration.ofSeconds(5))
+              .until(ExpectedConditions.presenceOfElementLocated(openInDialogBtn))
+              .click();
     }
 
     public void sendInSummaryArea(String summary){
@@ -251,6 +263,8 @@ public class IssueMgmtLeaderPO extends BasePO {
         createBtn.click();
     }
 
-    public void clickFrontendEpic(){frontendEpic.click();}
+    public void clickFrontendEpic(){
+        frontendEpic.click();
+    }
 
 }

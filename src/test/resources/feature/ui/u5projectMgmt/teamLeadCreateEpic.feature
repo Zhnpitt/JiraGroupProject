@@ -15,7 +15,7 @@ Feature: As an team lead, I can create different epics
     When I click Backlog in sidebar
     And I create an issue
     And I select a Issue Type as Epic
-    And I enter Epic name as Frontend dev2 and Frontend dev summary
+    And I enter Epic name as Frontend dev and Frontend dev summary
     And I submit an issue
 
     And I create an issue

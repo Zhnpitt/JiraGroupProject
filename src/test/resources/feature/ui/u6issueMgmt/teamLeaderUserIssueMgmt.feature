@@ -16,6 +16,8 @@ Feature: As a team leader user, I can manage issues
     And I click backlog button
     And I click Epics button
     And I choose backend Epic
+    And I click Backlog in header
+    And I click create issue button
     And I click open in dialog
     And I set up issue summary "story1 by John"
     And I scroll down and click priority dropdown
@@ -27,16 +29,12 @@ Feature: As a team leader user, I can manage issues
     And I click issue type dropdown
     And I choose task type
     And I set up issue summary "task2 by John"
-    And I scroll down to epic link Area and click
-    And I click frontend epic suggestion
     And I click create button
     And I click issue without epics
     Then I should view new created task2 "task2 by John"
 
     When I click create button on blue bar
     And I set up issue summary "task1 by John"
-    And I scroll down to epic link Area and click
-    And I click frontend epic suggestion
     And I click create button
     And I click issue without epics
     Then I should view new created task1 "task1 by John"

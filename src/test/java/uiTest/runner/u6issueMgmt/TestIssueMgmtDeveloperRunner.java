@@ -4,7 +4,7 @@ import io.cucumber.testng.CucumberOptions;
 import uiTest.runner.TestRunner;
 
 @CucumberOptions(
-      features = {"src/test/resources/feature/ui/developerUserIssueMgmt.feature"
+      features = {"src/test/resources/feature/ui/u6issueMgmt/developerUserIssueMgmt.feature"
       },
       glue = {"uiTest.stepDef.issueMgmt", "uiTest.stepDef.login"}
 )

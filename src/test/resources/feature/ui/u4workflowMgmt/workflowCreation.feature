@@ -17,8 +17,8 @@ Feature: Workflow Creation
     When I click add workflow btn in Issues
     And I enter <workflowName> and <description>
     And I click add btn in add workflow form
-    Then I should see view workflow steps page
     When I click workflows text btn
+    Then I should see view workflow steps page
     And I add following new steps into workflow
       | stepName    | linkedStatus | destination | transitionName |
       | Closed      | Closed       |             |                |

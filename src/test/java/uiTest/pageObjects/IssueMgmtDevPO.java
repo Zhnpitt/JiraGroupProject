@@ -41,12 +41,15 @@ public class IssueMgmtDevPO extends BasePO{
     public void sendToCommentAreaToEdit(String newMsg){
         commentAreaToEdit.sendKeys(newMsg);
     }
+
     public void clickFirstEditBtn(){
         firstEditBtn.click();
     }
+
     public void clickAddBtn(){
         addBtn.click();
     }
+
     public void leaveMessageInCommentArea(String message){
 //        getDriver().switchTo().frame(0);
         commentArea.sendKeys(message);
@@ -54,10 +57,11 @@ public class IssueMgmtDevPO extends BasePO{
     }
 
     public void editMessageInCommentArea(String message){
-//        getDriver().switchTo().frame(0);
+        getDriver().switchTo().frame(0);
         editCommentArea.sendKeys(message);
-//        getDriver().switchTo().defaultContent();
+        getDriver().switchTo().defaultContent();
     }
+
     public void clickAddComments(){
         addComments.click();
     }
@@ -65,6 +69,7 @@ public class IssueMgmtDevPO extends BasePO{
     public void clickAssignedTask(){
         assignedTask.click();
     }
+
     public void clickAssignToMe(){
         assignToMe.click();
     }

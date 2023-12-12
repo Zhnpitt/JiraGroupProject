@@ -106,6 +106,7 @@ public class ProjectContentPO extends BasePO{
     }
 
     public void clickConfigureOptionInBoardDropDown(){
+        
         configureOptionInBoardDropDown.click();
     }
 

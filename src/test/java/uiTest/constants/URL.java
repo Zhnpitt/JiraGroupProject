@@ -15,7 +15,8 @@ public enum URL{
     AdminListWorkflows("secure/admin/workflows/ListWorkflows.jspa"),
     AdminViewWorkflowSteps("secure/admin/workflows/ViewWorkflowSteps.jspa"),
     BrowseProjects("secure/BrowseProjects.jspa"),
-    RapidView("secure/RapidView.jspa");
+    RapidView("secure/RapidView.jspa"),
+    AdminViewWorkDesigner("secure/admin/workflows/WorkflowDesigner.jspa");
     private final String url;
 
     URL(String path){

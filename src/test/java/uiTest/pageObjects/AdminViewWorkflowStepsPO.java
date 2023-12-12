@@ -6,10 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import uiTest.drivers.DriverFactory;
 
-import java.sql.Driver;
-
 //http://localhost:8080/secure/admin/workflows/ViewWorkflowSteps.jspa
-public class AdminViewWorkflowStepsPO extends BasePO {
+public class AdminViewWorkflowStepsPO extends BasePO{
 
     @FindBy(xpath = "//a[@id = \"workflow-text\"]")
     public WebElement workflowsTextBtn;
@@ -33,34 +31,47 @@ public class AdminViewWorkflowStepsPO extends BasePO {
     @FindBy(xpath = "//button[@id=\"add-workflow-submit\"]")
     public WebElement workflowTransitionAddBtn;
 
-    public void clickWorkflowsTextBtn() {
+    public void clickWorkflowsTextBtn(){
         workflowsTextBtn.click();
     }
 
-    public void enterStepName(String s) {
+    public void enterStepName(String s){
         stepName.sendKeys(s);
     }
 
-    public void enterLinkedStatus(String s) {
+    public void enterLinkedStatus(String s){
         Select statusDropDownMenu = new Select(linkedStatus);
         statusDropDownMenu.selectByVisibleText(s);
     }
 
-    public void clickWorkflowStepAddSubmitBtn() {
+    public void clickWorkflowStepAddSubmitBtn(){
         workflowStepAddSubmitBtn.click();
     }
 
-    public void clickWorkflowBtn() {
+    public void clickWorkflowBtn(){
         workflowsBtn.click();
     }
 
-    public void setStepDestination(String src, String dest, String transitionName) {
-        String path = "//tbody/tr[td[1]/a[text() = '" + src +"']]//a[text() = 'Add transition']";
+    public void setStepDestination(String src, String dest, String transitionName){
+        String path = "//tbody/tr[td[1]/a[text() = '" + src + "']]//a[text() = 'Add transition']";
         WebElement srcStepTransitionBtn = DriverFactory.getDriver().findElement(By.xpath(path));
         srcStepTransitionBtn.click();
         workflowTransitionName.sendKeys(transitionName);
         Select destDropDownMenu = new Select(workflowDestStep);
         destDropDownMenu.selectByVisibleText(dest);
         workflowTransitionAddBtn.click();
+    }
+
+    public void changeInitialStepOpen(String newStartPoint){
+        String path = "//tbody/tr[td[1]/a[text() = 'Open']]//a[text() = 'Edit']";
+        DriverFactory.getDriver().findElement(By.xpath(path)).click();
+        path = "//*[@id=\"delete-workflow\"]//div[label[text() = \"Step Name\"]]/input";
+        DriverFactory.getDriver().findElement(By.xpath(path)).sendKeys(newStartPoint);
+        path = "//*[@id=\"delete-workflow\"]//div[label[text() = \"Linked Status\"]]/select";
+        Select statusDropDownMenu = new Select(DriverFactory.getDriver().findElement(By.xpath(path)));
+        statusDropDownMenu.selectByVisibleText(newStartPoint);
+        path = "//*[@id=\"delete-workflow-submit\"]";
+        DriverFactory.getDriver().findElement(By.xpath(path)).click();
+
     }
 }

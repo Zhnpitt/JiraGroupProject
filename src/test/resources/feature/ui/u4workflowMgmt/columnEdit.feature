@@ -30,5 +30,5 @@ Feature: Login s an admin user and edit columns in the Scrum board
 
 
     Examples:
-      | projectName        | columnName | category     | newColumnName |
-      | "Workflow project" | "column 1" | "In process" | 'Column new'  |
+      | projectName   | columnName | category     | newColumnName |
+      | "projectName" | "column 1" | "In process" | 'Column new'  |

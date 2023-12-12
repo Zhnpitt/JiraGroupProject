@@ -29,8 +29,8 @@ public class LoginStepDef{
 
     @Given("I visit the Login page")
     public void iVisitTheLoginPage(){
-        DriverFactory.getDriver().navigate().to(URL.DashBoard.toString());
-        //loginPO = new LoginPO();
+        DriverFactory.getDriver().manage().deleteAllCookies();
+        DriverFactory.getDriver().navigate().to(URL.Login.toString());
     }
 
     @When("I enter the admin username and password")
