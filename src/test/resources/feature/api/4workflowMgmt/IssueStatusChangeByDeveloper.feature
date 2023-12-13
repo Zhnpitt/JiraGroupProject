@@ -4,10 +4,8 @@ Feature: Issue management
 #assin the workflow to project
 #Adam smith user
 
-
-
   Scenario Outline: As a developer user, I can change the status of an issue from “To Do” to “In Progress”
-    When admin user create a issue in project with projectKey PROJ
+    Given admin user create a issue in project with projectKey PROJ
     When I login with <developerUsername> and <developerPassword>
     Then the response status code should be 200
     When I find the <prevStatus> status issue in project with projectKey PROJ

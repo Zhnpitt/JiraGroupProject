@@ -4,6 +4,7 @@ import apiTest.niuAPI.IssueAPI;
 import apiTest.niuAPI.SearchAPI;
 import apiTest.niuAPI.SessionAPI;
 import apiTest.niuAPI.UserAPI;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
@@ -43,7 +44,7 @@ public class WorkflowMgmtStepDef{
         curResponse.set(sessionAPI.adminLoginWithCredential());
     }
 
-    @When("admin user create a issue in project with projectKey {}")
+    @Given("admin user create a issue in project with projectKey {}")
     public void adminUserCreateAIssueInProjectWithProjectKeyPROJ(String projectKey){
         curResponse.set(issueAPI.createIssue(sampleIssue(projectKey)));
     }
