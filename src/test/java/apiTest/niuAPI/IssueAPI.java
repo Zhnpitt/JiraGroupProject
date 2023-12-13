@@ -1,5 +1,6 @@
 package apiTest.niuAPI;
 
+import apiTest.stepDef.a4workflowMgmt.WorkflowMgmtStepDef;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 import utils.AdminProperties;
@@ -26,7 +27,6 @@ public class IssueAPI extends BaseAPI{
     //GET /rest/api/2/issue/{issueIdOrKey}
     public Response getIssue(JSONObject body, String issueIdOrKey){
         Response response = given(requestSpec)
-              .cookies(cookies)
               .pathParam("issueIdOrKey", issueIdOrKey)
               .body(body.toString())
               .when()
@@ -39,7 +39,7 @@ public class IssueAPI extends BaseAPI{
     //GET /rest/api/2/issue/{issueIdOrKey}/transitions
     public Response getTransitions(String issueIdOrKey){
         Response response = given(requestSpec)
-              .cookies(cookies)
+              .auth().preemptive().basic(AdminProperties.getAdminUsername(), AdminProperties.getAdminPassword())
               .pathParam("issueIdOrKey", issueIdOrKey)
               .when()
               .get("{issueIdOrKey}/transitions");
@@ -49,9 +49,11 @@ public class IssueAPI extends BaseAPI{
 
     //POST /rest/api/2/issue/{issueIdOrKey}/transitions
     public Response doTransition(String issueIdOrKey, JSONObject body){
+
         Response response = given(requestSpec)
+              .auth().preemptive().basic(WorkflowMgmtStepDef.curUsername.get(), WorkflowMgmtStepDef.curPassword.get())
               .pathParam("issueIdOrKey", issueIdOrKey)
-              .body(body)
+              .body(body.toString())
               .when()
               .post("{issueIdOrKey}/transitions");
         response.then().statusCode(204);

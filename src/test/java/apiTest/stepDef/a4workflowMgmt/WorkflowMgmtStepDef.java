@@ -13,10 +13,11 @@ import java.util.List;
 import java.util.Map;
 
 public class WorkflowMgmtStepDef{
-    public static final ThreadLocal<Response> curResponse = new ThreadLocal<>();
-    public static final ThreadLocal<String> issueKey = new ThreadLocal<>();
-    public static final ThreadLocal<String> issueId = new ThreadLocal<>();
-    private static final ThreadLocal<Map<String, String>> cookie = new ThreadLocal<Map<String, String>>();
+    private static final ThreadLocal<Response> curResponse = new ThreadLocal<>();
+    private static final ThreadLocal<String> issueKey = new ThreadLocal<>();
+    private static final ThreadLocal<String> issueId = new ThreadLocal<>();
+    public static ThreadLocal<String> curUsername = new ThreadLocal<>();
+    public static ThreadLocal<String> curPassword = new ThreadLocal<>();
     private final UserAPI userAPI = new UserAPI();
     private final SessionAPI sessionAPI = new SessionAPI();
     private final IssueAPI issueAPI = new IssueAPI();
@@ -31,9 +32,10 @@ public class WorkflowMgmtStepDef{
 
     @When("I login with {string} and {string}")
     public void theUserLoginWithUsernameAndPassword(String username, String password){
+        this.curUsername.set(username);
+        this.curPassword.set(password);
         curResponse.set(sessionAPI.loginWithCredential(username, password));
-        Map<String, String> cookies = curResponse.get().getCookies();
-        System.out.println(cookies);
+
     }
 
     @When("I log in as admin user")
@@ -77,34 +79,32 @@ public class WorkflowMgmtStepDef{
         return jsonObject;
     }
 
-    @When("I change the issue status from {string} to {string}")
-    public void iChangeTheIssueStatusFromPrevStatusToNextStatus(String prevStatus, String nextStatus){
-        issueAPI.setCookies(curResponse.get().getCookies());
+
+    @When("I find the {string} status issue in project with projectKey {}")
+    public void iFindThePrevStatusIssueInProjectWithProjectKeyPROJ(String prevStatus, String projectKey){
+        curResponse.set(findIssueInProject(prevStatus, projectKey));
+        List<String> s = curResponse.get().jsonPath().getList("issues.key", String.class);
+        issueId.set(curResponse.get().jsonPath().getList("issues.id", String.class).get(0));
+    }
+
+    private Response findIssueInProject(String prevStatus, String projectKey){
+        String status = "status = \"" + prevStatus + "\"";
+        String project = "project = " + projectKey;
+        String jql = status + " AND " + project;
+        return searchAPI.search(jql);
+    }
+
+    @When("I change the issue status by {string}")
+    public void iChangeTheIssueStatusByTransitionName(String transitionName){
         Response transitionsResponse = issueAPI.getTransitions(issueId.get());
-        String transitionId = transitionsResponse.jsonPath().getString("transitions.find { it.name == '" + nextStatus + "' }.id");
+
+        String transitionId = transitionsResponse.jsonPath().getString("transitions.find { it.name == '" + transitionName + "' }.id");
 
         JSONObject transitionBody = new JSONObject();
         JSONObject idJson = new JSONObject();
         idJson.put("id", transitionId);
         transitionBody.put("transition", idJson);
+
         curResponse.set(issueAPI.doTransition(issueId.get(), transitionBody));
-    }
-
-    @When("I find the {string} status issue in project with projectKey {}")
-    public void iFindThePrevStatusIssueInProjectWithProjectKeyPROJ(String prevStatus, String projectKey){
-        findIssueInProject(prevStatus, projectKey);
-        List<String> s = curResponse.get().jsonPath().getList("issues.key", String.class);
-        issueId.set(curResponse.get().jsonPath().getList("issues.id", String.class).get(0));
-    }
-
-    private void findIssueInProject(String prevStatus, String projectKey){
-        String status = "status = \"" + prevStatus + "\"";
-        String project = "project = " + projectKey;
-        String jql = status + " AND " + project;
-
-        Map<String, String> cookies = curResponse.get().getCookies();
-        searchAPI.setCookies(curResponse.get().getCookies());
-        curResponse.set(searchAPI.search(jql));
-
     }
 }

@@ -11,8 +11,9 @@ Feature: User management
     Then the response status code should be 201
 
     Examples:
-      | userName  | fullName               | email                   | password      |
-      | "charlie" | "Charlie of Atlassian" | "charlie@atlassian.com" | "abracadabra" |
+      | userName     | fullName               | email                   | password      |
+      | "charlie"    | "Charlie of Atlassian" | "charlie@atlassian.com" | "abracadabra" |
+      | "Adam Smith" | "Adam Smith"           | "adamsmith@gmail.com"   | "password123" |
 
   Scenario Outline: deactivate
     #deactivate

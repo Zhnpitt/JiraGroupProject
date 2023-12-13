@@ -44,7 +44,6 @@ public class UserMgmtStepDef{
         userJson.put("emailAddress", emailAddress);
         userJson.put("displayName", fullName);
         userJson.put("applicationKeys", applicationKeys);
-        userAPI.setCookies(curResponse.get().getCookies());
         curResponse.set(userAPI.createUser(userJson));
     }
 
@@ -85,7 +84,6 @@ public class UserMgmtStepDef{
 
     @When("I add user {string} to group {string}")
     public void iAddTheUserUserNameToGroupUserGroup(String userName, String userGroup){
-        groupAPI.setCookies(curResponse.get().getCookies());
         JSONObject body = new JSONObject();
         body.put("name", userName);
         curResponse.set(groupAPI.addUserToGroup(userGroup, body));
