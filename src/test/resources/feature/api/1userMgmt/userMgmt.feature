@@ -1,5 +1,8 @@
 Feature: User management
-  #prerequiste : userGroup "group-4"
+  #prerequiste :
+  # userGroup "group-4"
+  #Adam Smith
+  
   Background:
   #login
     When I log in as admin user
