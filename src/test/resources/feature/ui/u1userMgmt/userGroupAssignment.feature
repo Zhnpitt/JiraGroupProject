@@ -1,6 +1,6 @@
 Feature: User Group Assignment
 
-  Background: Login in as an administrator and navigate to user management page
+  Background: Login as an administrator and navigate to user management page
     Given I visit the login page
     When I enter the admin username and password
     And I click the login button
