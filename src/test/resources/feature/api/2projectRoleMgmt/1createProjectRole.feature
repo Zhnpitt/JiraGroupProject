@@ -9,3 +9,14 @@ Feature: I want to test to do item CRUD functionality with create project role
       | Team lead   | team lead     |
       | Developer   | developer     |
       | QA          | QA            |
+
+
+  #prerequite:
+    # no role with same name is creates
+  #API:
+    #POST /rest/api/2/role
+  #Body/Param:
+    # public class ProjectRole {
+    #    private String name;
+    #    private String description;
+    #}

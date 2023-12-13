@@ -14,3 +14,4 @@ Feature: I want to test to do item CRUD functionality with add existing user to 
       | Cindy Lee  | Developer |
       | Diana West | QA        |
 
+  # automatically done

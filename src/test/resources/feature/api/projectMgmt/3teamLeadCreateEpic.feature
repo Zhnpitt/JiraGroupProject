@@ -10,3 +10,22 @@ Feature: I want to test to do item CRUD functionality with create different epic
       | Epic         | Backend dev   | PROJ  |
       | Epic         | UI/UX design  | PROJ  |
       | Epic         | Testing       | PROJ  |
+
+  #prerequite:
+    #screen setup
+  #API:
+    #POST /rest/api/2/issue
+  #Body:
+    # {
+    #  "fields": {
+    #    "project": {
+    #      "key":
+    #    },
+    #    "summary": ,
+    #    "description": ,
+    #    "issuetype": {
+    #      "name":
+    #    }
+    #    "customfield_10104":
+    #  }
+    #}

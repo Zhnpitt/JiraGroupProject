@@ -12,5 +12,14 @@ Feature: I want to grant permissions to certain project role
       |projectrole      | Developer   | RESOLVE_ISSUES   |
       |projectrole      | QA          | CLOSE_ISSUES     |
 
-
+  #prerequite:
+    # a permission scheme and roles are created
+  #API:
+    #POST /rest/api/2/permissionscheme/{schemeId}/permission
+    #GET /rest/api/2/project/{projectKey}/role
+    #GET /rest/api/2/permissionscheme
+  #Body/Param:
+    # Permission key
+    # Role ID
+    # Scheme ID
 

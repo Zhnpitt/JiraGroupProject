@@ -60,11 +60,11 @@ public class ProjectRoleMgmtStepDef {
     }
 
     //add existing user to a project role
-    @When("Admin send a request with User Name {} and role name {}")
+    @When("Admin add a User Name {} to a role name {}")
     public void adminSendUserNameAndRoleID(String userName, String roleName){
         //get user key and role id
         String userKey = projectRoleAPI.getUserKey(userName);
-        String ID = projectRoleAPI.getRoleID(roleName);
+        int ID = projectRoleAPI.getRoleID2(roleName);
 
         System.out.println(userName);
         System.out.println(userKey);
@@ -148,7 +148,6 @@ public class ProjectRoleMgmtStepDef {
         if (response.getStatusCode() >= 400) {
             System.out.println("Error: " + response.getBody().asString());
         }
-
 
         curResponse.set(response);
     }

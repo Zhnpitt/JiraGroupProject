@@ -55,6 +55,22 @@ public class ProjectRoleAPI extends BaseAPI {
         String ID = roleURL.substring(roleURL.lastIndexOf('/') + 1);
         return ID;
     }
+
+    public int getRoleID2(String roleName){
+        Response response = given(requestSpec)
+                .auth().preemptive().basic("zhoulikekk", "Whou3344603~")
+                .when()
+                .get("http://localhost:8080/rest/api/2/role");
+
+        JSONArray jsonArray = new JSONArray(response.asString());
+        for (int i = 0; i < jsonArray.length(); i++){
+            JSONObject curOBJ = jsonArray.getJSONObject(i);
+            if((curOBJ.get("name")).equals(roleName)){
+                return curOBJ.getInt("id");
+            }
+        }
+        return -1;
+    }
     public String getUserKey(String userName){
         String paramString = "?username=" + userName;
         Response response = given(requestSpec)
@@ -69,7 +85,7 @@ public class ProjectRoleAPI extends BaseAPI {
         return userKey;
 
     }
-    public Response addUserToRole(String userKey, String id){
+    public Response addUserToRole(String userKey, int id){
 
         String[] applicationKeys = {userKey};
         JSONObject jsonObject = new JSONObject();

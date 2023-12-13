@@ -9,3 +9,12 @@ Feature: I want to test to do item CRUD functionality with filter user by role
       | Team lead  | team lead       |
       | Developer  | developer       |
       | QA         | QA              |
+
+  #prerequite:
+    # a project with roles and users
+  #API:
+    #GET /rest/api/2/project/{projectIdOrKey}/role/{id}
+    #GET /rest/api/2/project/{projectKey}/role
+  #Body/Param:
+    # Project Key
+    # Project Role ID
