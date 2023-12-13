@@ -2,6 +2,7 @@ package apiTest.stepDef.a2projectRoleMgmt;
 
 import apiTest.enity.Permission;
 import apiTest.enity.PermissionScheme;
+import apiTest.enity.Project;
 import apiTest.enity.ProjectRole;
 import apiTest.niuAPI.BaseAPI;
 import apiTest.zhouAPI.ProjectRoleAPI;
@@ -14,6 +15,31 @@ public class ProjectRoleMgmtStepDef {
     public static final ThreadLocal<Response> curResponse = new ThreadLocal<>();
     private final BaseAPI baseAPI = new BaseAPI();
     private final ProjectRoleAPI projectRoleAPI = new ProjectRoleAPI();
+
+    //create a project
+    @When("Admin create a project with name {} and key {}")
+    public void adminCreateProjectWithNameAndKey(String name, String key){
+
+        Project project = Project.builder()
+                .name(name)
+                .key(key)
+                .projectTypeKey("software")
+                .lead("John Doe")
+                .build();
+        Response response = projectRoleAPI.createAProject(project);
+        curResponse.set(response);
+    }
+
+    //assign a scheme to project
+    @When("I can apply an existing permission scheme {} to a project {}")
+    public void adminApplyAnPermissionScheme(String schemeName, String projectKey){
+        //get scheme ID
+        int schemeID = projectRoleAPI.getPermissionSchemeID(schemeName);
+        System.out.println("Scheme ID is " + schemeID);
+
+        Response response = projectRoleAPI.upDateProjectScheme(schemeID, projectKey);
+        curResponse.set(response);
+    }
 
     //create project role
     @When("Admin send request with role name {} and role description {}")
@@ -36,18 +62,24 @@ public class ProjectRoleMgmtStepDef {
     //add existing user to a project role
     @When("Admin send a request with User Name {} and role name {}")
     public void adminSendUserNameAndRoleID(String userName, String roleName){
-        Response response = projectRoleAPI.getRolesResponse();
-        String ID = projectRoleAPI.getRoleID(response, roleName);
+        //get user key and role id
+        String userKey = projectRoleAPI.getUserKey(userName);
+        String ID = projectRoleAPI.getRoleID(roleName);
 
-        Response role = projectRoleAPI.addUserToRole(userName, ID);
+        System.out.println(userName);
+        System.out.println(userKey);
+        System.out.println(roleName);
+        System.out.println(ID);
+
+        Response role = projectRoleAPI.addUserToRole(userKey, ID);
+
         curResponse.set(role);//set and get
     }
 
     //filter user by role
     @When("Admin filter users with role name {}")
     public void adminFilterUsersWithRoleName(String roleName){
-        Response response = projectRoleAPI.getRolesResponse();
-        String ID = projectRoleAPI.getRoleID(response, roleName);
+        String ID = projectRoleAPI.getRoleID(roleName);
 
         Response response2 = projectRoleAPI.filterUserByRole(ID);
         curResponse.set(response2);
@@ -69,14 +101,13 @@ public class ProjectRoleMgmtStepDef {
     }
 
     //grant permissions to certain project role
-    @When("Admin send request with type {},  role name {} and permission {}")
+    @When("Admin grant a role permission with type {},  role name {} and permission {}")
     public void adminSendTypeRoleNamePermission(String type, String roleName, String permission){
         //get role ID
-        Response response = projectRoleAPI.getRolesResponse();
-        String roleID = projectRoleAPI.getRoleID(response, roleName);
+        String roleID = projectRoleAPI.getRoleID(roleName);
         System.out.println("role ID is " + roleID);
         //get scheme ID
-        int schemeID = projectRoleAPI.getPermissionSchemeID("asdasdw");
+        int schemeID = projectRoleAPI.getPermissionSchemeID("PS-1");
         System.out.println("Scheme ID is " + schemeID);
 
         Permission permissionOBJ = Permission.builder()
@@ -92,10 +123,10 @@ public class ProjectRoleMgmtStepDef {
     }
 
     //grant default permissions to all
-    @When("Admin send request with type {} and permission {}")
+    @When("Admin grant a default permission with type {} and permission {}")
     public void adminSendTypeAndPrmission(String type, String permission){
         //get scheme ID
-        int schemeID = projectRoleAPI.getPermissionSchemeID("asdasdw");
+        int schemeID = projectRoleAPI.getPermissionSchemeID("PS-1");
         System.out.println("Scheme ID is " + schemeID);
 
         Permission permissionOBJ = Permission.builder()
@@ -107,6 +138,19 @@ public class ProjectRoleMgmtStepDef {
 
         Response response2 = projectRoleAPI.createPermissionGrant(permissionOBJ, schemeID);
         curResponse.set(response2);
+    }
+
+    //create epics
+    @When("team lead send a request with issue type {} and summary {} and {}")
+    public void teamLeadSendIssueTypeAndSummary(String type, String summary, String projectKey){
+        Response response = projectRoleAPI.createEpic(type, summary, projectKey);
+
+        if (response.getStatusCode() >= 400) {
+            System.out.println("Error: " + response.getBody().asString());
+        }
+
+
+        curResponse.set(response);
     }
 
 }

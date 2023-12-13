@@ -3,11 +3,14 @@ package apiTest.zhouAPI;
 import apiTest.constants.ApiURL;
 import apiTest.enity.Permission;
 import apiTest.enity.PermissionScheme;
+import apiTest.enity.Project;
 import apiTest.enity.ProjectRole;
 import apiTest.niuAPI.BaseAPI;
 import io.restassured.response.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,16 @@ public class ProjectRoleAPI extends BaseAPI {
 //        requestSpec.basePath("/rest/api/2/project");
 //    }
 
+    //create a project
+    public Response createAProject(Project project){
+        Response response = given(requestSpec)
+                .auth().preemptive().basic("zhoulikekk", "Whou3344603~")
+                .body(project)
+                .post(ApiURL.CreateProject.toString());
+        response.then()
+                .spec(responseSpec);
+        return response;
+    }
     public Response sendNewRole(ProjectRole projectRole){
         Response response = given(requestSpec)
                 .auth().preemptive().basic("zhoulikekk", "Whou3344603~")
@@ -31,41 +44,47 @@ public class ProjectRoleAPI extends BaseAPI {
         System.out.println(projectRole);
         return response;
     }
-
-    public Response getRolesResponse(){
+    public String getRoleID(String roleName){
         Response response = given(requestSpec)
                 .auth().preemptive().basic("zhoulikekk", "Whou3344603~")
                 .when()
                 .get("http://localhost:8080/rest/api/2/project/PROJ/role");
-        response.then()
-                .spec(responseSpec);
 
-        return response;
-    }
-    public String getRoleID(Response response, String roleName){
         JSONObject jsonObject = new JSONObject(response.asString());
         String roleURL = jsonObject.getString(roleName);
         String ID = roleURL.substring(roleURL.lastIndexOf('/') + 1);
         return ID;
     }
+    public String getUserKey(String userName){
+        String paramString = "?username=" + userName;
+        Response response = given(requestSpec)
+                .auth().preemptive().basic("zhoulikekk", "Whou3344603~")
+                .when()
+                .get(ApiURL.GetUserKey.toString()+paramString);
 
-    public Response addUserToRole(String userName, String id){
+        JSONArray jsonArray = new JSONArray(response.asString());
+        JSONObject jsonObject = (JSONObject) jsonArray.get(0);
+        String userKey = jsonObject.getString("key");
 
-        String[] applicationKeys = {userName};
+        return userKey;
+
+    }
+    public Response addUserToRole(String userKey, String id){
+
+        String[] applicationKeys = {userKey};
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("user", applicationKeys);
 
         Response response = given(requestSpec)//base + URL
                 .auth().preemptive().basic("zhoulikekk", "Whou3344603~")
                 .body(jsonObject.toString())
-                .pathParam("projectIdOrKey", "PROJ")
                 .pathParam("id",id)
                 .when()
                 .post(ApiURL.AddUserToRole.toString());
+        //AddUserToRole("/rest/api/2/role/{id}/actors"),
         response.then().log().body();
         return response;
     }
-
     public Response filterUserByRole(String id){
         Response response = given(requestSpec)
                 .auth().preemptive().basic("zhoulikekk", "Whou3344603~")
@@ -77,7 +96,6 @@ public class ProjectRoleAPI extends BaseAPI {
                 .spec(responseSpec);
         return response;
     }
-
     public List<String> findNameInResponse(String response) {
         List<String> result = new ArrayList<>();
         // 将响应字符串转换为 JSONObject
@@ -95,7 +113,6 @@ public class ProjectRoleAPI extends BaseAPI {
         }
         return result;
     }
-
     private static int permissionSchemeID;
     public Response createPermissionScheme(PermissionScheme permissionScheme){
         Response response = given(requestSpec)
@@ -130,7 +147,6 @@ public class ProjectRoleAPI extends BaseAPI {
         }
         return -1;
     }
-
     public Response createPermissionGrant(Permission permission, int schemeID){
         //CreatePermissionGrant("/rest/api/2/permissionscheme/{schemeId}/permission"),
         Response response = given(requestSpec)
@@ -144,4 +160,51 @@ public class ProjectRoleAPI extends BaseAPI {
 
         return response;
     }
+    public Response upDateProjectScheme(int SchemeID, String projectKey){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("permissionScheme", SchemeID);
+
+        Response response = given(requestSpec)
+                .auth().preemptive().basic("zhoulikekk", "Whou3344603~")
+                .body(jsonObject.toString())
+                .pathParam("projectIdOrKey", projectKey)
+                .when()
+                .put(ApiURL.UpdateScheme.toString());
+
+        response.then()
+                .spec(responseSpec);
+
+        return response;
+
+    }
+
+    //create Epics
+    public Response createEpic(String type, String summary, String projectKey){
+
+        JSONObject jsonObject = new JSONObject();
+
+        JSONObject fields = new JSONObject();
+        JSONObject project = new JSONObject();
+        JSONObject issueType = new JSONObject();
+
+
+        project.put("key", projectKey);
+        issueType.put("name", type);
+
+        fields.put("project", project);
+        fields.put("issuetype", issueType);
+        fields.put("summary", summary);
+        fields.put("customfield_10104",summary);
+        jsonObject.put("fields",fields);
+
+
+        Response response = given(requestSpec)
+                .auth().preemptive().basic("John Doe", "password123")
+                .body(jsonObject.toString())
+                .when()
+                .post(ApiURL.CreateIssue.toString());
+        response.then().spec(responseSpec);
+        return response;
+    }
+
 }

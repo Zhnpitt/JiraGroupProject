@@ -5,11 +5,12 @@ public enum ApiURL {
 
     //create and assign role
     CreatePRJRole("/rest/api/2/role"),
-    AddUserToRole("/rest/api/2/project/{projectIdOrKey}/role/{id}"),
+    AddUserToRole("/rest/api/2/role/{id}/actors"),
 
     //filter users by role
     GetRolesInPRJ("/rest/api/2/project/{projectIdOrKey}/role"),
     GetUserInRole("/rest/api/2/project/{projectIdOrKey}/role/{id}"),
+    GetUserKey("/rest/api/2/user/search"),
 
     //create permission scheme and grant
     CreatePermissionScheme("/rest/api/2/permissionscheme"),
@@ -17,7 +18,7 @@ public enum ApiURL {
 
     //project mgmt
     CreateProject("/rest/api/2/project"),
-    AssignPermissionScheme("Assign permission scheme"),
+    UpdateScheme("/rest/api/2/project/{projectIdOrKey}"),
     CreateIssue("/rest/api/2/issue");
 
 

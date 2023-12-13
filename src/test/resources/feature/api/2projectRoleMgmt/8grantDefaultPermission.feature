@@ -2,13 +2,15 @@ Feature: I want to grant default permissions to all
 
   Scenario Outline: grant default permissions to all
     #grant project role
-    When Admin send request with type <type> and permission <permission>
+    When Admin grant a default permission with type <type> and permission <permission>
     Then the project role mgmt response status code should be 201
     #OR 409 ? Returned if a role with given name already exists.
     Examples:
 
       |type             |  permission             |
       |applicationRole  | BROWSE_PROJECTS         |
+      |applicationRole  | EDIT_SPRINT_NAME_AND_GOAL_PERMISSION|
+      |applicationRole  | START_STOP_SPRINTS_PERMISSION|
       |applicationRole  | VIEW_DEV_TOOLS          |
       |applicationRole  | VIEW_READONLY_WORKFLOW  |
       |applicationRole  | ASSIGNABLE_USER         |
