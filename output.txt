@@ -1,0 +1,122 @@
+Folder PATH listing
+Volume serial number is 4EC8-3A1A
+C:.
++---.idea
+¦   +---codeStyles
++---src
+¦   +---test
+¦       +---java
+¦       ¦   +---apiTest
+¦       ¦   ¦   +---api
+¦       ¦   ¦   +---enity
+¦       ¦   ¦   +---runner
+¦       ¦   ¦       +---a1userMgmt
+¦       ¦   ¦   ¦   +---a2projectRoleMgmt
+¦       ¦   ¦   ¦   +---a3groupMgmt
+¦       ¦   ¦   ¦   +---a4workflowMgmt
+¦       ¦   ¦   ¦   +---a5projectMgmt
+¦       ¦   ¦   ¦   +---a6issueMgmt
+¦       ¦   ¦   ¦   +---a7sprintMgmt
+¦       ¦   ¦   +---stepDef
+¦       ¦   ¦       +---a1userMgmt
+¦       ¦   ¦       +---a2projectRoleMgmt
+¦       ¦   ¦       +---a3groupMgmt
+¦       ¦   ¦       +---a4workflowMgmt
+¦       ¦   ¦       +---a5projectMgmt
+¦       ¦   ¦       +---a6issueMgmt
+¦       ¦   ¦       +---a7sprintMgmt
+¦       ¦   +---uiTest
+¦       ¦   ¦   +---constants
+¦       ¦   ¦   +---drivers
+¦       ¦   ¦   +---pageObjects
+¦       ¦   ¦   +---runner
+¦       ¦   ¦   ¦   +---u1userMgmt
+¦       ¦   ¦   ¦   +---u2projectRoleMgmt
+¦       ¦   ¦   ¦   +---u3groupMgmt
+¦       ¦   ¦   ¦   +---u4workflowMgmt
+¦       ¦   ¦   ¦   +---u5projectMgmt
+¦       ¦   ¦   ¦   +---u6issueMgmt
+¦       ¦   ¦   ¦   +---u7sprintMgmt
+¦       ¦   ¦   +---stepDef
+¦       ¦   ¦       +---adminMenu
+¦       ¦   ¦       +---firstTimeLogin
+¦       ¦   ¦       +---groupMgmt
+¦       ¦   ¦       +---issueMgmt
+¦       ¦   ¦       +---login
+¦       ¦   ¦       +---projectMgmt
+¦       ¦   ¦       +---projectRoleMgmt
+¦       ¦   ¦       +---sprintMgmt
+¦       ¦   ¦       +---userMgmt
+¦       ¦   ¦       +---workflowMgmt
+¦       ¦   +---utils
+¦       +---resources
+¦           +---feature
+¦           ¦   +---api
+¦           ¦   ¦   +---1userMgmt
+¦           ¦   ¦   +---2projectRoleMgmt
+¦           ¦   ¦   +---3groupMgmt
+¦           ¦   ¦   +---4workflowMgmt
+¦           ¦   ¦   +---5projectMgmt
+¦           ¦   ¦   +---6issueMgmt
+¦           ¦   ¦   +---7sprintMgmt
+¦           ¦   +---ui
+¦           ¦       +---u1userMgmt
+¦           ¦       +---u2projectRoleMgmt
+¦           ¦       +---u3groupMgmt
+¦           ¦       +---u4workflowMgmt
+¦           ¦       +---u5projectMgmt
+¦           ¦       +---u6issueMgmt
+¦           ¦       +---u7sprintMgmt
+¦           +---testdata
+¦           +---xml
++---target
+    +---generated-test-sources
+    ¦   +---test-annotations
+    +---test-classes
+        +---apiTest
+        ¦   +---api
+        ¦   +---enity
+        ¦   +---niuAPI
+        ¦   +---stepDef
+        ¦       +---a1userMgmt
+        ¦       +---a4workflowMgmt
+        +---feature
+        ¦   +---api
+        ¦   ¦   +---1userMgmt
+        ¦   ¦   +---4workflowMgmt
+        ¦   +---ui
+        ¦       +---ignored
+        ¦       +---u1userMgmt
+        ¦       ¦   +---firstTimeLogin
+        ¦       +---u2projectRoleMgmt
+        ¦       +---u3groupMgmt
+        ¦       +---u4workflowMgmt
+        ¦       +---u5projectMgmt
+        ¦       +---u6issueMgmt
+        ¦       +---u7sprintMgmt
+        +---testdata
+        +---uiTest
+        ¦   +---constants
+        ¦   +---drivers
+        ¦   +---pageObjects
+        ¦   +---runner
+        ¦   ¦   +---u1userMgmt
+        ¦   ¦   +---u2projectRoleMgmt
+        ¦   ¦   +---u3groupMgmt
+        ¦   ¦   +---u4workflowMgmt
+        ¦   ¦   +---u5projectMgmt
+        ¦   ¦   +---u6issueMgmt
+        ¦   ¦   +---u7sprintMgmt
+        ¦   +---stepDef
+        ¦       +---adminMenu
+        ¦       +---firstTimeLogin
+        ¦       +---groupMgmt
+        ¦       +---issueMgmt
+        ¦       +---login
+        ¦       +---projectMgmt
+        ¦       +---projectRoleMgmt
+        ¦       +---sprintMgmt
+        ¦       +---userMgmt
+        ¦       +---workflowMgmt
+        +---utils
+        +---xml

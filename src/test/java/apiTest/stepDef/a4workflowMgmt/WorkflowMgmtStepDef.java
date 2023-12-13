@@ -50,7 +50,7 @@ public class WorkflowMgmtStepDef{
     }
 
     private JSONObject sampleIssue(String projectKey){
-        String issueSummary = "Your Issue Summary";
+        String issueSummary = "Issue with same name";
         String issueDescription = "Your Issue Description";
         String issueTypeName = "Task";
         String priorityName = "High";

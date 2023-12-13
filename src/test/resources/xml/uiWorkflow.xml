@@ -8,7 +8,7 @@
 
             <!--            User management (2)-->
             <!--            After creation I can deactivate a user and once users are deactivated, they cannot
-login anymore and I can view the user in the result set after I apply the user status filter-->
+               login anymore and I can view the user in the result set after I apply the user status filter-->
             <class name="uiTest.runner.u1userMgmt.TestUserDeactivationRunner"/>
 
             <!--            Group management (1)(2)(3)-->
