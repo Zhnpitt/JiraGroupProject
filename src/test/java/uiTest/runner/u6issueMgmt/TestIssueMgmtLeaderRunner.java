@@ -9,4 +9,5 @@ import uiTest.runner.TestRunner;
       glue = {"uiTest.stepDef.issueMgmt", "uiTest.stepDef.login"}
 )
 public class TestIssueMgmtLeaderRunner extends TestRunner{
+
 }

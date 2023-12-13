@@ -83,7 +83,7 @@ public class IssueMgmtDevPO extends BasePO{
 //        String updatedText = paragraphElement.getText();
 //        System.out.println("Updated text of <p>: " + updatedText);
 //        getDriver().switchTo().defaultContent();
-
+//
 
         getDriver().findElement(By.xpath("//div[@id = \"comment-wiki-edit\"]/textarea")).sendKeys(message);
     }

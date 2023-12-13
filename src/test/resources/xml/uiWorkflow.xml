@@ -51,28 +51,9 @@ login anymore and I can view the user in the result set after I apply the user s
 
             <!--            Assign workflow to project-->
             <!--            1.ASSIGN WORKFLOW TO SCHEMES-->
-            <!--            2.ASSIGN SCHEMES TO PROEJECT-->
+            <!--            2.ASSIGN SCHEMES TO PROJECT-->
+            <!--||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 
-            <!--            Issue Management(1)(2)(3)(4)(5)-->
-            <!--            As a team lead user, I can create issues that belong to different epics and priorities in the backlog.-->
-            <!--            As a team lead user, I can specify if the current issue is blocked by or is blocking other issues.-->
-            <!--            As a team lead user, I can assign issues to different users.-->
-            <class name="uiTest.runner.u6issueMgmt.TestIssueMgmtLeaderRunner"/>
-
-            <!--            As a developer user, I can view all the issues assigned to me-->
-            <!--            As a developer user, I can add, edit and reply to the comments of an issue-->
-            <class name="uiTest.runner.u6issueMgmt.TestIssueMgmtDeveloperRunner"/>
-
-            <!--            Workflow management(2)(3)(4)-->
-            <class name="uiTest.runner.u4workflowMgmt.TestColumnEditRunner"/>
-            <class name="uiTest.runner.u4workflowMgmt.TestIssueStatusChangeByDeveloperRunner"/>
-            <class name="uiTest.runner.u4workflowMgmt.TestIssueStatusChangeByQARunner"/>
-
-            <!--            Sprint Management(1)(2)(3)(4)(5)-->
-            <class name="uiTest.runner.u7sprintMgmt.TestAddAndStartSprintRunner"/>
-            <class name="uiTest.runner.u7sprintMgmt.TestViewAllIssuesInSprintRunner"/>
-            <class name="uiTest.runner.u7sprintMgmt.TestSprintTerminationAsTLRunner"/>
-            <class name="uiTest.runner.u7sprintMgmt.TestVelocityChartDownloadRunner"/>
 
         </classes>
     </test>

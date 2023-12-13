@@ -88,9 +88,13 @@ public class ProjectContentPO extends BasePO{
     }
 
     public String getIssueStatus(String curStatus){
-        Duration duration = Duration.ofSeconds(3);
-        new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"gh\"]/div[@class = 'ghx-throbber']")));
-
+        //Duration duration = Duration.ofSeconds(3);
+        //new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"gh\"]/div[@class = 'ghx-throbber']")));
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         String path = "//*[@id=\"opsbar-transitions_more\"]";
         issueStatusBtn = DriverFactory.getDriver().findElement(By.xpath(path));
         String s = issueStatusBtn.findElement(By.xpath("./span")).getText();
