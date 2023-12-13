@@ -2,7 +2,7 @@ Feature: Issue management
 #pre:a empty project with key PROJ
 #create workflow
 #assin the workflow to project
-#Adam smith user
+#Adam Smith user
 
   Scenario Outline: As a developer user, I can change the status of an issue from “To Do” to “In Progress”
     Given admin user create a issue in project with projectKey PROJ
