@@ -2,6 +2,7 @@ package apiTest.niuAPI;
 
 import io.restassured.response.Response;
 import org.json.JSONObject;
+import utils.AdminProperties;
 
 import static io.restassured.RestAssured.given;
 
@@ -14,6 +15,7 @@ public class GroupAPI extends BaseAPI{
     //POST /rest/api/2/group/user
     public Response addUserToGroup(String groupName, JSONObject body){
         Response response = given(requestSpec)
+              .auth().preemptive().basic(AdminProperties.getAdminUsername(), AdminProperties.getAdminPassword())
               .queryParam("groupname", groupName)
               .body(body.toString())
               .when()
@@ -24,6 +26,7 @@ public class GroupAPI extends BaseAPI{
     //GET /rest/api/2/group/member
     public Response getUserFromGroup(String userGroup){
         Response response = given(requestSpec)
+              .auth().preemptive().basic(AdminProperties.getAdminUsername(), AdminProperties.getAdminPassword())
               .queryParam("groupname", userGroup)
               .when()
               .get("member");

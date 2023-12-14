@@ -11,7 +11,7 @@ Feature: As an admin user, I can create groups and assign existing users to diff
     And I click confirm in Administrator Access Page
     Then I should see user management page
 
-  Scenario: Create different groups
+  Scenario: Admin create different groups
     When I click groups button
     And I input new "Jira-group-1"
     And I click add group button
@@ -23,7 +23,7 @@ Feature: As an admin user, I can create groups and assign existing users to diff
     And I click add group button
     Then I can view the new created groups
 
-  Scenario: Assign existing users to different groups
+  Scenario: Admin assigns existing users to different groups
     When I click bulk Edit Group Members button
     And I input "Jira" in group selected area
     And I choose target group

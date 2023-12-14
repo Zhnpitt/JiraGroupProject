@@ -6,7 +6,7 @@ Feature: As an team lead, I can create different epics
     And I click the login button
     Then I should view the dashboard
 
-  Scenario: I can create different epics
+  Scenario: Team lead can create different epics
     When I click the project button in team lead dashboard
     #And I choose current project
     And I click View All Projects

@@ -2,7 +2,7 @@ Feature: User management
   #prerequiste :
   # userGroup "group-4"
   #Adam Smith
-  
+
   Background:
   #login
     When I log in as admin user
@@ -14,9 +14,10 @@ Feature: User management
     Then the response status code should be 201
 
     Examples:
-      | userName     | fullName               | email                   | password      |
-      | "charlie"    | "Charlie of Atlassian" | "charlie@atlassian.com" | "abracadabra" |
-      | "Adam Smith" | "Adam Smith"           | "adamsmith@gmail.com"   | "password123" |
+      | userName      | fullName               | email                   | password      |
+      | "charlie"     | "Charlie of Atlassian" | "charlie@atlassian.com" | "abracadabra" |
+      | "Adam Smith2" | "Adam Smith2"          | "adamsmith2@gmail.com"  | "password123" |
+      | "Diana West2" | "Diana West2"          | "dianawest2@gmail.com"  | "password123" |
 
   Scenario Outline: deactivate
     #deactivate
@@ -26,8 +27,8 @@ Feature: User management
     When the user login with <userName> and <password>
     Then the response status code should be 401
     Examples:
-      | userName  | fullName               | email                   | password      |
-      | "charlie" | "Charlie of Atlassian" | "charlie@atlassian.com" | "abracadabra" |
+      | userName  | password      |
+      | "charlie" | "abracadabra" |
 
    #find user by status
   Scenario Outline: find user by status
@@ -46,5 +47,5 @@ Feature: User management
     When I get users from group <userGroup>
     Then I should see <userName> in group result set
     Examples:
-      | userName     | userGroup |
-      | "Adam Smith" | "group-4" |
+      | userName      | userGroup      |
+      | "Adam Smith2" | "Jira-group-2" |

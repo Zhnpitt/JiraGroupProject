@@ -11,7 +11,7 @@ Feature: User Deactivation
     And I click confirm in Administrator Access Page
     Then I should see user management page
 
-  Scenario Outline: Admin deactivates a user
+  Scenario Outline: Admin deactivates a user and find user by status filter
     Given a user <username> exists in user browser table
     When I deactivate the user with the username <username>
     When  I visit the login page

@@ -12,18 +12,18 @@
             <!--            As a developer user, I can add, edit and reply to the comments of an issue-->
             <class name="uiTest.runner.u6issueMgmt.TestIssueMgmtDeveloperRunner"/>
 
-            <!--            Workflow management(2)(3)(4)-->
-            <!--            As an admin user, I can edit columns in the Scrum board so that I can view all the issues that belong to different status.-->
+            <!--            Workflow management(3)(4)-->
+
             <!--            As a developer user, I can change the status of an issue from “To Do” to “In Progress” and “Resolved”.-->
             <!--            As a QA user, I can change the status of an issue from “Resolved” to “Close”-->
-            <class name="uiTest.runner.u4workflowMgmt.TestColumnEditRunner"/>
+            <!--class name="uiTest.runner.u4workflowMgmt.TestColumnEditRunner"/-->
             <class name="uiTest.runner.u4workflowMgmt.TestIssueStatusChangeByDeveloperRunner"/>
             <class name="uiTest.runner.u4workflowMgmt.TestIssueStatusChangeByQARunner"/>
 
             <!--            Sprint Management(1)(2)(3)(4)(5)-->
-            <!--            As a team leader user, I can create and start a new sprint-->
-            <!--            As a team lead user, I can move issues from the backlog to the current sprint.-->
-            <!--            As a developer user, I can view all the issues in the current sprint As a team lead user, I can end the current active sprint-->
+            <!--            As a team leader user, I can create and start a new sprint && move issues from the backlog to the current sprint.-->
+            <!--            As a developer user, I can view all the issues in the current sprint-->
+            <!--            As a team lead user, I can end the current active sprint-->
             <!--            As a team lead user, I can download the velocity chart of the last 6 months as an image.-->
             <class name="uiTest.runner.u7sprintMgmt.TestAddAndStartSprintRunner"/>
             <class name="uiTest.runner.u7sprintMgmt.TestViewAllIssuesInSprintRunner"/>

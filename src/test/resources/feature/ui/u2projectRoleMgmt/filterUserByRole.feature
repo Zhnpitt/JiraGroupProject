@@ -6,7 +6,7 @@ Feature: After creation, I can filter users in a project based on their roles.
     And I click the login button
     Then I should view the dashboard
 
-  Scenario: After creation, I can filter users in a project based on their roles.
+  Scenario: Admin filters users in a project based on their roles.
     When I click the admin menu button third
     And I click the Projects button again
     And I choose a project

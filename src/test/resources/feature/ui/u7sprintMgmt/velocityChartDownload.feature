@@ -8,7 +8,7 @@ Feature: Log in as a team leader and download the velocity chart of the last 6
     And I click the login button
     Then I should view the dashboard
 
-  Scenario Outline:
+  Scenario Outline: Team lead and download the velocity chart of the last 6 months as an image
     When I click project in the header
     And I click View All Projects
     Then I should see BrowseProjects page

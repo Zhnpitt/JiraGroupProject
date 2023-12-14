@@ -117,9 +117,8 @@ public class ProjectContentPO extends BasePO{
         WebElement issue = DriverFactory.getDriver().findElement(By.xpath(path));
         ((JavascriptExecutor) DriverFactory.getDriver()).executeScript("arguments[0].scrollIntoView();", issue);
         Duration duration = Duration.ofSeconds(3);
-        //new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.invisibilityOfElementLocated(By.className("loading")));
-        new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"gh\"]/div[@class = 'ghx-throbber']")));
-
+        waitForElementToBeClickable(getDriver(), By.xpath(path), duration);
+        //new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"gh\"]/div[@class = 'ghx-throbber']")));
         DriverFactory.getDriver().findElement(By.xpath(path)).click();
 
     }
@@ -156,7 +155,7 @@ public class ProjectContentPO extends BasePO{
     }
 
     public void clickBoardBtn(){
-        Duration duration = Duration.ofSeconds(3);
+        Duration duration = Duration.ofSeconds(5);
         new WebDriverWait(DriverFactory.getDriver(), duration).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"gh\"]/div[@class = 'ghx-throbber']")));
         boardBtn.click();
     }
@@ -269,8 +268,6 @@ public class ProjectContentPO extends BasePO{
 //            actions.moveByOffset(xOffset, yOffset).pause(300); // Adjust the duration of the pause as needed
 //        }
 //        actions.release().build().perform();
-
-
     }
 
     public WebElement findColumnInMappingColumns(int index){
@@ -305,11 +302,24 @@ public class ProjectContentPO extends BasePO{
     }
 
     public void clickSwitchReportBtn(){
+
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         switchReportBtn.click();
     }
 
     public void clickVelocityChartInSwitchReportDropdown(){
-        velocityChartInSwitchReportDropdown.click();
+        try{
+            Thread.sleep(1000);
+            velocityChartInSwitchReportDropdown.click();
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
     }
 
 //    @FindBy(xpath = "")
@@ -327,6 +337,8 @@ public class ProjectContentPO extends BasePO{
     }
 
     public void downloadVelocityChart(String filename){
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(getDriver().findElement(By.xpath("//canvas"))));
         captureCanvasAsImage(DriverFactory.getDriver(), filename);
     }
 

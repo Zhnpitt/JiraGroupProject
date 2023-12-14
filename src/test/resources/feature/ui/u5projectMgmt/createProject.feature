@@ -6,7 +6,7 @@ Feature: As an admin user I can create a project
     And I click the login button
     Then I should view the dashboard
 
-  Scenario:I create a Scrum project
+  Scenario:Admin creates a Scrum project
     When I click the admin menu button
     And I click the Projects button
     And I setup the project with "projectName" and "projectKey"

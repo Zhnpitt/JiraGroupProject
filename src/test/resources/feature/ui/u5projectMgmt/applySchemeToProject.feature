@@ -6,7 +6,7 @@ Feature: As an admin user I can apply an existing permission scheme on our proje
     And I click the login button
     Then I should view the dashboard
 
-  Scenario:I apply an existing permission scheme on our project
+  Scenario:Admin applies an existing permission scheme on project
     When I click the admin menu button again
     And I click the Project button again
     And I select a project

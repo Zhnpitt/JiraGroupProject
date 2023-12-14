@@ -6,7 +6,7 @@ Feature: As an admin user, I can add user to the current project
     And I click the login button
     Then I should view the dashboard
 
-  Scenario: Admin add user to the current project
+  Scenario: Admin add users to the current project
     When I click the admin menu button third
     And I click the Projects button again
     And I choose a project

@@ -41,6 +41,7 @@ public class UserAPI extends BaseAPI{
     public Response findUsersByStatus(boolean status, String username){
         String param = status ? "includeActive" : "includeInactive";
         Response response = given(requestSpec)
+              .auth().preemptive().basic(AdminProperties.getAdminUsername(), AdminProperties.getAdminPassword())
               .queryParam("username", username)
               .queryParam(param, true)
               .when()

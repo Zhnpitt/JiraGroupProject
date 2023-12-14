@@ -6,7 +6,7 @@ Feature: As an admin user I can create the permission scheme
     And I click the login button
     Then I should view the dashboard
 
-  Scenario: test
+  Scenario: Admin user creates a permission scheme
     #create a permission scheme
     When I click the admin menu button
     And I click the issue button

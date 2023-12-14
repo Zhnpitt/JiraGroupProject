@@ -6,7 +6,7 @@ Feature: As an admin user I can create three project roles (team lead, developer
     And I click the login button
     Then I should view the dashboard
 
-  Scenario: Admin creates three project roles
+  Scenario: Admin creates three project roles: Team lead,Developer,QA
     When I click the admin menu button
     And I click the System button
     And I enter password in Administrator Access Page

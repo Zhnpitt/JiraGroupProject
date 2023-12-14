@@ -14,7 +14,7 @@ Feature: As a developer user, I can manage issues
     When I click assigned to me maximize button
     Then I should view all my issues "task1 by John"
 
-  Scenario: As a developer user, I can add, edit and reply to the comments of an issue
+  Scenario: As a developer user, I can add,edit and reply to the comments of an issue
     When I choose one issue
     And I click add comment
     And I leave a message "message from Adam"

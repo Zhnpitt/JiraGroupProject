@@ -34,15 +34,18 @@ public class IssueMgmtDevPO extends BasePO{
     @FindBy(className = "update-info")
     public WebElement editedSign;
 
-    @FindBy(xpath = "//div[@id='edit-comment']//button[@name = 'Save']")
+    @FindBy(xpath = "//button[normalize-space( text() ) = 'Save']")
     public WebElement saveBtn;
 
     public void clickSaveBtn(){
+
         try{
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
+//        Actions actions = new Actions(getDriver());
+//        actions.moveToElement(saveBtn).click().build().perform();
         saveBtn.click();
     }
 

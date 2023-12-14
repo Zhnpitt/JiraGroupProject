@@ -1,4 +1,4 @@
-Feature: Log in as a developer user and change the status of an issue from “Resolved” to “Closed”.
+Feature: Log in as a QA user and change the status of an issue from “Resolved” to “Closed”.
 
   Background: Login in as a QA
     Given I visit the login page
@@ -6,7 +6,7 @@ Feature: Log in as a developer user and change the status of an issue from “Re
     And I click the login button
     Then I should view the dashboard
 
-  Scenario Outline: change the status of an issue from “Resolved” to “Closed”
+  Scenario Outline: QA changes the status of an issue from “Resolved” to “Closed”
     When I click project in the header
     And I click View All Projects
     Then I should see BrowseProjects page

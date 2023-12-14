@@ -6,7 +6,7 @@ Feature: After creation, I can add existing user to a project role
     And I click the login button
     Then I should view the dashboard
 
-  Scenario: Admin adds existing user to a project role
+  Scenario: Admin adds existing users to project roles
     When I click the admin menu button third
     And I click the Projects button again
     And I choose a project

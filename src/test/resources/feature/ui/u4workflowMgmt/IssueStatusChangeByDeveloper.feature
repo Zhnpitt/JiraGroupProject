@@ -6,7 +6,7 @@ Feature: Log in as a developer user and change the status of an issue from “To
     And I click the login button
     Then I should view the dashboard
 
-  Scenario Outline: change the status of an issue from “To Do” to “In Progress” and “Resolved”
+  Scenario Outline: Developer changes the status of an issue from “To Do” to “In Progress” and “Resolved”
     When I click project in the header
     And I click View All Projects
     Then I should see BrowseProjects page

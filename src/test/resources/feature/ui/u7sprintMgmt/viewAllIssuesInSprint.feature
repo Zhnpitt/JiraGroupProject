@@ -7,7 +7,7 @@ Feature: I can view all the issues in the current sprint
     And I click the login button
     Then I should view the dashboard
 
-  Scenario: View all the issues in the current sprint
+  Scenario: Developer views all the issues in the current sprint
     When I click the project button in team lead dashboard
     And I choose current project
     And I click the team lead Backlog button

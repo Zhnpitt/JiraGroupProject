@@ -1,13 +1,13 @@
 Feature: Log in as a team leader and end the current active sprint.
 # a created project
   #a created and started sprint
-  Background: Login in as a team leader
+  Background: Login in as a team lead
     Given I visit the login page
     When I enter the Team lead username and password
     And I click the login button
     Then I should view the dashboard
 
-  Scenario Outline:
+  Scenario Outline: Team lead end current active sprint
     When I click project in the header
     And I click View All Projects
     Then I should see BrowseProjects page

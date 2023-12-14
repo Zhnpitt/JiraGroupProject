@@ -7,7 +7,7 @@ Feature: Login s an admin user and edit columns in the Scrum board
     And I click the login button
     Then I should view the dashboard
 
-  Scenario Outline:
+  Scenario Outline: Admin edits columns in the Scrum board
     When I click project in the header
     And I click View All Projects
     Then I should see BrowseProjects page

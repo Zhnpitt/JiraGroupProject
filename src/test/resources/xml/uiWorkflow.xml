@@ -7,7 +7,7 @@
             <class name="uiTest.runner.u1userMgmt.TestUserCreationRunner"/>
 
             <!--            User management (2)-->
-            <!--            After creation I can deactivate a user and once users are deactivated, they cannot
+            <!--            After creation, I can deactivate a user and once users are deactivated, they cannot
                login anymore and I can view the user in the result set after I apply the user status filter-->
             <class name="uiTest.runner.u1userMgmt.TestUserDeactivationRunner"/>
 
@@ -48,7 +48,9 @@
 
             <!--            Workflow management(1)-->
             <class name="uiTest.runner.u4workflowMgmt.TestWorkflowCreationRunner"/>
-
+            <!--            Workflow management(2)-->
+            <!--            As an admin user, I can edit columns in the Scrum board so that I can view all the issues that belong to different status.-->
+            <class name="uiTest.runner.u4workflowMgmt.TestColumnEditRunner"/>
             <!--            Assign workflow to project-->
             <!--            1.ASSIGN WORKFLOW TO SCHEMES-->
             <!--            2.ASSIGN SCHEMES TO PROJECT-->
