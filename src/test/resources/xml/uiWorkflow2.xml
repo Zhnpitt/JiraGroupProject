@@ -2,6 +2,10 @@
 <suite name="CucumberSuite">
     <test name="SequentialRun2">
         <classes>
+            <!--            Project Management(3)-->
+            <!--            As a team lead user, I can create different(4) epics (Frontend dev,Backend dev, UI/UX design, Testing, etc)-->
+            <class name="uiTest.runner.u5projectMgmt.TestTeamLeadCreateEpicRunner"/>
+
             <!--            Issue Management(1)(2)(3)(4)(5)-->
             <!--            As a team lead user, I can create issues that belong to different epics and priorities in the backlog.-->
             <!--            As a team lead user, I can specify if the current issue is blocked by or is blocking other issues.-->

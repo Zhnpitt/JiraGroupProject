@@ -1,6 +1,6 @@
 Feature: User management
 
-  Scenario Outline: Apply filter to dins user in group
+  Scenario Outline: Apply filter to find user in group
     When I get users from group <userGroup>
     Then I should see <userName> in group result set
     Examples:

@@ -7,7 +7,7 @@
             <class name="uiTest.runner.u1userMgmt.TestUserCreationRunner"/>
 
             <!--            User management (2)-->
-            <!--            After creation, I can deactivate a user and once users are deactivated, they cannot
+            <!--            As an admin user, I can deactivate a user and once users are deactivated, they cannot
                login anymore and I can view the user in the result set after I apply the user status filter-->
             <class name="uiTest.runner.u1userMgmt.TestUserDeactivationRunner"/>
 
@@ -18,7 +18,7 @@
             <class name="uiTest.runner.u3groupMgmt.TestGroupMgmtRunner"/>
 
             <!--            User management(3)-->
-            <!--            After creation, I can assign the current user to different user groups.-->
+            <!--            After creation, as an admin user,I can assign the current user to different user groups.-->
             <class name="uiTest.runner.u1userMgmt.TestUserGroupAssignmentRunner"/>
 
             <!--            Project Role management(1)-->
@@ -30,23 +30,23 @@
             <!--            After creation, I can create the following permission scheme-->
             <class name="uiTest.runner.u2projectRoleMgmt.TestCreatePermissionSchemeRunner"/>
 
-            <!--            Project Management(1)(2)(3)-->
+            <!--            Project Management(1)(2)-->
             <!--            As an admin user, I can create a Scrum project and apply an existing permission scheme-->
             <class name="uiTest.runner.u5projectMgmt.TestCreateProjectRunner"/>
             <class name="uiTest.runner.u5projectMgmt.TestApplySchemeToProjectRunner"/>
             <!--            As an admin user, I can add user to the current project-->
             <class name="uiTest.runner.u5projectMgmt.TestAddUserToCurrentProjectRunner"/>
-            <!--            As a team lead user, I can create different epics (Frontend dev,Backend dev, UI/UX design, Testing, etc)-->
-            <class name="uiTest.runner.u5projectMgmt.TestTeamLeadCreateEpicRunner"/>
 
             <!--            Project Role management(2)-->
-            <!--            After creation, I can add existing user to a project role-->
+            <!--            As an admin user, I can add existing user to a project role-->
             <class name="uiTest.runner.u2projectRoleMgmt.TestAddUserToRoleRunner"/>
 
             <!--            Project Role management(3)-->
+            <!--            As an admin user, I can filter users in a project based on their roles.-->
             <class name="uiTest.runner.u2projectRoleMgmt.TestFilterUserByRoleRunner"/>
 
             <!--            Workflow management(1)-->
+            <!--            As an admin user, I can create the following workflow-->
             <class name="uiTest.runner.u4workflowMgmt.TestWorkflowCreationRunner"/>
             <!--            Workflow management(2)-->
             <!--            As an admin user, I can edit columns in the Scrum board so that I can view all the issues that belong to different status.-->
@@ -54,9 +54,6 @@
             <!--            Assign workflow to project-->
             <!--            1.ASSIGN WORKFLOW TO SCHEMES-->
             <!--            2.ASSIGN SCHEMES TO PROJECT-->
-            <!--||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
-
-
         </classes>
     </test>
 </suite>

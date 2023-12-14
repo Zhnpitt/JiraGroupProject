@@ -4,7 +4,7 @@ Feature: Issue management
 #assign the workflow to project
 #Adam Smith user
 
-  Scenario Outline: As a developer user, I can change the status of an issue from “To Do” to “In Progress”
+  Scenario Outline: As a developer user, I can change the status of an issue from “To Do” to “In Progress” and "Resolved"
     Given admin user create a issue in project with projectKey API
     When I login with <developerUsername> and <developerPassword>
     Then the response status code should be 200
