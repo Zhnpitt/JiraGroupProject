@@ -1,6 +1,8 @@
 package uiTest.pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -63,9 +65,17 @@ public class IssueMgmtDevPO extends BasePO{
     }
 
     public void editMessageInCommentArea(String message){
-        int frameCount = getDriver().findElements(By.tagName("iframe")).size();
-        getDriver().switchTo().frame(getDriver().findElement(By.tagName("iframe")));
-        WebElement paragraphElement = getDriver().findElement(By.tagName("p"));
+        try{
+            getDriver().findElement(By.xpath("//*[@id=\"comment-edit\"]//textarea[@id=\"comment\"]")).sendKeys(message);
+        } catch (ElementNotInteractableException e){
+
+            int frameCount = getDriver().findElements(By.tagName("iframe")).size();
+            getDriver().switchTo().frame(getDriver().findElement(By.tagName("iframe")));
+            WebElement paragraphElement = getDriver().findElement(By.tagName("p"));
+            String currentText = paragraphElement.getText();
+            String newText = currentText + message;
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].innerText = arguments[1];", paragraphElement, newText);
+        }
 
 //        // Get the current text of the <p> element
 //        String currentText = paragraphElement.getText();

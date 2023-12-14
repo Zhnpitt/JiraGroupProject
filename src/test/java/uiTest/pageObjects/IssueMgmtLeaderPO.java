@@ -70,7 +70,7 @@ public class IssueMgmtLeaderPO extends BasePO{
     @FindBy(xpath = "(//span[@class='aui-icon ghx-iconfont aui-icon-small aui-iconfont-more'])[2]")
     public WebElement threeDotsBtn;
 
-    @FindBy(css = "a[title='Link this issue to another issue or item']")
+    @FindBy(xpath = "//a[text()='Link']")
     public WebElement linkBtn;
 
     @FindBy(id = "link-type")
@@ -186,12 +186,17 @@ public class IssueMgmtLeaderPO extends BasePO{
     }
 
     public void thisIssueLinkType(){
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         Select dropdown = new Select(thisIssueArea);
         dropdown.selectByValue("is blocked by");
     }
 
     public void clickLinkBtn(){
-//        waitForElementToBeClickable(getDriver(), By.cssSelector("Link this issue to another issue or item"), Duration.ofSeconds(10));
+        //waitForElementToBeClickable(getDriver(), By.cssSelector("Link this issue to another issue or item"), Duration.ofSeconds(10));
 //        linkBtn.click();
 
         Actions actions = new Actions(getDriver());
@@ -200,11 +205,11 @@ public class IssueMgmtLeaderPO extends BasePO{
     }
 
     public void clickThreeDotsBtn(){
-        //waitForElementToBeClickable(getDriver(), By.xpath("(//span[@class='aui-icon ghx-iconfont aui-icon-small aui-iconfont-more'])[2]"), Duration.ofSeconds(5));
-        //threeDotsBtn.click();
+        waitForElementToBeClickable(getDriver(), By.xpath("(//span[@class='aui-icon ghx-iconfont aui-icon-small aui-iconfont-more'])[2]"), Duration.ofSeconds(5));
+        threeDotsBtn.click();
 
-        Actions actions = new Actions(getDriver());
-        actions.moveToElement(threeDotsBtn).click().build().perform();
+//        Actions actions = new Actions(getDriver());
+//        actions.moveToElement(threeDotsBtn).click().build().perform();
     }
 
     public void clickNewCreatedIssueTask(){
