@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 ;
 
@@ -57,7 +59,50 @@ public class ProjectContentPO extends BasePO{
     public WebElement columnCategoryDropDown;
     @FindBy(xpath = "//*[@id=\"ghx-dialog-add-column\"]//button[text() = 'Add']")
     public WebElement addBtnInAddColumnDialog;
+    @FindBy(xpath = "//*[@id=\"sidebar\"]//a[span[text() = 'Active sprints'] ]")
+    public WebElement activeSprintsInSideBar;
+    @FindBy(xpath = "//*[@id=\"ghx-complete-sprint\"]")
+    public WebElement completeSprintBtn;
+    @FindBy(xpath = "//*[@id=\"ghx-dialog-complete-sprint\"]//button[text() = 'Complete']")
+    public WebElement completeBtnInCompleteSprintDialog;
+    @FindBy(xpath = "//*[@id=\"sidebar\"]//a[span[text() = 'Reports'] ]")
+    public WebElement reportsInSidebar;
+    @FindBy(xpath = "//*[@id='subnav-trigger-reports']")
+    public WebElement switchReportBtn;
+    @FindBy(xpath = "//*[@id=\"subnav-opts-reports\"]//ul/li/a[text() = 'Velocity Chart']")
+    public WebElement velocityChartInSwitchReportDropdown;
+    @FindBy(xpath = "//*[@id=\"js-apply-btn\"]")
+    public WebElement timeframeApplyBtn;
+    @FindBy(xpath = "//*[@id=\"configure-velocity-chart-form\"]/button[@aria-controls='velocity-chart-timeframe-dropdown']")
+    public WebElement timeframeBtn;
 
+    private static void captureCanvasAsImage(WebDriver driver, String imageName){
+        // Use JavaScript to capture the canvas content as base64 image data
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String imageData = (String) js.executeScript(
+              "var canvas = document.querySelector('[data-zr-dom-id=\"zr_0\"]');" +
+                    "return canvas.toDataURL('image/png').replace(/^data:image\\/png;base64,/, '');");
+
+        byte[] imageBytes = DatatypeConverter.parseBase64Binary(imageData);
+
+        BufferedImage originalImage = null;
+        try{
+            originalImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
+            BufferedImage newImage = new BufferedImage(
+                  originalImage.getWidth(), originalImage.getHeight(),
+                  BufferedImage.TYPE_INT_RGB);
+
+            Graphics2D graphics = newImage.createGraphics();
+            graphics.setColor(Color.WHITE);
+            graphics.fillRect(0, 0, newImage.getWidth(), newImage.getHeight());
+            graphics.drawImage(originalImage, 0, 0, null);
+
+            ImageIO.write(newImage, "png", new File(imageName));
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     /*
     @FindBy(xpath = "")
@@ -164,20 +209,31 @@ public class ProjectContentPO extends BasePO{
         //return DriverFactory.getDriver().findElement(By.xpath(path));
     }
 
+    public boolean isColumnsInMappingColumnsExist(String name){
+        List<WebElement> columns = DriverFactory.getDriver().findElements(By.xpath("//*[@id=\"ghx-mapping-columns\"]/ul//h3"));
+        Set<String> columnNames = columns.stream()
+              .map(WebElement::getText)
+              .collect(Collectors.toSet());
+        return columnNames.contains(name);
+    }
 
     public void changeColumnNameInMappingColumns(String src, String target){
+        columnsBtnInConfigNav.click();
         List<WebElement> columns = DriverFactory.getDriver().findElements(By.xpath("//*[@id=\"ghx-mapping-columns\"]/ul"));
         String path = ".//h3";
         for (WebElement column : columns){
             WebElement header = column.findElement(By.xpath(path));
+            System.out.println(header.getText());
             if (header.getText().equals(src)){
                 header.click();
                 WebElement columnNameInput = column.findElement(By.xpath(".//input"));
                 columnNameInput.sendKeys(target);
-                columnNameInput.sendKeys(Keys.RETURN);
+//                columnNameInput.sendKeys(Keys.RETURN);
+//                column.click();
                 break;
             }
         }
+        columnsBtnInConfigNav.click();
     }
 
     // 0-index
@@ -232,47 +288,32 @@ public class ProjectContentPO extends BasePO{
         DriverFactory.getDriver().findElement(By.xpath(path)).click();
     }
 
-    @FindBy(xpath = "//*[@id=\"sidebar\"]//a[span[text() = 'Active sprints'] ]")
-    public WebElement activeSprintsInSideBar;
-
     public void clickActiveSprintsInSideBar(){
         activeSprintsInSideBar.click();
     }
-
-    @FindBy(xpath = "//*[@id=\"ghx-complete-sprint\"]")
-    public WebElement completeSprintBtn;
 
     public void clickCompleteSprintBtn(){
         completeSprintBtn.click();
     }
 
-    @FindBy(xpath = "//*[@id=\"ghx-dialog-complete-sprint\"]//button[text() = 'Complete']")
-    public WebElement completeBtnInCompleteSprintDialog;
-
     public void clickCompleteBtnInCompleteSprintDialog(){
         completeBtnInCompleteSprintDialog.click();
     }
-
-    @FindBy(xpath = "//*[@id=\"sidebar\"]//a[span[text() = 'Reports'] ]")
-    public WebElement reportsInSidebar;
 
     public void clickReportsInSidebar(){
         reportsInSidebar.click();
     }
 
-    @FindBy(xpath = "//*[@id='subnav-trigger-reports']")
-    public WebElement switchReportBtn;
-
     public void clickSwitchReportBtn(){
         switchReportBtn.click();
     }
 
-    @FindBy(xpath = "//*[@id=\"subnav-opts-reports\"]//ul/li/a[text() = 'Velocity Chart']")
-    public WebElement velocityChartInSwitchReportDropdown;
-
     public void clickVelocityChartInSwitchReportDropdown(){
         velocityChartInSwitchReportDropdown.click();
     }
+
+//    @FindBy(xpath = "")
+//    public WebElement velocityChartCanvas;
 
     public void changeTimeFrameInVelocityChart(String lengthInMonth){
         int length = Integer.parseInt(lengthInMonth);
@@ -281,51 +322,13 @@ public class ProjectContentPO extends BasePO{
 
     }
 
-    @FindBy(xpath = "//*[@id=\"js-apply-btn\"]")
-    public WebElement timeframeApplyBtn;
-
     public void clickTimeframeApplyBtn(){
         timeframeApplyBtn.click();
     }
 
-//    @FindBy(xpath = "")
-//    public WebElement velocityChartCanvas;
-
     public void downloadVelocityChart(String filename){
         captureCanvasAsImage(DriverFactory.getDriver(), filename);
     }
-
-    private static void captureCanvasAsImage(WebDriver driver, String imageName){
-        // Use JavaScript to capture the canvas content as base64 image data
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        String imageData = (String) js.executeScript(
-              "var canvas = document.querySelector('[data-zr-dom-id=\"zr_0\"]');" +
-                    "return canvas.toDataURL('image/png').replace(/^data:image\\/png;base64,/, '');");
-
-        byte[] imageBytes = DatatypeConverter.parseBase64Binary(imageData);
-
-        BufferedImage originalImage = null;
-        try{
-            originalImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
-            BufferedImage newImage = new BufferedImage(
-                  originalImage.getWidth(), originalImage.getHeight(),
-                  BufferedImage.TYPE_INT_RGB);
-
-            Graphics2D graphics = newImage.createGraphics();
-            graphics.setColor(Color.WHITE);
-            graphics.fillRect(0, 0, newImage.getWidth(), newImage.getHeight());
-            graphics.drawImage(originalImage, 0, 0, null);
-
-            ImageIO.write(newImage, "png", new File(imageName));
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-
-    @FindBy(xpath = "//*[@id=\"configure-velocity-chart-form\"]/button[@aria-controls='velocity-chart-timeframe-dropdown']")
-    public WebElement timeframeBtn;
 
     public void clickTimeframeBtn(){
         timeframeBtn.click();

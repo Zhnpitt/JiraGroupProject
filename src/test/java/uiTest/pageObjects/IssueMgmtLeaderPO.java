@@ -3,6 +3,7 @@ package uiTest.pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -140,9 +141,6 @@ public class IssueMgmtLeaderPO extends BasePO{
         frontendEpicSuggestion.click();
     }
 
-    //    public void clickAllIssuesBtn(){
-//        allIssuesBtn.click();
-//    }
     public void scrollToAssigneeCheckAreaAndCheck(){
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", assigneeCheckArea);
         new WebDriverWait(getDriver(), Duration.ofSeconds(5))
@@ -168,7 +166,11 @@ public class IssueMgmtLeaderPO extends BasePO{
     }
 
     public void clickAssignBtn(){
-        assignBtn.click();
+        waitForElementToBeClickable(getDriver(), By.cssSelector("a[title='Assign this issue to someone']"), Duration.ofSeconds(3));
+        //assignBtn.click();
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(assignBtn).click().build().perform();
+
     }
 
     public void clickLinkIssueBtn(){
@@ -189,11 +191,20 @@ public class IssueMgmtLeaderPO extends BasePO{
     }
 
     public void clickLinkBtn(){
-        linkBtn.click();
+//        waitForElementToBeClickable(getDriver(), By.cssSelector("Link this issue to another issue or item"), Duration.ofSeconds(10));
+//        linkBtn.click();
+
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(linkBtn).click().build().perform();
+
     }
 
     public void clickThreeDotsBtn(){
-        threeDotsBtn.click();
+        //waitForElementToBeClickable(getDriver(), By.xpath("(//span[@class='aui-icon ghx-iconfont aui-icon-small aui-iconfont-more'])[2]"), Duration.ofSeconds(5));
+        //threeDotsBtn.click();
+
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(threeDotsBtn).click().build().perform();
     }
 
     public void clickNewCreatedIssueTask(){
@@ -247,6 +258,11 @@ public class IssueMgmtLeaderPO extends BasePO{
     }
 
     public void sendInSummaryArea(String summary){
+        try{
+            Thread.sleep(500);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         summaryArea.sendKeys(summary);
     }
 

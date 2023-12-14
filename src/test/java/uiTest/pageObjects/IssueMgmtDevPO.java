@@ -63,10 +63,10 @@ public class IssueMgmtDevPO extends BasePO{
     }
 
     public void editMessageInCommentArea(String message){
-//        int frameCount = getDriver().findElements(By.tagName("iframe")).size();
-//        getDriver().switchTo().frame(getDriver().findElement(By.tagName("iframe")));
-//        WebElement paragraphElement = getDriver().findElement(By.tagName("p"));
-//
+        int frameCount = getDriver().findElements(By.tagName("iframe")).size();
+        getDriver().switchTo().frame(getDriver().findElement(By.tagName("iframe")));
+        WebElement paragraphElement = getDriver().findElement(By.tagName("p"));
+
 //        // Get the current text of the <p> element
 //        String currentText = paragraphElement.getText();
 //        System.out.println("Current text of <p>: " + currentText);
@@ -85,7 +85,7 @@ public class IssueMgmtDevPO extends BasePO{
 //        getDriver().switchTo().defaultContent();
 //
 
-        getDriver().findElement(By.xpath("//div[@id = \"comment-wiki-edit\"]/textarea")).sendKeys(message);
+        //getDriver().findElement(By.xpath("//div[@id = \"comment-wiki-edit\"]/textarea")).sendKeys(message);
     }
 
     public void clickAddComments(){

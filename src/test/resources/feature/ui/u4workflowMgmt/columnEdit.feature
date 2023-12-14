@@ -21,7 +21,7 @@ Feature: Login s an admin user and edit columns in the Scrum board
 #Column management
     Then I should see Column management content
     #Then I should see issue in different column
-    When I add a new column with <columnName> and <category>
+    When I add a new column with <columnName>
     Then I should see column with name <columnName>
     When I change column <columnName> to <newColumnName>
     Then I should see column with name <newColumnName>
@@ -30,5 +30,5 @@ Feature: Login s an admin user and edit columns in the Scrum board
 
 
     Examples:
-      | projectName   | columnName | category     | newColumnName |
-      | "projectName" | "column 1" | "In process" | 'Column new'  |
+      | projectName   | columnName           | newColumnName        |
+      | "projectName" | "New Column Created" | 'Column Name Change' |

@@ -53,9 +53,10 @@ public class ColumnEditStepDef{
         //TODO create a project with issue
     }
 
-    @When("I add a new column with {string} and {string}")
-    public void iAddANewColumnWithColumnNameAndCategory(String columnName, String category){
+    @When("I add a new column with {string}")
+    public void iAddANewColumnWithColumnNameAndCategory(String columnName){
         projectContentPO.clickAddColumnBtn();
+
         //projectContentPO.enterColumnName(columnName);
         //projectContentPO.selectColumnCategory(category);
         //projectContentPO.clickAddBtnInAddColumnDialog();
@@ -90,6 +91,7 @@ public class ColumnEditStepDef{
 
     @Then("i should not see {string}")
     public void iShouldNotSeeColumnName(String name){
-        assertNull(projectContentPO.findColumnInMappingColumns(name));
+        //assertNull(projectContentPO.findColumnInMappingColumns(name));
+        assertFalse(projectContentPO.isColumnsInMappingColumnsExist(name));
     }
 }

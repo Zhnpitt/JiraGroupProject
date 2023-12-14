@@ -60,7 +60,6 @@ public class IssueStatusChangeStepDef{
 
     @And("I click {string} status in dropdown")
     public void iClickNextStatusStatusInDropdown(String nextStatus){
-
         projectContentPO.clickStatusInStatusDropdown(nextStatus);
     }
 
